@@ -1,4 +1,4 @@
-# optionalfitness3
+# OPTIONAL FITNESS 3
 # FitFlex Gym - Premium Fitness Template
 
 ![FitFlex Gym Preview](https://via.placeholder.com/800x500?text=FitFlex+Gym+Template+Preview)
