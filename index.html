@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDWJR World Homeless Organization | Ending Homelessness Worldwide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2980b9;
+            --accent: #e74c3c;
+            --light: #f5f7fa;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.8;
+            color: #333;
+            background-color: var(--light);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        /* Typography */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap');
+
+        /* Hero Section */
+        .hero-header {
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.7)), 
+                        url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c') center/cover no-repeat fixed;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            z-index: 2;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        .hero-header h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            color: white;
+            line-height: 1.2;
+        }
+
+        .hero-header p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: rgba(44, 62, 80, 0.95);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: white;
+            font-weight: 700;
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+            color: white;
+            margin-left: 1rem;
+        }
+
+        .btn-accent:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            margin-bottom: 5rem;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Stats Section */
+        .stats-container {
+            background-color: var(--primary);
+            padding: 4rem 2rem;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Programs Section */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .program-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .program-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .program-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .program-card:hover .program-img img {
+            transform: scale(1.1);
+        }
+
+        .program-info {
+            padding: 1.5rem;
+        }
+
+        .program-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .program-info p {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        /* Donation Section */
+        .donation-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 3rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .donation-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .donation-option {
+            background-color: var(--light);
+            border-radius: 5px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .donation-option:hover, .donation-option.active {
+            border-color: var(--primary);
+            background-color: white;
+        }
+
+        .donation-option h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .donation-option p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .donation-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .donation-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .donation-form input, 
+        .donation-form select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .donation-form input:focus, 
+        .donation-form select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        .donation-form button {
+            width: 100%;
+        }
+
+        /* Volunteer Section */
+        .volunteer-form {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Testimonials */
+        .testimonials-container {
+            background-color: var(--dark);
+            padding: 4rem 2rem;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .author-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            border: 2px solid var(--primary);
+        }
+
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-name {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .author-title {
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 4rem 2rem;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 5rem 0 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-col h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-col p {
+            margin-bottom: 1.5rem;
+            color: #bbb;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+        }
+
+        .footer-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-links a:hover:after {
+            width: 100%;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--dark);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                transition: all 0.5s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .btn-accent {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="sdwjr-logo.png" alt="SDWJR World Homeless Organization Logo">
+                <div class="logo-text">SDWJR <span>World Homeless</span></div>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#donate">Donate</a></li>
+                <li><a href="#volunteer">Volunteer</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-header" id="home">
+        <div class="hero-content">
+            <h1>Ending Homelessness Worldwide</h1>
+            <p>Join SDWJR in our mission to provide shelter, support, and hope to homeless individuals and families across the globe.</p>
+            <div class="hero-buttons">
+                <a href="#donate" class="btn btn-primary">Donate Now</a>
+                <a href="#volunteer" class="btn btn-accent">Volunteer</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="section-header">
+                <h2>About Our Organization</h2>
+                <p>Learn about our mission, vision, and the work we do to combat homelessness</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Our Story</h3>
+                    <p>Founded in 2010, SDWJR World Homeless Organization has been at the forefront of the fight against homelessness. What began as a small local initiative has grown into a global movement with operations in over 30 countries.</p>
+                    <p>Our mission is to provide immediate relief through shelter and meals while addressing the root causes of homelessness through job training, mental health services, and affordable housing initiatives.</p>
+                    <p>We believe everyone deserves a safe place to call home and the support needed to rebuild their lives with dignity.</p>
+                    <a href="#" class="btn btn-primary">Read Our Annual Report</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca" alt="SDWJR Team Helping Homeless">
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="section">
+            <div class="stats-container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3>50,000+</h3>
+                        <p>People Sheltered Annually</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>30+</h3>
+                        <p>Countries Served</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>5,000+</h3>
+                        <p>Volunteers Worldwide</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>85%</h3>
+                        <p>Program Efficiency Rate</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programs Section -->
+        <section id="programs" class="section">
+            <div class="section-header">
+                <h2>Our Programs</h2>
+                <p>Comprehensive solutions addressing all aspects of homelessness</p>
+            </div>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f" alt="Emergency Shelter">
+                    </div>
+                    <div class="program-info">
+                        <h3>Emergency Shelter</h3>
+                        <p>Immediate safe housing for individuals and families experiencing homelessness, with access to meals and basic necessities.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216" alt="Job Training">
+                    </div>
+                    <div class="program-info">
+                        <h3>Job Training</h3>
+                        <p>Vocational programs and skill development to help homeless individuals gain employment and financial independence.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e" alt="Mental Health Services">
+                    </div>
+                    <div class="program-info">
+                        <h3>Mental Health Services</h3>
+                        <p>Counseling and treatment programs addressing the psychological aspects of homelessness and trauma.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Section -->
+        <section id="donate" class="section">
+            <div class="section-header">
+                <h2>Make a Difference</h2>
+                <p>Your donation helps provide shelter, meals, and support services to those in need</p>
+            </div>
+            <div class="donation-container">
+                <div class="donation-options">
+                    <div class="donation-option active">
+                        <h4>$25</h4>
+                        <p>Provides a week of meals</p>
+                    </div>
+                    <div class="donation-option">
+                        <h4>$50</h4>
+                        <p>One night of shelter</p>
+                    </div>
+                    <div class="donation-option">
+                        <h4>$100</h4>
+                        <p>Job training materials</p>
+                    </div>
+                    <div class="donation-option">
+                        <h4>$250</h4>
+                        <p>Counseling sessions</p>
+                    </div>
+                    <div class="donation-option">
+                        <h4>Other</h4>
+                        <p>Custom amount</p>
+                    </div>
+                </div>
+                <form class="donation-form">
+                    <div class="form-group">
+                        <label for="amount">Donation Amount ($)</label>
+                        <input type="number" id="amount" placeholder="Enter amount" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="payment">Payment Method</label>
+                        <select id="payment" required>
+                            <option value="">Select payment method</option>
+                            <option value="credit">Credit Card</option>
+                            <option value="paypal">PayPal</option>
+                            <option value="bank">Bank Transfer</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Donate Now</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Volunteer Section -->
+        <section id="volunteer" class="section">
+            <div class="section-header">
+                <h2>Volunteer With Us</h2>
+                <p>Join our team of dedicated volunteers making a difference in communities worldwide</p>
+            </div>
+            <div class="volunteer-form">
+                <form id="volunteerForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="vFirstName">First Name</label>
+                            <input type="text" id="vFirstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="vLastName">Last Name</label>
+                            <input type="text" id="vLastName" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="vEmail">Email</label>
+                            <input type="email" id="vEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="vPhone">Phone</label>
+                            <input type="tel" id="vPhone" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="vLocation">Preferred Location</label>
+                            <select id="vLocation" required>
+                                <option value="">Select location</option>
+                                <option value="local">Local Chapter</option>
+                                <option value="international">International</option>
+                                <option value="remote">Remote/Administrative</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="vInterest">Area of Interest</label>
+                            <select id="vInterest" required>
+                                <option value="">Select interest</option>
+                                <option value="shelter">Shelter Support</option>
+                                <option value="outreach">Street Outreach</option>
+                                <option value="education">Education/Training</option>
+                                <option value="admin">Administrative</option>
+                                <option value="fundraising">Fundraising</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="vExperience">Relevant Experience/Skills</label>
+                        <textarea id="vExperience"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Application</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="section">
+            <div class="testimonials-container">
+                <div class="testimonial-slider">
+                    <div class="testimonial">
+                        <div class="testimonial-text">
+                            "After losing my job and home, SDWJR provided me with shelter and job training. Today I'm employed full-time with my own apartment. They didn't just give me a bed - they gave me back my future."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-img">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="James Wilson">
+                            </div>
+                            <div class="author-name">James Wilson</div>
+                            <div class="author-title">Program Graduate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section">
+            <div class="cta-section">
+                <h2>Join Our Mission</h2>
+                <p>Whether through donations, volunteering, or advocacy, you can help end homelessness in our lifetime.</p>
+                <div class="cta-buttons">
+                    <a href="#donate" class="btn btn-primary">Donate Now</a>
+                    <a href="#volunteer" class="btn btn-accent">Become a Volunteer</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>SDWJR World Homeless Organization</h3>
+                <p>Committed to ending homelessness through shelter, support, and systemic change.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#programs">Programs</a></li>
+                    <li><a href="#donate">Donate</a></li>
+                    <li><a href="#volunteer">Volunteer</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Our Programs</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Emergency Shelter</a></li>
+                    <li><a href="#">Job Training</a></li>
+                    <li><a href="#">Mental Health Services</a></li>
+                    <li><a href="#">Affordable Housing</a></li>
+                    <li><a href="#">Advocacy</a></li>
+                    <li><a href="#">Research</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Hope Street, Global City, GC 10001</p>
+                <p><i class="fas fa-phone-alt"></i> +1 (800) 123-4567</p>
+                <p><i class="fas fa-envelope"></i> info@sdwjr.org</p>
+                <p><i class="fas fa-clock"></i> Monday-Friday: 9AM-5PM</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 SDWJR World Homeless Organization. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Donation Options Selection
+        const donationOptions = document.querySelectorAll('.donation-option');
+        donationOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                donationOptions.forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+                
+                if (!this.querySelector('h4').textContent.includes('Other')) {
+                    const amount = this.querySelector('h4').textContent.replace('$', '');
+                    document.getElementById('amount').value = amount;
+                } else {
+                    document.getElementById('amount').value = '';
+                    document.getElementById('amount').focus();
+                }
+            });
+        });
+
+        // Form Submissions
+        const donationForm = document.querySelector('.donation-form');
+        donationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const amount = document.getElementById('amount').value;
+            alert(`Thank you for your donation of $${amount}! You will receive a confirmation email shortly.`);
+            this.reset();
+            donationOptions[0].classList.add('active');
+        });
+
+        const volunteerForm = document.getElementById('volunteerForm');
+        volunteerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your volunteer application! We will contact you within 3-5 business days.');
+            this.reset();
+        });
+
+        // Testimonial Slider
+        const testimonials = [
+            {
+                text: "After losing my job and home, SDWJR provided me with shelter and job training. Today I'm employed full-time with my own apartment. They didn't just give me a bed - they gave me back my future.",
+                name: "James Wilson",
+                title: "Program Graduate",
+                image: "https://randomuser.me/api/portraits/men/32.jpg"
+            },
+            {
+                text: "As a volunteer for 5 years, I've seen firsthand how SDWJR transforms lives. Their holistic approach addresses both immediate needs and long-term solutions to homelessness.",
+                name: "Maria Garcia",
+                title: "Long-term Volunteer",
+                image: "https://randomuser.me/api/portraits/women/44.jpg"
+            },
+            {
+                text: "Our corporate partnership with SDWJR has been incredibly rewarding. Their programs are effective, transparent, and making real impact in communities we care about.",
+                name: "David Chen",
+                title: "Corporate Partner",
+                image: "https://randomuser.me/api/portraits/men/75.jpg"
+            }
+        ];
+
+        const testimonialSlider = document.querySelector('.testimonial-slider');
+        let currentTestimonial = 0;
+
+        function showTestimonial(index) {
+            const testimonial = testimonials[index];
+            testimonialSlider.innerHTML = `
+                <div class="testimonial">
+                    <div class="testimonial-text">${testimonial.text}</div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="${testimonial.image}" alt="${testimonial.name}">
+                        </div>
+                        <div class="author-name">${testimonial.name}</div>
+                        <div class="author-title">${testimonial.title}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Initialize first testimonial
+        showTestimonial(currentTestimonial);
+
+        // Auto-rotate testimonials every 5 seconds
+        setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }, 5000);
+
+        // Animate elements when they come into view
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.section, .section-header, .program-card, .donation-option');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Set initial state for animation
+        window.addEventListener('load', function() {
+            const animatedElements = document.querySelectorAll('.section, .section-header, .program-card, .donation-option');
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            });
+            
+            // Trigger first check
+            animateOnScroll();
+        });
+
+        // Listen for scroll events
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+</body>
+</html>
