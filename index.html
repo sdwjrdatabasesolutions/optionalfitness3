@@ -3,1211 +3,1266 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voice Of Activist | Ending Homelessness Worldwide</title>
+    <title>SDWSR - Shop Digital & Physical Products | TBA NEWS NETWORK</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #3498db;
-            --secondary: #2980b9;
-            --accent: #e74c3c;
-            --light: #f5f7fa;
-            --dark: #2c3e50;
-            --success: #27ae60;
-            --font-heading: 'Poppins', sans-serif;
-            --font-body: 'Open Sans', sans-serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: var(--font-body);
-            line-height: 1.8;
-            color: #333;
-            background-color: var(--light);
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-heading);
-            color: var(--dark);
-            font-weight: 700;
-        }
-
-        /* Typography */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap');
-
-        /* Hero Section */
-        .hero-header {
-            height: 100vh;
-            min-height: 600px;
-            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.7)), 
-                        url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c') center/cover no-repeat fixed;
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
+   
+</head>
+    <! -- STYLE SECTION -->
+     <style>
+        /* Reset & Base */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #333; background: #f4f4f4; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Navbar */
+        nav {
+            background: linear-gradient(135deg, #000428, #004e92);
             color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            padding: 0 2rem;
-            z-index: 2;
-            animation: fadeInUp 1.5s ease;
-        }
-
-        .hero-header h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            margin-bottom: 1.5rem;
-            color: white;
-            line-height: 1.2;
-        }
-
-        .hero-header p {
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
-        }
-
-        /* Navigation */
-        .navbar {
-            background-color: rgba(44, 62, 80, 0.95);
-            position: fixed;
+            padding: 15px 0;
+            position: sticky;
             top: 0;
-            width: 100%;
             z-index: 1000;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         }
-
-        .navbar.scrolled {
-            padding: 0.5rem 0;
-        }
-
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
         }
-
         .logo {
             display: flex;
             align-items: center;
-            gap: 1rem;
-        }
-
-        .logo img {
-            height: 50px;
-            width: auto;
-        }
-
-        .logo-text {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            color: white;
+            gap: 10px;
             font-weight: 700;
+            font-size: 1.5rem;
+            font-family: 'Manrope', sans-serif;
         }
-
-        .logo-text span {
-            color: var(--primary);
+        .logo-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-left: 10px;
         }
-
         .nav-links {
             display: flex;
-            gap: 1.5rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1rem;
-            position: relative;
-            padding: 0.5rem 0;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links a:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover:after {
-            width: 100%;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            border-radius: 5px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-
-        .btn-primary {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-accent {
-            background-color: var(--accent);
-            color: white;
-            margin-left: 1rem;
-        }
-
-        .btn-accent:hover {
-            background-color: #c0392b;
-            transform: translateY(-3px);
-        }
-
-        /* Main Content */
-        .main-content {
-            max-width: 1200px;
-            margin: 5rem auto;
-            padding: 0 2rem;
-        }
-
-        .section {
-            margin-bottom: 5rem;
-            position: relative;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-header h2:after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 3px;
-            background-color: var(--primary);
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .section-header p {
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-            color: #666;
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-image {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .about-image:hover img {
-            transform: scale(1.05);
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-
-        /* Stats Section */
-        .stats-container {
-            background-color: var(--primary);
-            padding: 4rem 2rem;
-            border-radius: 10px;
-            color: white;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .stat-item h3 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            color: white;
-        }
-
-        .stat-item p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        /* Programs Section */
-        .programs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .program-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .program-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .program-img {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .program-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .program-card:hover .program-img img {
-            transform: scale(1.1);
-        }
-
-        .program-info {
-            padding: 1.5rem;
-        }
-
-        .program-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .program-info p {
-            margin-bottom: 1.5rem;
-            color: #666;
-        }
-
-        /* Donation Section */
-        .donation-container {
-            background-color: white;
-            border-radius: 10px;
-            padding: 3rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .donation-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .donation-option {
-            background-color: var(--light);
-            border-radius: 5px;
-            padding: 1.5rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .donation-option:hover, .donation-option.active {
-            border-color: var(--primary);
-            background-color: white;
-        }
-
-        .donation-option h4 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .donation-option p {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .donation-form .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .donation-form label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--dark);
-        }
-
-        .donation-form input, 
-        .donation-form select {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .donation-form input:focus, 
-        .donation-form select:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-        }
-
-        .donation-form button {
-            width: 100%;
-        }
-
-        /* Volunteer Section */
-        .volunteer-form {
-            background-color: white;
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--dark);
-        }
-
-        .form-group input, 
-        .form-group select, 
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus, 
-        .form-group select:focus, 
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-        }
-
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        /* Testimonials */
-        .testimonials-container {
-            background-color: var(--dark);
-            padding: 4rem 2rem;
-            border-radius: 10px;
-            color: white;
-        }
-
-        .testimonial-slider {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .testimonial {
-            text-align: center;
-            padding: 0 1rem;
-        }
-
-        .testimonial-text {
-            font-size: 1.2rem;
-            font-style: italic;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .testimonial-author {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .author-img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-bottom: 1rem;
-            border: 2px solid var(--primary);
-        }
-
-        .author-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .author-name {
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
-
-        .author-title {
-            color: var(--primary);
-            font-size: 0.9rem;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            padding: 4rem 2rem;
-            border-radius: 10px;
-            color: white;
-            text-align: center;
-        }
-
-        .cta-section h2 {
-            color: white;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta-section p {
-            max-width: 700px;
-            margin: 0 auto 2.5rem;
-            font-size: 1.1rem;
-        }
-
-        /* Footer */
-        .footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 5rem 0 2rem;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-        }
-
-        .footer-col h3 {
-            color: white;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        .footer-col h3:after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 2px;
-            background-color: var(--primary);
-            bottom: 0;
-            left: 0;
-        }
-
-        .footer-col p {
-            margin-bottom: 1.5rem;
-            color: #bbb;
-        }
-
-        .footer-links {
+            gap: 25px;
             list-style: none;
         }
-
-        .footer-links li {
-            margin-bottom: 1rem;
-        }
-
-        .footer-links a {
-            color: #bbb;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-block;
-            position: relative;
-        }
-
-        .footer-links a:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        .footer-links a:hover {
+        .nav-links li a {
             color: white;
-            transform: translateX(5px);
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
-
-        .footer-links a:hover:after {
-            width: 100%;
+        .nav-links li a:hover {
+            color: #f39c12;
         }
-
-        .footer-social {
+        .nav-links li a.active {
+            color: #f39c12;
+            font-weight: 600;
+        }
+        .nav-actions {
             display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
+            gap: 15px;
         }
-
-        .footer-social a {
+        .btn {
+            padding: 10px 22px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Manrope', sans-serif;
+        }
+        .btn-primary {
+            background: #f39c12;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #d48806;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+        .hamburger .bar {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: 0.3s;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(120deg, #1f1c2c, #928dab);
+            padding: 120px 0;
+            text-align: center;
+            color: white;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .store-button {
+            padding: 16px 32px;
+            background: #fff;
+            color: #000;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        .store-button:hover {
+            background: #000;
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        .store-button.news {
+            background: #e74c3c;
+            color: white;
+        }
+        .store-button.news:hover {
+            background: #c0392b;
+        }
+        
+        /* Products Section */
+        .products-section {
+            padding: 100px 0;
+            background: white;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-header h2 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-family: 'Manrope', sans-serif;
+        }
+        .section-header p {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 1px solid #eee;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        .product-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        .product-card p {
+            margin-bottom: 20px;
+            color: #666;
+            line-height: 1.7;
+        }
+        .product-price {
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: #e74c3c;
+        }
+        .product-tag {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #e8f4fc;
+            color: #3498db;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .product-tag.physical {
+            background: #e8f7ef;
+            color: #27ae60;
+        }
+        
+        /* TBA News Section */
+        .news-section {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+        .news-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+        .news-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
             align-items: center;
             justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        .news-content {
+            padding: 25px;
+        }
+        .news-date {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 100px 0;
+            color: white;
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+        }
+        .testimonial {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        .testimonial h4 {
+            font-weight: 600;
+            color: #f39c12;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .newsletter h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .newsletter-form {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .newsletter input[type="email"] {
+            padding: 16px 20px;
+            border: none;
+            border-radius: 8px;
+            width: 300px;
+            max-width: 80%;
+            font-size: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a252f;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-col h3 {
+            color: #f39c12;
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+        }
+        .footer-links {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        .footer-links a {
+            color: #bdc3c7;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover {
+            color: #f39c12;
+        }
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .social-icons a {
             width: 40px;
             height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: all 0.3s ease;
         }
-
-        .footer-social a:hover {
-            background-color: var(--primary);
+        .social-icons a:hover {
+            background: #f39c12;
             transform: translateY(-3px);
         }
-
         .footer-bottom {
-            text-align: center;
-            padding-top: 3rem;
-            margin-top: 3rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #bbb;
             font-size: 0.9rem;
+            color: #bdc3c7;
         }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive Design */
+        
+        /* Responsive */
         @media (max-width: 992px) {
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .about-image {
-                order: -1;
-            }
+            .hero h1 { font-size: 2.8rem; }
+            .section-header h2 { font-size: 2.3rem; }
         }
-
         @media (max-width: 768px) {
             .nav-links {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background-color: var(--dark);
+                display: none;
                 flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 2rem;
-                transition: all 0.5s ease;
-            }
-
-            .nav-links.active {
+                background: #000428;
+                position: absolute;
+                top: 60px;
                 left: 0;
+                width: 100%;
+                padding: 20px 0;
+                text-align: center;
             }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .btn-accent {
-                margin-left: 0;
-                margin-top: 1rem;
-            }
+            .nav-links.active { display: flex; }
+            .hamburger { display: flex; }
+            .hero h1 { font-size: 2.3rem; }
+            .hero p { font-size: 1.1rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .store-button { width: 250px; }
+            .newsletter-form { flex-direction: column; align-items: center; }
+            .newsletter input[type="email"] { margin-bottom: 15px; }
+            .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
         }
-
-        @media (max-width: 576px) {
-            .hero-header h1 {
-                font-size: 2.5rem;
-            }
-
-            .section-header h2 {
-                font-size: 2rem;
-            }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2rem; }
+            .section-header h2 { font-size: 1.8rem; }
+            .btn { padding: 10px 18px; }
         }
     </style>
-</head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <img src="logome.png" alt="SDWJR World Homeless Organization Logo">
-                <div class="logo-text">SDWJR <span>World Homeless</span></div>
-            </div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#programs">Programs</a></li>
-                <li><a href="#donate">Donate</a></li>
-                <li><a href="#volunteer">Volunteer</a></li>
-                 <li><a href="#voice">Humanrights</a></li>
+    <!-- Navbar -->
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                SDWSR
+                <span class="logo-subtitle">Digital & Physical Store</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#digital">Digital Products</a></li>
+                <li><a href="#physical">Physical Products</a></li>
+                <li><a href="#news">TBA News</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
+            <div class="nav-actions">
+                <button class="btn btn-secondary"><i class="fas fa-search"></i></button>
+                <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Cart</button>
+            </div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero-header" id="home">
-        <div class="hero-content">
-            <h1>Ending Homelessness Worldwide</h1>
-            <p>Join SDWJR in our mission to provide shelter, support, and hope to homeless individuals and families across the globe.</p>
+    <section class="hero">
+        <div class="container">
+            <h1>Welcome to SDWSR Store</h1>
+            <p>Your one-stop shop for premium digital products, physical goods, and the latest news from TBA NEWS NETWORK. Quality meets innovation.</p>
             <div class="hero-buttons">
-                <a href="#donate" class="btn btn-primary">Donate Now</a>
-                <a href="#volunteer" class="btn btn-accent">Volunteer</a>
+                <button class="store-button" onclick="scrollToSection('digital')">
+                    <i class="fas fa-download"></i> Digital Store
+                </button>
+                <button class="store-button physical" onclick="scrollToSection('physical')">
+                    <i class="fas fa-box"></i> Physical Store
+                </button>
+                <button class="store-button news" onclick="scrollToSection('news')">
+                    <i class="fas fa-newspaper"></i> TBA News
+                </button>
             </div>
         </div>
-    </header>
+    </section>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- About Section -->
-        <section id="about" class="section">
+    <!-- Digital Products -->
+    <section class="products-section" id="digital">
+        <div class="container">
             <div class="section-header">
-    <h2>About Our Organization</h2>
-    <p>Learn about our mission, vision, and the work we do to combat homelessness</p>
-    <a href="https://docs.google.com/presentation/d/1uef2I1XVY0saj2yuy9oVisNjGG5tIh_--Pkl64bduqo/edit?usp=sharing" target="_blank" style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #007BFF; color: white; border-radius: 5px; text-decoration: none;">
-       Read More
-    </a>
-</div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Our Story</h3>
-                    <p>
-        Founded in 2010, <strong>SDWJR World Homeless Organization</strong> (formerly known as <strong>SDWJR RELIEF</strong>) has been dedicated to addressing homelessness.
-        What began as a small local initiative has grown into a powerful force for <strong>changing lives</strong> — reaching across <strong>Africa</strong>, including support for <strong>Liberian churches, families, and children</strong>, and extending help to communities in <strong>Ghana, Togo, Guinea</strong>, and <strong>refugees in Ivory Coast and surrounding regions</strong>.
-    </p>
-
-    <p>
-        Our work also extends throughout the <strong>United States</strong>, impacting cities such as <strong>New York City, Dallas, Minneapolis, Chicago, Atlanta</strong>, and many others — including areas throughout <strong>California</strong> — helping the homeless where the need is greatest.
-    </p>
-
-    <p>
-        The founder, <strong>Samuel D. Wilson, Jr.</strong>, has partnered with various organizations focused on serving the homeless across America — one of them being the <strong>Union Gospel Mission Twin Cities (UGMTC)</strong>.
-    </p>
-
-    <p>
-        Our mission is to provide immediate relief through shelter and meals, while also addressing the root causes of homelessness — promoting <strong>education, skill training, job services</strong>, and <strong>"Get Up and Running" initiatives</strong>.
-    </p>
-
-    <p>
-        We believe that <strong>everyone deserves a safe place to call home</strong> and the support needed to rebuild their lives with dignity.
-    </p>
-                    <a href="https://docs.google.com/presentation/d/1uef2I1XVY0saj2yuy9oVisNjGG5tIh_--Pkl64bduqo/edit?usp=sharing" target="_blank" class="btn btn-primary">
-    Read More
-</a>
+                <h2>Premium Digital Products</h2>
+                <p>Instant downloads, lifetime updates, and enterprise-grade solutions</p>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <span class="product-tag">Digital Product</span>
+                    <h3>GourmetHub Premium Restaurant Database</h3>
+                    <p>Complete enterprise restaurant management system with mobile app backend, business intelligence, and real-time analytics.</p>
+                    <div class="product-price">$199.99</div>
+                    <button class="btn btn-primary">Add to Cart</button>
                 </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca" alt="SDWJR Team Helping Homeless">
+                <div class="product-card">
+                    <span class="product-tag">Digital Product</span>
+                    <h3>E-Commerce Master Template</h3>
+                    <p>Fully responsive e-commerce template with payment integration, admin dashboard, and inventory management.</p>
+                    <div class="product-price">$149.99</div>
+                    <button class="btn btn-primary">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <span class="product-tag">Digital Product</span>
+                    <h3>AI Content Generator Pro</h3>
+                    <p>Advanced AI tool for generating marketing content, blog posts, and social media content with SEO optimization.</p>
+                    <div class="product-price">$299.99</div>
+                    <button class="btn btn-primary">Add to Cart</button>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Stats Section -->
-        <section class="section">
-            <div class="stats-container">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <h3>50,000+</h3>
-                        <p>People Sheltered Annually</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>30+</h3>
-                        <p>Countries Served</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>5,000+</h3>
-                        <p>Volunteers Worldwide</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>85%</h3>
-                        <p>Program Efficiency Rate</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Programs Section -->
-        <section id="programs" class="section">
+    <!-- Physical Products -->
+    <section class="products-section" id="physical" style="background: #f8f9fa;">
+        <div class="container">
             <div class="section-header">
-                <h2>Our Programs</h2>
-                <p>Comprehensive solutions addressing all aspects of homelessness</p>
+                <h2>Physical Products Collection</h2>
+                <p>High-quality merchandise with worldwide shipping</p>
             </div>
-            <div class="programs-grid">
-                <div class="program-card">
-                    <div class="program-img">
-                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f" alt="Emergency Shelter">
-                    </div>
-                    <div class="program-info">
-                        <h3>Emergency Shelter</h3>
-                        <p>Immediate safe housing for individuals and families experiencing homelessness, with access to meals and basic necessities.</p>
-                        <a href="#" class="btn btn-primary">Learn More</a>
-                    </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <span class="product-tag physical">Physical Product</span>
+                    <h3>Premium Tech Backpack</h3>
+                    <p>Water-resistant laptop backpack with USB charging port, multiple compartments, and ergonomic design.</p>
+                    <div class="product-price">$89.99</div>
+                    <button class="btn btn-primary">Add to Cart</button>
                 </div>
-                <div class="program-card">
-                    <div class="program-img">
-                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216" alt="Job Training">
-                    </div>
-                    <div class="program-info">
-                        <h3>Job Training</h3>
-                        <p>Vocational programs and skill development to help homeless individuals gain employment and financial independence.</p>
-                        <a href="#" class="btn btn-primary">Learn More</a>
-                    </div>
+                <div class="product-card">
+                    <span class="product-tag physical">Physical Product</span>
+                    <h3>Wireless Mechanical Keyboard</h3>
+                    <p>RGB backlit mechanical keyboard with Bluetooth 5.0, customizable keys, and 4000mAh battery.</p>
+                    <div class="product-price">$129.99</div>
+                    <button class="btn btn-primary">Add to Cart</button>
                 </div>
-                <div class="program-card">
-                    <div class="program-img">
-                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e" alt="Mental Health Services">
-                    </div>
-                    <div class="program-info">
-                        <h3>Mental Health Services</h3>
-                        <p>Counseling and treatment programs addressing the psychological aspects of homelessness and trauma.</p>
-                        <a href="#" class="btn btn-primary">Learn More</a>
-                    </div>
+                <div class="product-card">
+                    <span class="product-tag physical">Physical Product</span>
+                    <h3>Smart Desk Organizer</h3>
+                    <p>Multi-functional desk organizer with wireless charger, LED light, and cable management system.</p>
+                    <div class="product-price">$69.99</div>
+                    <button class="btn btn-primary">Add to Cart</button>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Donation Section -->
-        <section id="donate" class="section">
+    <!-- TBA News Network -->
+    <section class="news-section" id="news">
+        <div class="container">
             <div class="section-header">
-                <h2>Make a Difference</h2>
-                <p>Your donation helps provide shelter, meals, and support services to those in need</p>
+                <h2>TBA NEWS NETWORK</h2>
+                <p>Latest updates, tech news, and industry insights</p>
             </div>
-            <div class="donation-container">
-                <div class="donation-options">
-                    <div class="donation-option active">
-                        <h4>$25</h4>
-                        <p>Provides a week of meals</p>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-image">
+                        <i class="fas fa-robot"></i>
                     </div>
-                    <div class="donation-option">
-                        <h4>$50</h4>
-                        <p>One night of shelter</p>
-                    </div>
-                    <div class="donation-option">
-                        <h4>$100</h4>
-                        <p>Job training materials</p>
-                    </div>
-                    <div class="donation-option">
-                        <h4>$250</h4>
-                        <p>Counseling sessions</p>
-                    </div>
-                    <div class="donation-option">
-                        <h4>Other</h4>
-                        <p>Custom amount</p>
+                    <div class="news-content">
+                        <div class="news-date">May 15, 2026</div>
+                        <h3>AI Revolution in E-Commerce</h3>
+                        <p>How artificial intelligence is transforming online shopping experiences and backend operations.</p>
+                        <button class="btn btn-secondary" style="margin-top: 15px;">Read More</button>
                     </div>
                 </div>
-                <form class="donation-form">
-                    <div class="form-group">
-                        <label for="amount">Donation Amount ($)</label>
-                        <input type="number" id="amount" placeholder="Enter amount" required>
+                <div class="news-card">
+                    <div class="news-image">
+                        <i class="fas fa-chart-line"></i>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="firstName">First Name</label>
-                            <input type="text" id="firstName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName">Last Name</label>
-                            <input type="text" id="lastName" required>
-                        </div>
+                    <div class="news-content">
+                        <div class="news-date">May 12, 2024</div>
+                        <h3>Digital Product Trends 2024</h3>
+                        <p>Analysis of emerging trends in digital products and what consumers are looking for.</p>
+                        <button class="btn btn-secondary" style="margin-top: 15px;">Read More</button>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" required>
+                </div>
+                <div class="news-card">
+                    <div class="news-image">
+                        <i class="fas fa-globe"></i>
                     </div>
-                    <div class="form-group">
-                        <label for="payment">Payment Method</label>
-                        <select id="payment" required>
-                            <option value="">Select payment method</option>
-                            <option value="credit">Credit Card</option>
-                            <option value="paypal">PayPal</option>
-                            <option value="bank">Bank Transfer</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Donate Now</button>
-                </form>
-            </div>
-        </section>
-
-        <!-- Volunteer Section -->
-        <section id="volunteer" class="section">
-            <div class="section-header">
-                <h2>Volunteer With Us</h2>
-                <p>Join our team of dedicated volunteers making a difference in communities worldwide</p>
-            </div>
-            <div class="volunteer-form">
-                <form id="volunteerForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="vFirstName">First Name</label>
-                            <input type="text" id="vFirstName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="vLastName">Last Name</label>
-                            <input type="text" id="vLastName" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="vEmail">Email</label>
-                            <input type="email" id="vEmail" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="vPhone">Phone</label>
-                            <input type="tel" id="vPhone" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="vLocation">Preferred Location</label>
-                            <select id="vLocation" required>
-                                <option value="">Select location</option>
-                                <option value="local">Local Chapter</option>
-                                <option value="international">International</option>
-                                <option value="remote">Remote/Administrative</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="vInterest">Area of Interest</label>
-                            <select id="vInterest" required>
-                                <option value="">Select interest</option>
-                                <option value="shelter">Shelter Support</option>
-                                <option value="outreach">Street Outreach</option>
-                                <option value="education">Education/Training</option>
-                                <option value="admin">Administrative</option>
-                                <option value="fundraising">Fundraising</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="vExperience">Relevant Experience/Skills</label>
-                        <textarea id="vExperience"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit Application</button>
-                </form>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section class="section">
-            <div class="testimonials-container">
-                <div class="testimonial-slider">
-                    <div class="testimonial">
-                        <div class="testimonial-text">
-                            "When I was struggling with adaptions and at the point of killing myself, SDWJR provided me with the needed help and resource. Today I'm  sober and employed full-time, married  and own a house. They didn't point me only to resource - they took them  and provided extra help for me to get on with my my future."
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-img">
-                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="James W.">
-                            </div>
-                            <div class="author-name">James W.</div>
-                            <div class="author-title">Program Graduate</div>
-                        </div>
+                    <div class="news-content">
+                        <div class="news-date">May 10, 2024</div>
+                        <h3>Sustainable Tech Products</h3>
+                        <p>How manufacturers are embracing eco-friendly practices in physical product creation.</p>
+                        <button class="btn btn-secondary" style="margin-top: 15px;">Read More</button>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- CTA Section -->
-        <section class="section">
-            <div class="cta-section">
-                <h2>Join Our Mission</h2>
-                <p>Whether through donations, volunteering, or advocacy, you can help end homelessness in our lifetime.</p>
-                <div class="cta-buttons">
-                    <a href="#donate" class="btn btn-primary">Donate Now</a>
-                    <a href="#volunteer" class="btn btn-accent">Become a Volunteer</a>
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header" style="color: white;">
+                <h2>What Our Customers Say</h2>
+                <p>Trusted by businesses and individuals worldwide</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p>"The GourmetHub database transformed our restaurant chain operations. The mobile backend integration was seamless!"</p>
+                    <h4>Sarah Johnson</h4>
+                    <p>Restaurant Owner</p>
+                </div>
+                <div class="testimonial">
+                    <p>"SDWSR's physical products are top-notch quality. The shipping was fast and packaging excellent."</p>
+                    <h4>Michael Chen</h4>
+                    <p>Tech Entrepreneur</p>
+                </div>
+                <div class="testimonial">
+                    <p>"TBA News keeps me updated with relevant industry insights. Their analysis is always spot-on."</p>
+                    <h4>David Wilson</h4>
+                    <p>Marketing Director</p>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter" id="contact">
+        <div class="container">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to get news about our latest products, TBA news updates, and exclusive offers.</p>
+            <div class="newsletter-form">
+                <input type="email" placeholder="Enter your email address">
+                <button class="btn btn-primary">Subscribe</button>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-col">
-                <h3>SDWJR World Homeless Organization</h3>
-                <p>Committed to ending homelessness through shelter, support, and systemic change.</p>
-                <div class="footer-social">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>SDWSR Store</h3>
+                    <p>Your premier destination for digital and physical products, backed by TBA NEWS NETWORK insights.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#digital">Digital Products</a></li>
+                        <li><a href="#physical">Physical Products</a></li>
+                        <li><a href="#news">TBA News</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns & Refunds</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> info@sdwsr.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (347) 640-4912</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 12340 Business blvd, Suite 100</li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-col">
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#programs">Programs</a></li>
-                    <li><a href="#donate">Donate</a></li>
-                    <li><a href="#voice">Humanrights</a></li>
-                    <li><a href="#volunteer">Volunteer</a></li>
-                    
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SDWSR Global. All rights reserved.</p>
+                <p>TBA NEWS NETWORK is a division of SDWSR Enterprises</p>
             </div>
-            <div class="footer-col">
-                <h3>Our Programs</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Emergency Shelter</a></li>
-                    <li><a href="#">Job Training</a></li>
-                    <li><a href="#">Mental Health Services</a></li>
-                    <li><a href="#">Affordable Housing</a></li>
-                    <li><a href="#">Advocacy</a></li>
-                    <li><a href="#">Research</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h3>Contact Us</h3>
-                <p><i class="fas fa-map-marker-alt"></i> 123 Hope Street, Global City, GC 10001</p>
-                <p><i class="fas fa-phone-alt"></i> +1 (800) 123-4567</p>
-                <p><i class="fas fa-envelope"></i> info@sdwjr.org</p>
-                <p><i class="fas fa-clock"></i> Monday-Friday: 9AM-5PM</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2023 SDWJR World Homeless Organization. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
         </div>
     </footer>
 
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
+    
+</body>
+     /* THIS IS MY JAVASCRITPT SECTION */
+    javascript
+<script>
+// ===================
+// 1. CART SYSTEM
+// ===================
+class ShoppingCart {
+    constructor() {
+        this.items = JSON.parse(localStorage.getItem('sdwsr_cart')) || [];
+        this.cartCount = document.createElement('span');
+        this.init();
+    }
 
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
-        });
+    init() {
+        this.setupCartBadge();
+        this.updateCartCount();
+        this.setupAddToCartButtons();
+    }
 
-        // Navbar Scroll Effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+    setupCartBadge() {
+        const cartBtn = document.querySelector('.btn-primary');
+        if (cartBtn) {
+            this.cartCount.id = 'cartCount';
+            this.cartCount.style.cssText = `
+                position: absolute;
+                top: -8px;
+                right: -8px;
+                background: #e74c3c;
+                color: white;
+                border-radius: 50%;
+                width: 20px;
+                height: 20px;
+                font-size: 12px;
+                display: none;
+                justify-content: center;
+                align-items: center;
+            `;
+            cartBtn.style.position = 'relative';
+            cartBtn.appendChild(this.cartCount);
+        }
+    }
 
-        // Donation Options Selection
-        const donationOptions = document.querySelectorAll('.donation-option');
-        donationOptions.forEach(option => {
-            option.addEventListener('click', function() {
-                donationOptions.forEach(opt => opt.classList.remove('active'));
-                this.classList.add('active');
+    setupAddToCartButtons() {
+        document.querySelectorAll('.product-card .btn-primary').forEach((btn, index) => {
+            btn.onclick = () => {
+                const card = btn.closest('.product-card');
+                const name = card.querySelector('h3').textContent;
+                const price = card.querySelector('.product-price').textContent.replace('$', '');
+                const tag = card.querySelector('.product-tag').textContent.toLowerCase();
                 
-                if (!this.querySelector('h4').textContent.includes('Other')) {
-                    const amount = this.querySelector('h4').textContent.replace('$', '');
-                    document.getElementById('amount').value = amount;
+                const product = {
+                    id: `${tag}-${Date.now()}-${index}`,
+                    name: name,
+                    price: price,
+                    category: tag.includes('digital') ? 'digital' : 'physical'
+                };
+                
+                this.addItem(product);
+                this.showNotification(`${name} added to cart!`, 'success');
+            };
+        });
+    }
+
+    addItem(product) {
+        const existingItem = this.items.find(item => item.id === product.id);
+        
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            this.items.push({...product, quantity: 1});
+        }
+        
+        this.saveCart();
+        this.updateCartCount();
+    }
+
+    saveCart() {
+        localStorage.setItem('sdwsr_cart', JSON.stringify(this.items));
+    }
+
+    updateCartCount() {
+        const totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
+        this.cartCount.textContent = totalItems;
+        this.cartCount.style.display = totalItems > 0 ? 'flex' : 'none';
+    }
+
+    showNotification(message, type = 'success') {
+        // Create notification toast
+        let notification = document.getElementById('notificationToast');
+        if (!notification) {
+            notification = document.createElement('div');
+            notification.id = 'notificationToast';
+            notification.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#27ae60' : '#e74c3c'};
+                color: white;
+                padding: 15px 25px;
+                border-radius: 8px;
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+            `;
+            document.body.appendChild(notification);
+            
+            // Add animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        notification.textContent = message;
+        notification.style.display = 'block';
+        
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 3000);
+    }
+}
+
+// ===================
+// 2. NEWSLETTER SUBSCRIPTION
+// ===================
+class NewsletterManager {
+    constructor() {
+        this.subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers')) || [];
+        this.init();
+    }
+
+    init() {
+        const subscribeBtn = document.querySelector('.newsletter .btn-primary');
+        if (subscribeBtn) {
+            subscribeBtn.onclick = (e) => {
+                e.preventDefault();
+                const emailInput = document.querySelector('.newsletter input[type="email"]');
+                const email = emailInput.value.trim();
+                
+                if (this.validateEmail(email)) {
+                    if (!this.isSubscribed(email)) {
+                        this.subscribe(email);
+                        emailInput.value = '';
+                        this.showMessage('Successfully subscribed! Thank you!', 'success');
+                    } else {
+                        this.showMessage('This email is already subscribed!', 'error');
+                    }
                 } else {
-                    document.getElementById('amount').value = '';
-                    document.getElementById('amount').focus();
+                    this.showMessage('Please enter a valid email address.', 'error');
+                }
+            };
+        }
+    }
+
+    validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+
+    isSubscribed(email) {
+        return this.subscribers.includes(email.toLowerCase());
+    }
+
+    subscribe(email) {
+        this.subscribers.push(email.toLowerCase());
+        localStorage.setItem('newsletter_subscribers', JSON.stringify(this.subscribers));
+    }
+
+    showMessage(message, type) {
+        const notification = document.getElementById('notificationToast');
+        if (notification) {
+            notification.textContent = message;
+            notification.style.background = type === 'success' ? '#27ae60' : '#e74c3c';
+            notification.style.display = 'block';
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+    }
+}
+
+// ===================
+// 3. PRODUCT SEARCH
+// ===================
+function setupProductSearch() {
+    // Add search input to navbar
+    const navActions = document.querySelector('.nav-actions');
+    if (navActions) {
+        const searchContainer = document.createElement('div');
+        searchContainer.style.position = 'relative';
+        searchContainer.innerHTML = `
+            <input type="text" id="productSearch" placeholder="Search products..." style="
+                padding: 8px 15px;
+                border-radius: 20px;
+                border: 1px solid #ddd;
+                width: 200px;
+            ">
+            <i class="fas fa-search" style="
+                position: absolute;
+                right: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #666;
+            "></i>
+        `;
+        navActions.prepend(searchContainer);
+        
+        const searchInput = document.getElementById('productSearch');
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const productCards = document.querySelectorAll('.product-card');
+            
+            productCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                const tags = card.querySelector('.product-tag').textContent.toLowerCase();
+                
+                const matches = title.includes(searchTerm) || 
+                               description.includes(searchTerm) || 
+                               tags.includes(searchTerm);
+                
+                card.style.display = matches ? 'block' : 'none';
+                
+                // Animate results
+                if (matches) {
+                    card.style.animation = 'none';
+                    setTimeout(() => {
+                        card.style.animation = 'fadeIn 0.5s ease';
+                    }, 10);
                 }
             });
-        });
-
-        // Form Submissions
-        const donationForm = document.querySelector('.donation-form');
-        donationForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const amount = document.getElementById('amount').value;
-            alert(`Thank you for your donation of $${amount}! You will receive a confirmation email shortly.`);
-            this.reset();
-            donationOptions[0].classList.add('active');
-        });
-
-        const volunteerForm = document.getElementById('volunteerForm');
-        volunteerForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your volunteer application! We will contact you within 3-5 business days.');
-            this.reset();
-        });
-
-        // Testimonial Slider
-        const testimonials = [
-            {
-                text: "After losing my job and home, SDWJR provided me with shelter and job training. Today I'm employed full-time with my own apartment. They didn't just give me a bed - they gave me back my future.",
-                name: "James Wilson",
-                title: "Program Graduate",
-                image: "https://randomuser.me/api/portraits/men/32.jpg"
-            },
-            {
-                text: "As a volunteer for 5 years, I've seen firsthand how SDWJR transforms lives. Their holistic approach addresses both immediate needs and long-term solutions to homelessness.",
-                name: "Maria Garcia",
-                title: "Long-term Volunteer",
-                image: "https://randomuser.me/api/portraits/women/44.jpg"
-            },
-            {
-                text: "Our corporate partnership with SDWJR has been incredibly rewarding. Their programs are effective, transparent, and making real impact in communities we care about.",
-                name: "David Chen",
-                title: "Corporate Partner",
-                image: "https://randomuser.me/api/portraits/men/75.jpg"
-            }
-        ];
-
-        const testimonialSlider = document.querySelector('.testimonial-slider');
-        let currentTestimonial = 0;
-
-        function showTestimonial(index) {
-            const testimonial = testimonials[index];
-            testimonialSlider.innerHTML = `
-                <div class="testimonial">
-                    <div class="testimonial-text">${testimonial.text}</div>
-                    <div class="testimonial-author">
-                        <div class="author-img">
-                            <img src="${testimonial.image}" alt="${testimonial.name}">
-                        </div>
-                        <div class="author-name">${testimonial.name}</div>
-                        <div class="author-title">${testimonial.title}</div>
-                    </div>
-                </div>
+            
+            // Add fade animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeIn {
+                    from { opacity: 0.5; transform: translateY(10px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
             `;
+            document.head.appendChild(style);
+        });
+    }
+}
+
+// ===================
+// 4. VIEW COUNTER
+// ===================
+function setupViewCounter() {
+    let pageViews = parseInt(localStorage.getItem('sdwsr_page_views')) || 0;
+    pageViews++;
+    localStorage.setItem('sdwsr_page_views', pageViews.toString());
+    
+    // Add to footer if it doesn't exist
+    const visitCounter = document.createElement('div');
+    visitCounter.className = 'visit-counter';
+    visitCounter.innerHTML = `<i class="fas fa-eye"></i> ${pageViews.toLocaleString()} views`;
+    visitCounter.style.cssText = `
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #bdc3c7;
+        font-size: 0.9rem;
+        margin-top: 10px;
+    `;
+    
+    const footerBottom = document.querySelector('.footer-bottom');
+    if (footerBottom && !document.querySelector('.visit-counter')) {
+        footerBottom.appendChild(visitCounter);
+    }
+}
+
+// ===================
+// 5. MOBILE MENU TOGGLE
+// ===================
+function setupMobileMenu() {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (hamburger && navLinks) {
+        hamburger.onclick = () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        };
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
+    }
+}
+
+// ===================
+// 6. SMOOTH SCROLLING
+// ===================
+function setupSmoothScrolling() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                const navLinks = document.querySelector('.nav-links');
+                if (navLinks && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    document.querySelector('.hamburger').classList.remove('active');
+                }
+            }
+        });
+    });
+}
+
+// ===================
+// 7. CART MODAL
+// ===================
+function setupCartModal() {
+    // Create modal HTML
+    const modalHTML = `
+        <div id="cartModal" style="
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        ">
+            <div style="
+                background-color: white;
+                margin: 10% auto;
+                padding: 30px;
+                border-radius: 12px;
+                width: 90%;
+                max-width: 600px;
+                position: relative;
+                max-height: 80vh;
+                overflow-y: auto;
+            ">
+                <span class="close-modal" style="
+                    position: absolute;
+                    right: 20px;
+                    top: 15px;
+                    font-size: 28px;
+                    cursor: pointer;
+                    color: #666;
+                ">&times;</span>
+                <h2>Your Shopping Cart</h2>
+                <div id="cartItems" style="margin: 20px 0;"></div>
+                <div class="cart-total" style="
+                    margin-top: 20px;
+                    padding-top: 20px;
+                    border-top: 2px solid #333;
+                    text-align: right;
+                ">
+                    <h3>Total: $<span id="cartTotal">0.00</span></h3>
+                </div>
+                <button id="checkoutBtn" class="btn btn-primary" style="width: 100%; margin-top: 20px;">
+                    Proceed to Checkout
+                </button>
+            </div>
+        </div>
+    `;
+    
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    
+    // Setup modal functionality
+    const cart = window.cart;
+    const cartModal = document.getElementById('cartModal');
+    const closeBtn = document.querySelector('.close-modal');
+    const cartBtn = document.querySelector('.btn-primary[onclick*="Cart"]') || 
+                   document.querySelector('.btn-primary');
+    
+    if (cartBtn) {
+        cartBtn.onclick = () => {
+            renderCart();
+            cartModal.style.display = 'block';
+        };
+    }
+    
+    if (closeBtn) {
+        closeBtn.onclick = () => {
+            cartModal.style.display = 'none';
+        };
+    }
+    
+    window.onclick = (event) => {
+        if (event.target === cartModal) {
+            cartModal.style.display = 'none';
+        }
+    };
+    
+    function renderCart() {
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        
+        if (cart.items.length === 0) {
+            cartItems.innerHTML = '<p style="text-align: center; color: #666; padding: 40px 0;">Your cart is empty</p>';
+            cartTotal.textContent = '0.00';
+            return;
+        }
+        
+        cartItems.innerHTML = cart.items.map(item => `
+            <div style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 15px 0;
+                border-bottom: 1px solid #eee;
+            ">
+                <div>
+                    <h4 style="margin: 0 0 5px 0;">${item.name}</h4>
+                    <p style="margin: 0; color: #666;">$${item.price} × ${item.quantity}</p>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <button onclick="updateQuantity('${item.id}', ${item.quantity - 1})" style="
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        border: 1px solid #ddd;
+                        background: white;
+                        cursor: pointer;
+                    ">-</button>
+                    <span style="min-width: 30px; text-align: center;">${item.quantity}</span>
+                    <button onclick="updateQuantity('${item.id}', ${item.quantity + 1})" style="
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        border: 1px solid #ddd;
+                        background: white;
+                        cursor: pointer;
+                    ">+</button>
+                    <button onclick="removeItem('${item.id}')" style="
+                        background: #ff6b6b;
+                        color: white;
+                        border: none;
+                        padding: 5px 10px;
+                        border-radius: 4px;
+                        cursor: pointer;
+                    ">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        `).join('');
+        
+        const total = cart.items.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0).toFixed(2);
+        cartTotal.textContent = total;
+    }
+    
+    window.updateQuantity = function(productId, newQuantity) {
+        const cart = window.cart;
+        const item = cart.items.find(item => item.id === productId);
+        if (item) {
+            if (newQuantity <= 0) {
+                removeItem(productId);
+            } else {
+                item.quantity = newQuantity;
+                cart.saveCart();
+                cart.updateCartCount();
+                renderCart();
+            }
+        }
+    };
+    
+    window.removeItem = function(productId) {
+        const cart = window.cart;
+        cart.items = cart.items.filter(item => item.id !== productId);
+        cart.saveCart();
+        cart.updateCartCount();
+        renderCart();
+    };
+    
+    document.getElementById('checkoutBtn').onclick = () => {
+        if (cart.items.length === 0) {
+            cart.showNotification('Your cart is empty!', 'error');
+            return;
+        }
+        
+        cart.showNotification('Redirecting to secure checkout...', 'success');
+        setTimeout(() => {
+            cart.showNotification('Checkout successful! Thank you for your purchase!', 'success');
+            cart.items = [];
+            cart.saveCart();
+            cart.updateCartCount();
+            document.getElementById('cartModal').style.display = 'none';
+            renderCart();
+        }, 2000);
+    };
+}
+
+// ===================
+// 8. INITIALIZE EVERYTHING
+// ===================
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize cart
+    window.cart = new ShoppingCart();
+    
+    // Initialize newsletter
+    new NewsletterManager();
+    
+    // Setup other features
+    setupProductSearch();
+    setupViewCounter();
+    setupMobileMenu();
+    setupSmoothScrolling();
+    setupCartModal();
+    
+    // Add hover effects to product cards
+    document.querySelectorAll('.product-card').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-10px)';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+        });
+    });
+    
+    // Add loading animation to buttons
+    document.querySelectorAll('.btn-primary').forEach(btn => {
+        btn.addEventListener('click', function() {
+            if (this.classList.contains('loading')) return;
+            
+            const originalText = this.innerHTML;
+            this.innerHTML = '<span class="loading"></span>';
+            this.classList.add('loading');
+            
+            setTimeout(() => {
+                this.innerHTML = originalText;
+                this.classList.remove('loading');
+            }, 1000);
+        });
+    });
+    
+    // Add loading animation style
+    const loadingStyle = document.createElement('style');
+    loadingStyle.textContent = `
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    `;
+    document.head.appendChild(loadingStyle);
+    
+    console.log('SDWSR Store initialized successfully!');
+});
+</script>
+    /* // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
         }
 
-        // Initialize first testimonial
-        showTestimonial(currentTestimonial);
+        // Smooth scrolling
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+                // Close mobile menu if open
+                const navLinks = document.querySelector('.nav-links');
+                navLinks.classList.remove('active');
+            }
+        }
 
-        // Auto-rotate testimonials every 5 seconds
-        setInterval(() => {
-            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-            showTestimonial(currentTestimonial);
-        }, 5000);
-
-        // Animate elements when they come into view
-        const animateOnScroll = function() {
-            const elements = document.querySelectorAll('.section, .section-header, .program-card, .donation-option');
-            
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.3;
-                
-                if (elementPosition < screenPosition) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }
+        // Add to cart functionality
+        document.querySelectorAll('.btn-primary').forEach(button => {
+            button.addEventListener('click', function() {
+                const productName = this.parentElement.querySelector('h3').textContent;
+                const productPrice = this.parentElement.querySelector('.product-price').textContent;
+                alert(`Added to cart: ${productName} - ${productPrice}`);
             });
-        };
-
-        // Set initial state for animation
-        window.addEventListener('load', function() {
-            const animatedElements = document.querySelectorAll('.section, .section-header, .program-card, .donation-option');
-            animatedElements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(30px)';
-                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            });
-            
-            // Trigger first check
-            animateOnScroll();
         });
 
-        // Listen for scroll events
-        window.addEventListener('scroll', animateOnScroll);
-    </script>
-</body>
+        // Newsletter subscription
+        document.querySelector('.newsletter .btn-primary').addEventListener('click', function() {
+            const email = document.querySelector('.newsletter input[type="email"]').value;
+            if (email) {
+                alert(`Thank you for subscribing with: ${email}`);
+                document.querySelector('.newsletter input[type="email"]').value = '';
+            } else {
+                alert('Please enter your email address.');
+            }
+        }); */
+    
+    
 </html>
