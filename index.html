@@ -1,1272 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SDWSR - Shop Digital & Physical Products | TBA NEWS NETWORK</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
-   
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TBA Podcast Network | SDWSR Global</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
 </head>
-    <! -- STYLE SECTION -->
-    <style>
-        /* Reset & Base */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #333; background: #f4f4f4; }
-        a { text-decoration: none; color: inherit; }
-        img { max-width: 100%; display: block; }
-        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        
-        /* Navbar */
-        nav {
-            background: linear-gradient(135deg, #000428, #004e92);
-            color: white;
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-        }
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
-            font-size: 1.5rem;
-            font-family: 'Manrope', sans-serif;
-        }
-        .logo-subtitle {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-left: 10px;
-        }
-        .nav-links {
-            display: flex;
-            gap: 25px;
-            list-style: none;
-        }
-        .nav-links li a {
-            color: white;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        .nav-links li a:hover {
-            color: #f39c12;
-        }
-        .nav-links li a.active {
-            color: #f39c12;
-            font-weight: 600;
-        }
-        .nav-actions {
-            display: flex;
-            gap: 15px;
-        }
-        .btn {
-            padding: 10px 22px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            font-family: 'Manrope', sans-serif;
-        }
-        .btn-primary {
-            background: #f39c12;
-            color: white;
-        }
-        .btn-primary:hover {
-            background: #d48806;
-            transform: translateY(-2px);
-        }
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 4px;
-        }
-        .hamburger .bar {
-            width: 25px;
-            height: 3px;
-            background: white;
-            transition: 0.3s;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(120deg, #1f1c2c, #928dab);
-            padding: 120px 0;
-            text-align: center;
-            color: white;
-        }
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            font-family: 'Manrope', sans-serif;
-            font-weight: 700;
-        }
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .store-button {
-            padding: 16px 32px;
-            background: #fff;
-            color: #000;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-        }
-        .store-button:hover {
-            background: #000;
-            color: #fff;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-        .store-button.news {
-            background: #e74c3c;
-            color: white;
-        }
-        .store-button.news:hover {
-            background: #c0392b;
-        }
-        
-        /* Products Section */
-        .products-section {
-            padding: 100px 0;
-            background: white;
-        }
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        .section-header h2 {
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-            color: #2c3e50;
-            font-family: 'Manrope', sans-serif;
-        }
-        .section-header p {
-            font-size: 1.2rem;
-            color: #7f8c8d;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 35px;
-        }
-        .product-card {
-            background: white;
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            border: 1px solid #eee;
-        }
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-        .product-card h3 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-        .product-card p {
-            margin-bottom: 20px;
-            color: #666;
-            line-height: 1.7;
-        }
-        .product-price {
-            font-weight: 700;
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-            color: #e74c3c;
-        }
-        .product-tag {
-            display: inline-block;
-            padding: 5px 12px;
-            background: #e8f4fc;
-            color: #3498db;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-        .product-tag.physical {
-            background: #e8f7ef;
-            color: #27ae60;
-        }
-        
-        /* TBA News Section */
-        .news-section {
-            padding: 100px 0;
-            background: #f8f9fa;
-        }
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 35px;
-        }
-        .news-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease;
-        }
-        .news-card:hover {
-            transform: translateY(-5px);
-        }
-        .news-image {
-            height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-        }
-        .news-content {
-            padding: 25px;
-        }
-        .news-date {
-            color: #7f8c8d;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
-        
-        /* Testimonials */
-        .testimonials {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 100px 0;
-            color: white;
-        }
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 35px;
-        }
-        .testimonial {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-        }
-        .testimonial p {
-            font-style: italic;
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-        }
-        .testimonial h4 {
-            font-weight: 600;
-            color: #f39c12;
-        }
-        
-        /* Newsletter */
-        .newsletter {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 80px 20px;
-        }
-        .newsletter h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        .newsletter-form {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-        .newsletter input[type="email"] {
-            padding: 16px 20px;
-            border: none;
-            border-radius: 8px;
-            width: 300px;
-            max-width: 80%;
-            font-size: 1rem;
-        }
-        
-        /* Footer */
-        footer {
-            background: #1a252f;
-            color: white;
-            padding: 60px 0 30px;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        .footer-col h3 {
-            color: #f39c12;
-            margin-bottom: 25px;
-            font-size: 1.3rem;
-        }
-        .footer-links {
-            list-style: none;
-        }
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        .footer-links a {
-            color: #bdc3c7;
-            transition: color 0.3s ease;
-        }
-        .footer-links a:hover {
-            color: #f39c12;
-        }
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .social-icons a {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-        .social-icons a:hover {
-            background: #f39c12;
-            transform: translateY(-3px);
-        }
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            color: #bdc3c7;
-        }
-        
-        /* Responsive */
-        @media (max-width: 992px) {
-            .hero h1 { font-size: 2.8rem; }
-            .section-header h2 { font-size: 2.3rem; }
-        }
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                background: #000428;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                width: 100%;
-                padding: 20px 0;
-                text-align: center;
-            }
-            .nav-links.active { display: flex; }
-            .hamburger { display: flex; }
-            .hero h1 { font-size: 2.3rem; }
-            .hero p { font-size: 1.1rem; }
-            .hero-buttons { flex-direction: column; align-items: center; }
-            .store-button { width: 250px; }
-            .newsletter-form { flex-direction: column; align-items: center; }
-            .newsletter input[type="email"] { margin-bottom: 15px; }
-            .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
-        }
-        @media (max-width: 480px) {
-            .hero h1 { font-size: 2rem; }
-            .section-header h2 { font-size: 1.8rem; }
-            .btn { padding: 10px 18px; }
-        }
-    </style>
-     
 <body>
-    <!-- Navbar -->
-    <nav>
-        <div class="container nav-container">
-            <a href="#" class="logo">
-                SDWSR
-                <span class="logo-subtitle">Digital & Physical Store</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="#" class="active">Home</a></li>
-                <li><a href="#digital">Digital Products</a></li>
-                <li><a href="#physical">Physical Products</a></li>
-                <li><a href="https://www.newsbreak.com/u/the-black-apple-news-network-0MHPcYKF" target="_blank">TBA News</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="nav-actions">
-                <button class="btn btn-secondary"><i class="fas fa-search"></i></button>
-                <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Cart</button>
-            </div>
-            <div class="hamburger" onclick="toggleMenu()">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Welcome to SDWSR Store</h1>
-            <p>Your one-stop shop for premium digital products, physical goods, and the latest news from TBA NEWS NETWORK. Quality meets innovation.</p>
-            <div class="hero-buttons">
-                <button class="store-button" onclick="scrollToSection('digital')">
-                    <i class="fas fa-download"></i> Digital Store
-                </button>
-                <button class="store-button physical" onclick="scrollToSection('physical')">
-                    <i class="fas fa-box"></i> Physical Store
-                </button>
-                <button class="store-button news" onclick="scrollToSection('news')">
-                    <i class="fas fa-newspaper"></i> TBA News
-                </button>
-            </div>
-        </div>
-    </section>
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+  <div class="container nav-container">
+    <div class="logo">TBA PODCAST NETWORK</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#staff">Staff</a></li>
+      <li><a href="#store">Store</a></li>
+      <li><a href="#blog">Podcast Blog</a></li>
+      <li><a href="#music">Music & Entertainment</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
 
-    <!-- Digital Products -->
-    <section class="products-section" id="digital">
-        <div class="container">
-            <div class="section-header">
-                <h2>Premium Digital Products</h2>
-                <p>Instant downloads, lifetime updates, and enterprise-grade solutions</p>
-            </div>
-            <div class="product-grid">
-                <div class="product-card">
-                    <span class="product-tag">Digital Product</span>
-                    <h3>GourmetHub Premium Restaurant Database</h3>
-                    <p>Complete enterprise restaurant management system with mobile app backend, business intelligence, and real-time analytics.</p>
-                    <div class="product-price">$199.99</div>
-                    <button class="btn btn-primary">Add to Cart</button>
-                </div>
-                <div class="product-card">
-                    <span class="product-tag">Digital Product</span>
-                    <h3>E-Commerce Master Template</h3>
-                    <p>Fully responsive e-commerce template with payment integration, admin dashboard, and inventory management.</p>
-                    <div class="product-price">$149.99</div>
-                    <button class="btn btn-primary">Add to Cart</button>
-                </div>
-                <div class="product-card">
-                    <span class="product-tag">Digital Product</span>
-                    <h3>AI Content Generator Pro</h3>
-                    <p>Advanced AI tool for generating marketing content, blog posts, and social media content with SEO optimization.</p>
-                    <div class="product-price">$299.99</div>
-                    <button class="btn btn-primary">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- ================= HERO SLIDER ================= -->
+<header class="hero-slider">
+  <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4')">
+    <div class="hero-content">
+      <h1>Voices That Shape Culture</h1>
+      <p>Politics, activism, music, entertainment & truth.</p>
+    </div>
+  </div>
 
-    <!-- Physical Products -->
-    <section class="products-section" id="physical" style="background: #f8f9fa;">
-        <div class="container">
-            <div class="section-header">
-                <h2>Physical Products Collection</h2>
-                <p>High-quality merchandise with worldwide shipping</p>
-            </div>
-            <div class="product-grid">
-                <div class="product-card">
-                    <span class="product-tag physical">Physical Product</span>
-                    <h3>Premium Tech Backpack</h3>
-                    <p>Water-resistant laptop backpack with USB charging port, multiple compartments, and ergonomic design.</p>
-                    <div class="product-price">$89.99</div>
-                    <button class="btn btn-primary">Add to Cart</button>
-                </div>
-                <div class="product-card">
-                    <span class="product-tag physical">Physical Product</span>
-                    <h3>Wireless Mechanical Keyboard</h3>
-                    <p>RGB backlit mechanical keyboard with Bluetooth 5.0, customizable keys, and 4000mAh battery.</p>
-                    <div class="product-price">$129.99</div>
-                    <button class="btn btn-primary">Add to Cart</button>
-                </div>
-                <div class="product-card">
-                    <span class="product-tag physical">Physical Product</span>
-                    <h3>Smart Desk Organizer</h3>
-                    <p>Multi-functional desk organizer with wireless charger, LED light, and cable management system.</p>
-                    <div class="product-price">$69.99</div>
-                    <button class="btn btn-primary">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1525182008055-f88b95ff7980')">
+    <div class="hero-content">
+      <h1>Real Conversations</h1>
+      <p>Unfiltered discussions from global perspectives.</p>
+    </div>
+  </div>
 
-    <!-- TBA News Network -->
-    <section class="news-section" id="news">
-        <div class="container">
-            <div class="section-header">
-                <h2>TBA NEWS NETWORK</h2>
-                <p>Latest updates, tech news, and industry insights</p>
-            </div>
-            <div class="news-grid">
-                <div class="news-card">
-                    <div class="news-image">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="news-content">
-                        <div class="news-date">May 15, 2026</div>
-                        <h3>AI Revolution in E-Commerce</h3>
-                        <p>How artificial intelligence is transforming online shopping experiences and backend operations.</p>
-                        <button class="btn btn-secondary" style="margin-top: 15px;">Read More</button>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <div class="news-image">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="news-content">
-                        <div class="news-date">May 12, 2024</div>
-                        <h3>Digital Product Trends 2024</h3>
-                        <p>Analysis of emerging trends in digital products and what consumers are looking for.</p>
-                        <button class="btn btn-secondary" style="margin-top: 15px;">Read More</button>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <div class="news-image">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <div class="news-content">
-                        <div class="news-date">May 10, 2024</div>
-                        <h3>Sustainable Tech Products</h3>
-                        <p>How manufacturers are embracing eco-friendly practices in physical product creation.</p>
-                        <button class="btn btn-secondary" style="margin-top: 15px;">Read More</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1505740420928-5e560c06d30e')">
+    <div class="hero-content">
+      <h1>TBA Podcast Network</h1>
+      <p>Powered by SDWSR Global</p>
+    </div>
+  </div>
+</header>
 
-    <!-- Testimonials -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <div class="section-header" style="color: white;">
-                <h2>What Our Customers Say</h2>
-                <p>Trusted by businesses and individuals worldwide</p>
-            </div>
-            <div class="testimonial-grid">
-                <div class="testimonial">
-                    <p>"The GourmetHub database transformed our restaurant chain operations. The mobile backend integration was seamless!"</p>
-                    <h4>Sarah Johnson</h4>
-                    <p>Restaurant Owner</p>
-                </div>
-                <div class="testimonial">
-                    <p>"SDWSR's physical products are top-notch quality. The shipping was fast and packaging excellent."</p>
-                    <h4>Michael Chen</h4>
-                    <p>Tech Entrepreneur</p>
-                </div>
-                <div class="testimonial">
-                    <p>"TBA News keeps me updated with relevant industry insights. Their analysis is always spot-on."</p>
-                    <h4>David Wilson</h4>
-                    <p>Marketing Director</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- ================= SECTION TEMPLATE ================= -->
+<section id="about" class="content-section">
+  <div class="container split">
+    <div class="image-holder"></div>
+    <div class="text-holder">
+      <h2>About The Podcast</h2>
+      <p>
+        TBA Podcast Network is a professional media platform covering
+        activism, politics, social justice, faith, music, entertainment,
+        and global affairs through raw and authentic conversations.
+      </p>
+    </div>
+  </div>
+</section>
 
-    <!-- Newsletter -->
-    <section class="newsletter" id="contact">
-        <div class="container">
-            <h2>Stay Updated</h2>
-            <p>Subscribe to get news about our latest products, TBA news updates, and exclusive offers.</p>
-            <div class="newsletter-form">
-                <input type="email" placeholder="Enter your email address">
-                <button class="btn btn-primary">Subscribe</button>
-            </div>
-        </div>
-    </section>
+<section id="staff" class="content-section alt">
+  <div class="container split">
+    <div class="text-holder">
+      <h2>Podcast Staff</h2>
+      <p>
+        Hosted by Samuel D. Wilson Jr. and a diverse team of journalists,
+        analysts, creatives, producers, and activists committed to truth
+        and impactful storytelling.
+      </p>
+    </div>
+    <div class="image-holder staff"></div>
+  </div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>SDWSR Store</h3>
-                    <p>Your premier destination for digital and physical products, backed by TBA NEWS NETWORK insights.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#digital">Digital Products</a></li>
-                        <li><a href="#physical">Physical Products</a></li>
-                        <li><a href="#news">TBA News</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Support</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Shipping Policy</a></li>
-                        <li><a href="#">Returns & Refunds</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Contact Info</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-envelope"></i> info@sdwsr.com</li>
-                        <li><i class="fas fa-phone"></i> +1 (347) 640-4912</li>
-                        <li><i class="fas fa-map-marker-alt"></i> 12340 Business blvd, Suite 100</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 SDWSR Global. All rights reserved.</p>
-                <p>TBA NEWS NETWORK is a division of SDWSR Enterprises</p>
-            </div>
-        </div>
-    </footer>
+<section id="store" class="content-section">
+  <div class="container split">
+    <div class="image-holder store"></div>
+    <div class="text-holder">
+      <h2>Podcast Store</h2>
+      <p>
+        Official podcast merchandise, digital products, exclusive content,
+        and supporter packages powering independent media.
+      </p>
+    </div>
+  </div>
+</section>
 
-    
+<section id="blog" class="content-section alt">
+  <div class="container split">
+    <div class="text-holder">
+      <h2>Podcast Blog</h2>
+      <p>
+        Breaking stories, episode breakdowns, investigative journalism,
+        cultural commentary, and thought leadership articles.
+      </p>
+    </div>
+    <div class="image-holder blog"></div>
+  </div>
+</section>
+
+<section id="music" class="content-section">
+  <div class="container split">
+    <div class="image-holder music"></div>
+    <div class="text-holder">
+      <h2>Music & Entertainment</h2>
+      <p>
+        Artist interviews, industry insights, underground talent,
+        entertainment news, and cultural movements shaping society.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="content-section alt">
+  <div class="container split">
+    <div class="text-holder">
+      <h2>Contact & Bookings</h2>
+      <p>
+        Guest appearances, partnerships, sponsorships, media inquiries,
+        and collaborations. Let’s build powerful conversations together.
+      </p>
+    </div>
+    <div class="image-holder contact"></div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 TBA Podcast Network | SDWSR Global</p>
+</footer>
+
+<script src="js/script.js"></script>
 </body>
-    
-<script>
-// ===================
-// 1. CART SYSTEM
-// ===================
-class ShoppingCart {
-    constructor() {
-        this.items = JSON.parse(localStorage.getItem('sdwsr_cart')) || [];
-        this.cartCount = document.createElement('span');
-        this.init();
-    }
-
-    init() {
-        this.setupCartBadge();
-        this.updateCartCount();
-        this.setupAddToCartButtons();
-    }
-
-    setupCartBadge() {
-        const cartBtn = document.querySelector('.btn-primary');
-        if (cartBtn) {
-            this.cartCount.id = 'cartCount';
-            this.cartCount.style.cssText = `
-                position: absolute;
-                top: -8px;
-                right: -8px;
-                background: #e74c3c;
-                color: white;
-                border-radius: 50%;
-                width: 20px;
-                height: 20px;
-                font-size: 12px;
-                display: none;
-                justify-content: center;
-                align-items: center;
-            `;
-            cartBtn.style.position = 'relative';
-            cartBtn.appendChild(this.cartCount);
-        }
-    }
-
-    setupAddToCartButtons() {
-        document.querySelectorAll('.product-card .btn-primary').forEach((btn, index) => {
-            btn.onclick = () => {
-                const card = btn.closest('.product-card');
-                const name = card.querySelector('h3').textContent;
-                const price = card.querySelector('.product-price').textContent.replace('$', '');
-                const tag = card.querySelector('.product-tag').textContent.toLowerCase();
-                
-                const product = {
-                    id: `${tag}-${Date.now()}-${index}`,
-                    name: name,
-                    price: price,
-                    category: tag.includes('digital') ? 'digital' : 'physical'
-                };
-                
-                this.addItem(product);
-                this.showNotification(`${name} added to cart!`, 'success');
-            };
-        });
-    }
-
-    addItem(product) {
-        const existingItem = this.items.find(item => item.id === product.id);
-        
-        if (existingItem) {
-            existingItem.quantity += 1;
-        } else {
-            this.items.push({...product, quantity: 1});
-        }
-        
-        this.saveCart();
-        this.updateCartCount();
-    }
-
-    saveCart() {
-        localStorage.setItem('sdwsr_cart', JSON.stringify(this.items));
-    }
-
-    updateCartCount() {
-        const totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
-        this.cartCount.textContent = totalItems;
-        this.cartCount.style.display = totalItems > 0 ? 'flex' : 'none';
-    }
-
-    showNotification(message, type = 'success') {
-        // Create notification toast
-        let notification = document.getElementById('notificationToast');
-        if (!notification) {
-            notification = document.createElement('div');
-            notification.id = 'notificationToast';
-            notification.style.cssText = `
-                position: fixed;
-                bottom: 20px;
-                right: 20px;
-                background: ${type === 'success' ? '#27ae60' : '#e74c3c'};
-                color: white;
-                padding: 15px 25px;
-                border-radius: 8px;
-                z-index: 10000;
-                animation: slideIn 0.3s ease;
-            `;
-            document.body.appendChild(notification);
-            
-            // Add animation
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes slideIn {
-                    from { transform: translateX(100%); opacity: 0; }
-                    to { transform: translateX(0); opacity: 1; }
-                }
-            `;
-            document.head.appendChild(style);
-        }
-        
-        notification.textContent = message;
-        notification.style.display = 'block';
-        
-        setTimeout(() => {
-            notification.style.display = 'none';
-        }, 3000);
-    }
-}
-
-// ===================
-// 2. NEWSLETTER SUBSCRIPTION
-// ===================
-class NewsletterManager {
-    constructor() {
-        this.subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers')) || [];
-        this.init();
-    }
-
-    init() {
-        const subscribeBtn = document.querySelector('.newsletter .btn-primary');
-        if (subscribeBtn) {
-            subscribeBtn.onclick = (e) => {
-                e.preventDefault();
-                const emailInput = document.querySelector('.newsletter input[type="email"]');
-                const email = emailInput.value.trim();
-                
-                if (this.validateEmail(email)) {
-                    if (!this.isSubscribed(email)) {
-                        this.subscribe(email);
-                        emailInput.value = '';
-                        this.showMessage('Successfully subscribed! Thank you!', 'success');
-                    } else {
-                        this.showMessage('This email is already subscribed!', 'error');
-                    }
-                } else {
-                    this.showMessage('Please enter a valid email address.', 'error');
-                }
-            };
-        }
-    }
-
-    validateEmail(email) {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(email);
-    }
-
-    isSubscribed(email) {
-        return this.subscribers.includes(email.toLowerCase());
-    }
-
-    subscribe(email) {
-        this.subscribers.push(email.toLowerCase());
-        localStorage.setItem('newsletter_subscribers', JSON.stringify(this.subscribers));
-    }
-
-    showMessage(message, type) {
-        const notification = document.getElementById('notificationToast');
-        if (notification) {
-            notification.textContent = message;
-            notification.style.background = type === 'success' ? '#27ae60' : '#e74c3c';
-            notification.style.display = 'block';
-            
-            setTimeout(() => {
-                notification.style.display = 'none';
-            }, 3000);
-        }
-    }
-}
-
-// ===================
-// 3. PRODUCT SEARCH
-// ===================
-function setupProductSearch() {
-    // Add search input to navbar
-    const navActions = document.querySelector('.nav-actions');
-    if (navActions) {
-        const searchContainer = document.createElement('div');
-        searchContainer.style.position = 'relative';
-        searchContainer.innerHTML = `
-            <input type="text" id="productSearch" placeholder="Search products..." style="
-                padding: 8px 15px;
-                border-radius: 20px;
-                border: 1px solid #ddd;
-                width: 200px;
-            ">
-            <i class="fas fa-search" style="
-                position: absolute;
-                right: 15px;
-                top: 50%;
-                transform: translateY(-50%);
-                color: #666;
-            "></i>
-        `;
-        navActions.prepend(searchContainer);
-        
-        const searchInput = document.getElementById('productSearch');
-        searchInput.addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
-            const productCards = document.querySelectorAll('.product-card');
-            
-            productCards.forEach(card => {
-                const title = card.querySelector('h3').textContent.toLowerCase();
-                const description = card.querySelector('p').textContent.toLowerCase();
-                const tags = card.querySelector('.product-tag').textContent.toLowerCase();
-                
-                const matches = title.includes(searchTerm) || 
-                               description.includes(searchTerm) || 
-                               tags.includes(searchTerm);
-                
-                card.style.display = matches ? 'block' : 'none';
-                
-                // Animate results
-                if (matches) {
-                    card.style.animation = 'none';
-                    setTimeout(() => {
-                        card.style.animation = 'fadeIn 0.5s ease';
-                    }, 10);
-                }
-            });
-            
-            // Add fade animation
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes fadeIn {
-                    from { opacity: 0.5; transform: translateY(10px); }
-                    to { opacity: 1; transform: translateY(0); }
-                }
-            `;
-            document.head.appendChild(style);
-        });
-    }
-}
-
-// ===================
-// 4. VIEW COUNTER
-// ===================
-function setupViewCounter() {
-    let pageViews = parseInt(localStorage.getItem('sdwsr_page_views')) || 0;
-    pageViews++;
-    localStorage.setItem('sdwsr_page_views', pageViews.toString());
-    
-    // Add to footer if it doesn't exist
-    const visitCounter = document.createElement('div');
-    visitCounter.className = 'visit-counter';
-    visitCounter.innerHTML = `<i class="fas fa-eye"></i> ${pageViews.toLocaleString()} views`;
-    visitCounter.style.cssText = `
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        color: #bdc3c7;
-        font-size: 0.9rem;
-        margin-top: 10px;
-    `;
-    
-    const footerBottom = document.querySelector('.footer-bottom');
-    if (footerBottom && !document.querySelector('.visit-counter')) {
-        footerBottom.appendChild(visitCounter);
-    }
-}
-
-// ===================
-// 5. MOBILE MENU TOGGLE
-// ===================
-function setupMobileMenu() {
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    
-    if (hamburger && navLinks) {
-        hamburger.onclick = () => {
-            navLinks.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        };
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-                navLinks.classList.remove('active');
-                hamburger.classList.remove('active');
-            }
-        });
-    }
-}
-
-// ===================
-// 6. SMOOTH SCROLLING
-// ===================
-function setupSmoothScrolling() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-                
-                // Close mobile menu if open
-                const navLinks = document.querySelector('.nav-links');
-                if (navLinks && navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                    document.querySelector('.hamburger').classList.remove('active');
-                }
-            }
-        });
-    });
-}
-
-// ===================
-// 7. CART MODAL
-// ===================
-function setupCartModal() {
-    // Create modal HTML
-    const modalHTML = `
-        <div id="cartModal" style="
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-        ">
-            <div style="
-                background-color: white;
-                margin: 10% auto;
-                padding: 30px;
-                border-radius: 12px;
-                width: 90%;
-                max-width: 600px;
-                position: relative;
-                max-height: 80vh;
-                overflow-y: auto;
-            ">
-                <span class="close-modal" style="
-                    position: absolute;
-                    right: 20px;
-                    top: 15px;
-                    font-size: 28px;
-                    cursor: pointer;
-                    color: #666;
-                ">&times;</span>
-                <h2>Your Shopping Cart</h2>
-                <div id="cartItems" style="margin: 20px 0;"></div>
-                <div class="cart-total" style="
-                    margin-top: 20px;
-                    padding-top: 20px;
-                    border-top: 2px solid #333;
-                    text-align: right;
-                ">
-                    <h3>Total: $<span id="cartTotal">0.00</span></h3>
-                </div>
-                <button id="checkoutBtn" class="btn btn-primary" style="width: 100%; margin-top: 20px;">
-                    Proceed to Checkout
-                </button>
-            </div>
-        </div>
-    `;
-    
-    document.body.insertAdjacentHTML('beforeend', modalHTML);
-    
-    // Setup modal functionality
-    const cart = window.cart;
-    const cartModal = document.getElementById('cartModal');
-    const closeBtn = document.querySelector('.close-modal');
-    const cartBtn = document.querySelector('.btn-primary[onclick*="Cart"]') || 
-                   document.querySelector('.btn-primary');
-    
-    if (cartBtn) {
-        cartBtn.onclick = () => {
-            renderCart();
-            cartModal.style.display = 'block';
-        };
-    }
-    
-    if (closeBtn) {
-        closeBtn.onclick = () => {
-            cartModal.style.display = 'none';
-        };
-    }
-    
-    window.onclick = (event) => {
-        if (event.target === cartModal) {
-            cartModal.style.display = 'none';
-        }
-    };
-    
-    function renderCart() {
-        const cartItems = document.getElementById('cartItems');
-        const cartTotal = document.getElementById('cartTotal');
-        
-        if (cart.items.length === 0) {
-            cartItems.innerHTML = '<p style="text-align: center; color: #666; padding: 40px 0;">Your cart is empty</p>';
-            cartTotal.textContent = '0.00';
-            return;
-        }
-        
-        cartItems.innerHTML = cart.items.map(item => `
-            <div style="
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 15px 0;
-                border-bottom: 1px solid #eee;
-            ">
-                <div>
-                    <h4 style="margin: 0 0 5px 0;">${item.name}</h4>
-                    <p style="margin: 0; color: #666;">$${item.price} × ${item.quantity}</p>
-                </div>
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <button onclick="updateQuantity('${item.id}', ${item.quantity - 1})" style="
-                        width: 30px;
-                        height: 30px;
-                        border-radius: 50%;
-                        border: 1px solid #ddd;
-                        background: white;
-                        cursor: pointer;
-                    ">-</button>
-                    <span style="min-width: 30px; text-align: center;">${item.quantity}</span>
-                    <button onclick="updateQuantity('${item.id}', ${item.quantity + 1})" style="
-                        width: 30px;
-                        height: 30px;
-                        border-radius: 50%;
-                        border: 1px solid #ddd;
-                        background: white;
-                        cursor: pointer;
-                    ">+</button>
-                    <button onclick="removeItem('${item.id}')" style="
-                        background: #ff6b6b;
-                        color: white;
-                        border: none;
-                        padding: 5px 10px;
-                        border-radius: 4px;
-                        cursor: pointer;
-                    ">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </div>
-            </div>
-        `).join('');
-        
-        const total = cart.items.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0).toFixed(2);
-        cartTotal.textContent = total;
-    }
-    
-    window.updateQuantity = function(productId, newQuantity) {
-        const cart = window.cart;
-        const item = cart.items.find(item => item.id === productId);
-        if (item) {
-            if (newQuantity <= 0) {
-                removeItem(productId);
-            } else {
-                item.quantity = newQuantity;
-                cart.saveCart();
-                cart.updateCartCount();
-                renderCart();
-            }
-        }
-    };
-    
-    window.removeItem = function(productId) {
-        const cart = window.cart;
-        cart.items = cart.items.filter(item => item.id !== productId);
-        cart.saveCart();
-        cart.updateCartCount();
-        renderCart();
-    };
-    
-    document.getElementById('checkoutBtn').onclick = () => {
-        if (cart.items.length === 0) {
-            cart.showNotification('Your cart is empty!', 'error');
-            return;
-        }
-        
-        cart.showNotification('Redirecting to secure checkout...', 'success');
-        setTimeout(() => {
-            cart.showNotification('Checkout successful! Thank you for your purchase!', 'success');
-            cart.items = [];
-            cart.saveCart();
-            cart.updateCartCount();
-            document.getElementById('cartModal').style.display = 'none';
-            renderCart();
-        }, 2000);
-    };
-}
-
-// ===================
-// 8. INITIALIZE EVERYTHING
-// ===================
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize cart
-    window.cart = new ShoppingCart();
-    
-    // Initialize newsletter
-    new NewsletterManager();
-    
-    // Setup other features
-    setupProductSearch();
-    setupViewCounter();
-    setupMobileMenu();
-    setupSmoothScrolling();
-    setupCartModal();
-    
-    // Add hover effects to product cards
-    document.querySelectorAll('.product-card').forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-10px)';
-        });
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0)';
-        });
-    });
-    
-    // Add loading animation to buttons
-    document.querySelectorAll('.btn-primary').forEach(btn => {
-        btn.addEventListener('click', function() {
-            if (this.classList.contains('loading')) return;
-            
-            const originalText = this.innerHTML;
-            this.innerHTML = '<span class="loading"></span>';
-            this.classList.add('loading');
-            
-            setTimeout(() => {
-                this.innerHTML = originalText;
-                this.classList.remove('loading');
-            }, 1000);
-        });
-    });
-    
-    // Add loading animation style
-    const loadingStyle = document.createElement('style');
-    loadingStyle.textContent = `
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #3498db;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    `;
-    document.head.appendChild(loadingStyle);
-    
-    console.log('SDWSR Store initialized successfully!');
-});
-</script>
-    /* // Mobile menu toggle
-        function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('active');
-        }
-
-        // Smooth scrolling
-        function scrollToSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            if (section) {
-                section.scrollIntoView({ behavior: 'smooth' });
-                // Close mobile menu if open
-                const navLinks = document.querySelector('.nav-links');
-                navLinks.classList.remove('active');
-            }
-        }
-
-        // Add to cart functionality
-        document.querySelectorAll('.btn-primary').forEach(button => {
-            button.addEventListener('click', function() {
-                const productName = this.parentElement.querySelector('h3').textContent;
-                const productPrice = this.parentElement.querySelector('.product-price').textContent;
-                alert(`Added to cart: ${productName} - ${productPrice}`);
-            });
-        });
-
-        // Newsletter subscription
-        document.querySelector('.newsletter .btn-primary').addEventListener('click', function() {
-            const email = document.querySelector('.newsletter input[type="email"]').value;
-            if (email) {
-                alert(`Thank you for subscribing with: ${email}`);
-                document.querySelector('.newsletter input[type="email"]').value = '';
-            } else {
-                alert('Please enter your email address.');
-            }
-        }); */
-    
-    
 </html>
-
-
-
-
