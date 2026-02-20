@@ -69,3 +69,15 @@ window.addEventListener('scroll',()=>{
     }
   });
 });
+
+/* BREAKING NEWS AUTO FEED */
+const tickerData = [
+"Mayor Mandani expands press access at City Hall",
+"TBA News Network launches independent journalism platform",
+"NYC housing debate intensifies after policy announcement"
+];
+
+const ticker = document.getElementById("tickerContent");
+if(ticker){
+ticker.innerText = tickerData.join("   ✦   ");
+}
