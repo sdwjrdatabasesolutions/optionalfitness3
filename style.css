@@ -114,3 +114,36 @@ width:220px;
 .nav-links.active{ display:flex; }
 
 }
+
+/* BREAKING NEWS TICKER */
+.ticker-wrap{
+display:flex;
+background:#c40000;
+color:white;
+font-weight:bold;
+position:fixed;
+top:70px;
+width:100%;
+z-index:999;
+}
+
+.ticker-label{
+padding:10px 15px;
+background:#ff0000;
+}
+
+.ticker{
+overflow:hidden;
+flex:1;
+}
+
+.ticker-move{
+white-space:nowrap;
+padding:10px;
+animation:ticker 25s linear infinite;
+}
+
+@keyframes ticker{
+0%{transform:translateX(100%);}
+100%{transform:translateX(-100%);}
+}
