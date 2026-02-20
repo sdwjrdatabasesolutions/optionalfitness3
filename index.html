@@ -1,21 +1,32 @@
 <!--- NEW SITE-->
-<!DOCTYPE html>
+
+ <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="css/style.css">
+
 <title>TBA News Network | Independent Journalism</title>
 
-<link rel="stylesheet" href="style.css">
+<!---- CSS ---->
+<link rel="stylesheet" href="css/style.css">
+
+<!---- GOOGLE ICONS ---->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<!-- NAVBAR -->
+<!---------------------------------->
+<!---- NAVBAR ---->
+<!---------------------------------->
 <header class="navbar">
   <div class="container nav-container">
+
     <h1 class="logo">TBA NEWS</h1>
+
+    <button class="mobile-menu-btn">☰</button>
 
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
@@ -24,12 +35,18 @@
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+
   </div>
 </header>
 
-<!-- HERO / BRAND IDENTITY -->
+<!---------------------------------->
+<!---- HERO ---->
+<!---------------------------------->
 <section id="home" class="hero">
-  <div class="container">
+
+  <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1600" class="hero-bg">
+
+  <div class="container hero-content">
     <h2>TBA News Network</h2>
     <p>Independent Media | Global Reporting | Truth-Driven Journalism</p>
 
@@ -38,92 +55,117 @@
       <a href="#network" class="btn btn-secondary">Explore Network</a>
     </div>
   </div>
+
 </section>
 
-<!-- NETWORK HUB -->
+<!---------------------------------->
+<!---- NETWORK / SOCIAL HUB ---->
+<!---------------------------------->
 <section id="network" class="section">
   <div class="container">
+
     <h2>The TBA News Network</h2>
-    <p>Follow our journalism across all platforms.</p>
+    <p>Follow our journalism across every platform.</p>
 
     <div class="grid">
 
-      <a href="https://facebook.com/@YOURUSERNAME" target="_blank" class="card">
+      <a href="https://facebook.com" target="_blank" class="card social">
         <h3>Facebook</h3>
-        <p>Long-form analysis and opinion pieces</p>
+        <p>News discussions & analysis</p>
       </a>
 
-      <a href="https://tbanewsnetwork.substack.com" target="_blank" class="card">
+      <a href="https://tbanewsnetwork.substack.com" target="_blank" class="card social">
         <h3>Substack</h3>
-        <p>Subscriber investigations & full reports</p>
+        <p>Full investigations & reports</p>
       </a>
 
-      <a href="https://www.youtube.com/@tbanntv" target="_blank" class="card">
+      <a href="https://www.youtube.com/@tbanntv" target="_blank" class="card social">
         <h3>YouTube</h3>
-        <p>Video reporting and commentary</p>
+        <p>Video journalism & commentary</p>
       </a>
 
-      <a href="https://www.tiktok.com/@africandiddynyc" target="_blank" class="card">
+      <a href="https://www.tiktok.com/@africandiddynyc" target="_blank" class="card social">
         <h3>TikTok</h3>
-        <p>Short-form news and viral coverage</p>
+        <p>Breaking news & viral reporting</p>
       </a>
 
     </div>
   </div>
 </section>
 
-<!-- ARTICLES PREVIEW -->
+<!---------------------------------->
+<!---- ARTICLES PREVIEW ---->
+<!---------------------------------->
 <section id="articles" class="section dark">
+
   <div class="container">
     <h2>Latest Stories</h2>
 
     <div class="grid">
 
-      <div class="card">
-        <h3>NYC Politics Coverage</h3>
-        <p>Read the full investigation on Medium.</p>
-        <a href="https://medium.com/@YOURUSERNAME" target="_blank" class="btn btn-secondary">Read Article</a>
-      </div>
+      <a href="articles/mandani.html" class="card article-card">
+        <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=1000">
+        <h3>Mayor Mandani Coverage</h3>
+        <p>Inside City Hall decisions and political strategy.</p>
+        <span class="read-more">Read Full Story →</span>
+      </a>
 
-      <div class="card">
-        <h3>City Hall Analysis</h3>
-        <p>Full breakdown available on Substack.</p>
-        <a href="https://tbanewsnetwork.substack.com" target="_blank" class="btn btn-secondary">Read Report</a>
-      </div>
+      <a href="articles/cityhall.html" class="card article-card">
+        <img src="https://images.unsplash.com/photo-1486308510493-aa64833637b8?q=80&w=1000">
+        <h3>NYC City Hall Analysis</h3>
+        <p>Investigations and insider reporting.</p>
+        <span class="read-more">Read Full Story →</span>
+      </a>
 
     </div>
   </div>
+
 </section>
 
-<!-- ABOUT -->
+<!---------------------------------->
+<!---- ABOUT ---->
+<!---------------------------------->
 <section id="about" class="section">
-  <div class="container">
+
+  <div class="container narrow">
     <h2>About TBA News Network</h2>
+
     <p>
       TBA News Network is an independent journalism platform founded by SDWJR,
-      focused on political reporting, investigative stories, and cultural analysis.
-      Our mission is to provide direct, unfiltered reporting to the public.
+      focused on political reporting, investigative journalism,
+      and cultural analysis.
     </p>
+
   </div>
+
 </section>
 
-<!-- CONTACT / TIP LINE -->
+<!---------------------------------->
+<!---- CONTACT ---->
+<!---------------------------------->
 <section id="contact" class="section dark">
-  <div class="container">
+
+  <div class="container narrow">
+
     <h2>Contact / Send a Tip</h2>
     <p>Email: contact@tbanews.com</p>
-    <p>For press inquiries or confidential tips, reach out directly.</p>
+    <p>Confidential sources are protected.</p>
+
   </div>
+
 </section>
 
- <link rel="stylesheet" href="css/style.css">
-
-<!-- FOOTER -->
+<!---------------------------------->
+<!---- FOOTER ---->
+<!---------------------------------->
 <footer class="footer">
   <div class="container">
     <p>© 2026 TBA News Network | Independent Journalism</p>
   </div>
 </footer>
 
+<!---- JAVASCRIPT ---->
+<script src="js/script.js"></script>
+
 </body>
-</html>
+</html>     
