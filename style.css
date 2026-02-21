@@ -146,3 +146,15 @@ animation:ticker 25s linear infinite;
 0%{transform:translateX(100%);}
 100%{transform:translateX(-100%);}
 }
+
+.read-more-link{
+  display:inline-block;
+  margin-top:10px;
+  color:#ff3b3b;
+  font-weight:600;
+  text-decoration:none;
+}
+
+.read-more-link:hover{
+  text-decoration:underline;
+}
