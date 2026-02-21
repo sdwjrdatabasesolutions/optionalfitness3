@@ -158,3 +158,13 @@ animation:ticker 25s linear infinite;
 .read-more-link:hover{
   text-decoration:underline;
 }
+
+.logo img{
+  height:55px;
+  width:auto;
+  display:block;
+}
+
+.logo a{
+  display:inline-block;
+}
