@@ -21,18 +21,18 @@
 <!---------------------------------->
 <!---- NAVBAR ---->
 <!---------------------------------->
-<header class="navbar">
+<header class="navbar" id="navbar">
   <div class="container nav-container">
 
-    <h1 class="logo">
+    <h1 class="logo">TBA NEWS NETWORK</h1>
       <a href="index.html">
         <img src="images/mycircle.png" alt="TBA News Network Logo">
       </a>
     </h1>
 
-    <button class="mobile-menu-btn">☰</button>
+    <button class="mobile-menu-btn"id="menuBtn">☰</button>
 
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="#home">Home</a></li>
       <li><a href="#network">Network</a></li>
       <li><a href="#articles">Articles</a></li>
@@ -60,15 +60,26 @@
 
   <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1600" class="hero-bg">
 
-  <div class="container hero-content">
+  <div class="container hero-content fade-in">
     <h2>TBA News Network</h2>
     <p>Independent Media | Global Reporting | Truth-Driven Journalism</p>
 
-    <div class="cta-buttons">
-      <a href="#articles" class="btn btn-primary">Latest Stories</a>
-      <a href="#network" class="btn btn-secondary">Explore Network</a>
-    </div>
-  </div>
+   <div class="cta-buttons">
+
+  <a href="#articles" class="btn btn-primary">Latest Stories</a>
+
+  <a href="#network" class="btn btn-secondary">Explore Network</a>
+
+  <!-- Substack Button -->
+  <a href="https://substack.com/@tbanewsnetwork"
+     class="btn btn-substack"
+     target="_blank"
+     id="substackBtn">
+     <span class="substack-icon">✉</span>
+     Subscribe on Substack
+  </a>
+
+</div>
 
 </section>
 
