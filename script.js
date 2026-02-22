@@ -81,3 +81,23 @@ const ticker = document.getElementById("tickerContent");
 if(ticker){
 ticker.innerText = tickerData.join("   ✦   ");
 }
+
+// SUBSTACK BUTTON TRACKING
+
+
+  /* SUBSTACK BUTTON TRACKING */
+const substackBtn = document.getElementById("substackBtn");
+
+if(substackBtn){
+  substackBtn.addEventListener("click", ()=>{
+
+    console.log("Substack button clicked");
+
+    let clicks = localStorage.getItem("substackClicks") || 0;
+    clicks++;
+    localStorage.setItem("substackClicks", clicks);
+
+    console.log("Total Substack clicks:", clicks);
+
+  });
+}
