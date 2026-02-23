@@ -187,3 +187,36 @@ if(ribbonClose){
     localStorage.setItem("ribbonClosed",true);
   });
 }
+
+/* AUTO LOAD ETSY PRODUCTS */
+const etsyListings = [
+  "https://www.etsy.com/listing/123456789",
+  "https://www.etsy.com/listing/987654321",
+  "https://www.etsy.com/listing/456789123"
+];
+
+const etsyGrid = document.getElementById("etsyGrid");
+
+if(etsyGrid){
+
+  etsyListings.forEach(link=>{
+
+    const item = document.createElement("a");
+    item.href = link;
+    item.target = "_blank";
+    item.className = "etsy-item";
+
+    // Etsy preview image trick
+    const idMatch = link.match(/listing\/(\d+)/);
+    const id = idMatch ? idMatch[1] : "";
+
+    item.innerHTML = `
+      <img src="https://i.etsystatic.com/${id}/r/il/placeholder.jpg" alt="Etsy product">
+      <p>View Product</p>
+    `;
+
+    etsyGrid.appendChild(item);
+
+  });
+
+}
