@@ -50,6 +50,19 @@
   </div>
 </section>
 
+<div class="article-subscribe">
+
+  <h3>Get Real News First</h3>
+  <p>Subscribe to receive full investigations and exclusive reports.</p>
+
+  <a href="https://substack.com/@tbanewsnetwork"
+     class="btn btn-substack"
+     target="_blank">
+     Subscribe Free on Substack
+  </a>
+
+</div>
+
 <script src="../js/script.js"></script>
 
 </body>
