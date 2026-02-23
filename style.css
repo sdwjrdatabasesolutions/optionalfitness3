@@ -317,3 +317,13 @@ animation:ticker 25s linear infinite;
   box-shadow:0 12px 25px rgba(0,0,0,0.4);
 }
 
+/* ARTICLE SUBSCRIBE BOX */
+.article-subscribe{
+  background:#111;
+  padding:35px;
+  border-radius:14px;
+  margin:50px 0;
+  text-align:center;
+  border:1px solid rgba(255,255,255,0.08);
+}
+
