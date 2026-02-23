@@ -172,3 +172,18 @@ if(donateClose){
     localStorage.setItem("donateClosed",true);
   });
 }
+
+/* DONATION RIBBON CLOSE */
+const ribbon = document.getElementById("donationRibbon");
+const ribbonClose = document.getElementById("ribbonClose");
+
+if(ribbon && !localStorage.getItem("ribbonClosed")){
+  ribbon.style.display = "flex";
+}
+
+if(ribbonClose){
+  ribbonClose.addEventListener("click", ()=>{
+    ribbon.style.display="none";
+    localStorage.setItem("ribbonClosed",true);
+  });
+}
