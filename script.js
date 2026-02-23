@@ -1,5 +1,7 @@
 
-/* MOBILE MENU */
+/* ===============================
+   MOBILE MENU TOGGLE
+================================*/
 const btn = document.querySelector('.mobile-menu-btn');
 const nav = document.querySelector('.nav-links');
 
@@ -14,24 +16,32 @@ document.querySelectorAll('.nav-links a').forEach(link=>{
   });
 });
 
-/* SMOOTH SCROLL */
+/* ===============================
+   SMOOTH SCROLL
+================================*/
 document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
   anchor.addEventListener('click', function(e){
     e.preventDefault();
     document.querySelector(this.getAttribute('href'))
-      .scrollIntoView({ behavior:'smooth' });
+      ?.scrollIntoView({ behavior:'smooth' });
   });
 });
 
-/* NAVBAR SHADOW */
+/* ===============================
+   NAVBAR SHADOW ON SCROLL
+================================*/
 window.addEventListener('scroll',()=>{
   const navbar = document.querySelector('.navbar');
-  navbar.style.boxShadow = window.scrollY > 20
-    ? "0 4px 12px rgba(0,0,0,0.6)"
-    : "none";
+  if(navbar){
+    navbar.style.boxShadow = window.scrollY > 20
+      ? "0 4px 12px rgba(0,0,0,0.6)"
+      : "none";
+  }
 });
 
-/* FADE IN SECTIONS */
+/* ===============================
+   FADE IN SECTIONS
+================================*/
 const sections = document.querySelectorAll('.section');
 
 const reveal = new IntersectionObserver(entries=>{
@@ -50,7 +60,9 @@ sections.forEach(sec=>{
   reveal.observe(sec);
 });
 
-/* ACTIVE NAV LINK */
+/* ===============================
+   ACTIVE NAV LINK
+================================*/
 const navLinks = document.querySelectorAll('.nav-links a');
 
 window.addEventListener('scroll',()=>{
@@ -70,51 +82,51 @@ window.addEventListener('scroll',()=>{
   });
 });
 
-/* BREAKING NEWS AUTO FEED */
+/* ===============================
+   BREAKING NEWS TICKER
+================================*/
 const tickerData = [
-"Mayor Mandani expands press access at City Hall",
-"TBA News Network launches independent journalism platform",
-"NYC housing debate intensifies after policy announcement"
+  "Mayor Mandani expands press access at City Hall",
+  "TBA News Network launches independent journalism platform",
+  "NYC housing debate intensifies after policy announcement"
 ];
 
 const ticker = document.getElementById("tickerContent");
 if(ticker){
-ticker.innerText = tickerData.join("   ✦   ");
+  ticker.innerText = tickerData.join("   ✦   ");
 }
 
-// SUBSTACK BUTTON TRACKING
-
-
-  /* SUBSTACK BUTTON TRACKING */
-const substackBtn = document.getElementById("substackBtn");
-
-if(substackBtn){
-  substackBtn.addEventListener("click", ()=>{
-
-    console.log("Substack button clicked");
-
-    let clicks = localStorage.getItem("substackClicks") || 0;
-    clicks++;
-    localStorage.setItem("substackClicks", clicks);
-
-    console.log("Total Substack clicks:", clicks);
-
-  });
+/* ===============================
+   SUBSTACK BUTTON TRACKING
+================================*/
+function trackSubstackClick(btnId){
+  const btn = document.getElementById(btnId);
+  if(btn){
+    btn.addEventListener("click", ()=>{
+      let clicks = JSON.parse(localStorage.getItem("substackClicks")) || {};
+      const page = window.location.pathname;
+      clicks[page] = (clicks[page] || 0) + 1;
+      localStorage.setItem("substackClicks", JSON.stringify(clicks));
+      console.log("Substack clicks per page:", clicks);
+    });
+  }
 }
 
-/* SUBSTACK POPUP TIMER */
+trackSubstackClick("substackBtn");
+trackSubstackClick("popupSubstackBtn");
+
+/* ===============================
+   SUBSTACK POPUP
+================================*/
 const popup = document.getElementById("substackPopup");
 const closePopup = document.getElementById("popupClose");
 
 if(popup){
-
   setTimeout(()=>{
-    // only show if user hasn’t closed before
     if(!localStorage.getItem("popupClosed")){
       popup.classList.add("active");
     }
   },20000);
-
 }
 
 if(closePopup){
@@ -124,37 +136,9 @@ if(closePopup){
   });
 }
 
-/* SUBSTACK CLICK TRACKING WITH PAGE INFO */
-function trackSubstackClick(btnId){
-
-  const btn = document.getElementById(btnId);
-
-  if(btn){
-    btn.addEventListener("click", ()=>{
-
-      let clicks = JSON.parse(localStorage.getItem("substackClicks")) || {};
-
-      const page = window.location.pathname;
-
-      if(!clicks[page]){
-        clicks[page] = 0;
-      }
-
-      clicks[page]++;
-
-      localStorage.setItem("substackClicks", JSON.stringify(clicks));
-
-      console.log("Substack clicks per page:", clicks);
-
-    });
-  }
-
-}
-
-trackSubstackClick("substackBtn");
-trackSubstackClick("popupSubstackBtn");
-
-/* DONATION POPUP AFTER 35s */
+/* ===============================
+   DONATION POPUP
+================================*/
 const donatePopup = document.getElementById("donatePopup");
 const donateClose = document.getElementById("donateClose");
 
@@ -173,7 +157,9 @@ if(donateClose){
   });
 }
 
-/* DONATION RIBBON CLOSE */
+/* ===============================
+   DONATION RIBBON
+================================*/
 const ribbon = document.getElementById("donationRibbon");
 const ribbonClose = document.getElementById("ribbonClose");
 
@@ -181,14 +167,14 @@ if(ribbon && !localStorage.getItem("ribbonClosed")){
   ribbon.style.display = "flex";
 }
 
-if(ribbonClose){
-  ribbonClose.addEventListener("click", ()=>{
-    ribbon.style.display="none";
-    localStorage.setItem("ribbonClosed",true);
-  });
-}
+ribbonClose?.addEventListener("click", ()=>{
+  ribbon.style.display="none";
+  localStorage.setItem("ribbonClosed",true);
+});
 
-/* AUTO LOAD ETSY PRODUCTS */
+/* ===============================
+   AUTO LOAD ETSY PRODUCTS
+================================*/
 const etsyListings = [
   "https://www.etsy.com/listing/123456789",
   "https://www.etsy.com/listing/987654321",
@@ -198,15 +184,13 @@ const etsyListings = [
 const etsyGrid = document.getElementById("etsyGrid");
 
 if(etsyGrid){
-
   etsyListings.forEach(link=>{
-
     const item = document.createElement("a");
     item.href = link;
     item.target = "_blank";
     item.className = "etsy-item";
 
-    // Etsy preview image trick
+    // extract listing id for placeholder image
     const idMatch = link.match(/listing\/(\d+)/);
     const id = idMatch ? idMatch[1] : "";
 
@@ -214,9 +198,6 @@ if(etsyGrid){
       <img src="https://i.etsystatic.com/${id}/r/il/placeholder.jpg" alt="Etsy product">
       <p>View Product</p>
     `;
-
     etsyGrid.appendChild(item);
-
   });
-
 }
