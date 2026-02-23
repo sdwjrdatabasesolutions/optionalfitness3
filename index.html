@@ -1,29 +1,33 @@
 <!--- NEW SITE-->
 
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>TBA News Network | Independent Journalism</title>
 
-<!---- CSS ---->
 <link rel="stylesheet" href="style.css">
-
-<!---- GOOGLE ICONS ---->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
- <!-- SUBSTACK POPUP -->
+<body>
+
+<!-- DONATION RIBBON -->
+<div id="donationRibbon" class="donation-ribbon">
+  <p>Support Independent Journalism ✦
+    <a href="https://YOURDONATIONLINK.com" target="_blank">Donate Now</a>
+  </p>
+  <button id="ribbonClose">×</button>
+</div>
+
+<!-- SUBSTACK POPUP -->
 <div id="substackPopup" class="popup-overlay">
   <div class="popup-box">
     <button id="popupClose" class="popup-close">×</button>
-
     <h3>Stay Ahead with TBA News</h3>
-    <p>Get real reporting, analysis, and exclusive updates straight to your inbox.</p>
-
+    <p>Get real reporting straight to your inbox.</p>
     <a href="https://substack.com/@tbanewsnetwork"
        target="_blank"
        class="btn btn-substack"
@@ -32,47 +36,31 @@
     </a>
   </div>
 </div>
- 
+
+<!-- DONATE POPUP -->
 <div id="donatePopup" class="popup-overlay">
   <div class="popup-box">
-
     <button id="donateClose" class="popup-close">×</button>
-
     <h3>Support Independent Journalism</h3>
     <p>Your support keeps real reporting alive.</p>
-
     <a href="https://YOURDONATIONLINK.com"
        target="_blank"
-       class="btn btn-primary">
-       Donate Now
-    </a>
-
+       class="btn btn-primary">Donate Now</a>
   </div>
 </div>
- <div id="donationRibbon" class="donation-ribbon">
-  <p>
-    Support Independent Journalism ✦
-    <a href="https://YOURDONATIONLINK.com" target="_blank">
-      Donate Now
-    </a>
-  </p>
-  <button id="ribbonClose">×</button>
-</div>
-<body>
 
-<!---------------------------------->
-<!---- NAVBAR ---->
-<!---------------------------------->
+<!-- NAVBAR -->
 <header class="navbar" id="navbar">
   <div class="container nav-container">
 
-    <h1 class="logo">TBA NEWS NETWORK</h1>
+    <h1 class="logo">
       <a href="index.html">
         <img src="images/mycircle.png" alt="TBA News Network Logo">
       </a>
+      TBA NEWS NETWORK
     </h1>
 
-    <button class="mobile-menu-btn"id="menuBtn">☰</button>
+    <button class="mobile-menu-btn" id="menuBtn">☰</button>
 
     <ul class="nav-links" id="navLinks">
       <li><a href="#home">Home</a></li>
@@ -80,251 +68,12 @@
       <li><a href="#articles">Articles</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
-     <a href="#donate" class="nav-donate-btn">Donate</a>
+      <li>
+        <a href="https://YOURDONATIONLINK.com"
+           class="nav-donate-btn"
+           target="_blank">Donate</a>
+      </li>
     </ul>
 
   </div>
- <a href="https://YOURDONATIONLINK.com"
-   class="nav-donate-btn"
-   target="_blank">
-   Donate
-</a>
-</header>
- 
- <!---- BREAKING NEWS TICKER ADD-ON ---->
-<div class="ticker-wrap">
-  <div class="ticker-label">BREAKING</div>
-  <div class="ticker">
-    <div class="ticker-move" id="tickerContent">
-      Loading breaking news...
-    </div>
-  </div>
-</div>
-
-<!---------------------------------->
-<!---- HERO ---->
-<!---------------------------------->
-<section id="home" class="hero">
-
-  <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1600" class="hero-bg">
-
-  <div class="container hero-content fade-in">
-    <h2>TBA News Network</h2>
-    <p>Independent Media | Global Reporting | Truth-Driven Journalism</p>
-
-   <div class="cta-buttons">
-
-  <a href="#articles" class="btn btn-primary">Latest Stories</a>
-
-  <a href="#network" class="btn btn-secondary">Explore Network</a>
-
-  <!-- Substack Button -->
-  <a href="https://substack.com/@tbanewsnetwork"
-     class="btn btn-substack"
-     target="_blank"
-     id="substackBtn">
-     <span class="substack-icon">✉</span>
-     Subscribe on Substack
-  </a>
-
-</div>
-
-</section>
-
-<!---------------------------------->
-<!---- NETWORK / SOCIAL HUB ---->
-<!---------------------------------->
-<section id="network" class="section">
-
-  <div class="grid">
-
-    <div class="card">
-       <img src="images/lib.png
-        " alt="lib image">
-      <h1>World News: TBA News Network</h1>
-     <img src="images/bongcounty.png" alt="Bong county Nurses strike">
-      <h3>Liberian Nurses at Phebe Hospital Prepare for Strike, Services Disrupted 
-          By SDWJR | TBA News Network</h3>
-      <p>BONG COUNTY, LIBERIA — Operations at Phebe Hospital in Suakoko were significantly disrupted Friday as nurses and other staff began preparing for a strike expected to take place Monday, raising concerns about healthcare access across Bong County.</p>
-      <p>According to reports from the scene, several patients were instructed to leave their beds and continue treatment elsewhere as workers reduced services in anticipation of the demonstration. Some emergency cases were reportedly turned away, leaving families searching for medical help in neighboring counties.
-
-Relatives described confusion and distress as hospital personnel informed them that services would be scaled down ahead of the protest. The situation has intensified fears that the strike could severely impact healthcare delivery in central Liberia if a resolution is not reached quickly.
-
-The planned action by staff highlights growing tensions within the health sector and the pressure frontline workers say they are facing amid ongoing challenges in the system.</p>
-<a class="read-more" href="https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.o25up6qjcd0c" target="_blank" rel="noopener noreferrer">
-  Read Full Story →
-</a>
-    </div>
-
-    <div class="card">
-       <img src="images/social.png" alt="social image">
-      <h1>Black Apple News</h1>
-       <img src="images/iceshotgirl.jpg" alt="Ice Shot Girl">
-      <h3>Woman Shot in Face with Less-Lethal Round During ICE Protest Files Claim Against LAPD – Report by TBA News</h3>
-      <p>LOS ANGELES, CALIFORNIA — A woman shot in the face with a less-lethal round during a protest against Immigration and Customs Enforcement (ICE) actions in Los Angeles has filed a claim against the city’s police department, citing excessive use of force and personal injury.
-        The incident occurred during a demonstration where protesters were demanding accountability for ICE operations and immigration enforcement policies. According to the plaintiff, police deployed “less-lethal” projectiles in a manner that directly struck her face, causing severe injury and long-term medical concerns.
-      </p>
-      <p>Legal representatives for the woman say the claim is the first step toward holding the Los Angeles Police Department (LAPD) accountable, emphasizing the need for safe and lawful management of public protests. The case highlights ongoing tensions between law enforcement and activist groups advocating for immigrant rights.
-LAPD has not publicly commented on the claim, though the department previously stated that officers use less-lethal tools “only when necessary to maintain public safety.” Civil rights advocates have expressed concern about the growing use of such projectiles and their potential to cause serious harm.
-</p>
-        
-        <a class="read-more" href="https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.wzj4uxxy54tj" target="_blank" rel="noopener noreferrer">
-           Read Full Story →
-        </a>
-      
-    </div>
-
-    <div class="card">
-       <img src="images/trump.png" alt="trump image">
-      <h1>World News</h1>
-      <h3>Israeli Strikes Kill at Least 10 in Lebanon</h3>
-       <img src="images/strike.jpg" alt="Israel Airstrike in Lebanon">
-      <p>Israeli Airstrikes Target Lebanon, Leaving Dead and Injured
-
-BEIRUT, LEBANON — At least 10 people were killed in Lebanon Sunday following Israeli airstrikes on multiple locations in southern and eastern parts of the country, according to local officials and eyewitness reports.
-
-Lebanese authorities reported that several residential areas were struck, leaving buildings damaged and families displaced. Emergency responders rushed to the scene to assist victims, while hospitals worked to treat the injured amid reports of significant chaos.</p>
-<p>The attacks come amid rising tensions in the region, with officials warning that the strikes could escalate into broader conflict. Local leaders condemned the airstrikes, calling for restraint and urging the international community to intervene to prevent further civilian casualties.
-Eyewitnesses described scenes of panic, as residents fled their homes and sought shelter in safer areas. Rescue teams are reportedly still searching for survivors under the rubble. The Lebanese government has vowed to assess the damage and provide assistance to affected families.
-</p>
-<p>he situation remains tense, with uncertainty over the potential for further attacks and the wider implications for regional stability. International organizations have called for immediate de-escalation to avoid a humanitarian crisis.</p>
-<a class="read-more" href="https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.fzjnqzdxmosi" target="_blank" rel="noopener noreferrer">
-  Read Full Story →
-</a>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-<!---------------------------------->
-<!---- ARTICLES PREVIEW ---->
-<!---------------------------------->
-<section id="articles" class="section dark">
-
-  <div class="container">
-    <h2>Latest Stories</h2>
-
-
-    <div class="grid">
-
-      <a href="articles/mandani.html" class="card article-card">
-        <img src="images/cityhall.png" alt="cityhall">
-        <h3>Mayor Mandani Coverage</h3>
-        <p>Inside City Hall decisions and political strategy.</p>
-        <span class="read-more">Read Full Story →</span>
-      </a>
-
-      <a href="articles/cityhall.html" class="card article-card">
-    <img src="images/kathy.png" alt="Governor Kathy Hochul in State Capitol">
-    <h3>New York Governor Analysis</h3>
-    <p>On-site reporting and insider analysis of Governor Kathy Hochul's policies, decisions, and legislative actions at the New York State Capitol. TBA News Network provides expert coverage on how her administration is impacting the state’s economy, education, healthcare, and local communities.</p>
-    <span class="read-more">Read Full Story →</span>
-      </a>
-
-    </div>
-  </div>
-
-</section>
-
- <section class="section store">
-  <div class="container">
-
-    <h2>Support Independent Journalism</h2>
-    <p>Shop official TBA News merchandise and support the network.</p>
-
-    <a href="https://www.etsy.com/shop/YOURSTORENAME"
-       target="_blank"
-       class="btn btn-primary">
-       Visit Our Etsy Store
-    </a>
-
-  </div>
-</section>
-
- <section class="section etsy">
-  <div class="container">
-
-    <h2>Official TBA News Store</h2>
-
-    <div class="etsy-grid">
-
-      <a href="https://www.etsy.com/listing/1" target="_blank" class="etsy-item">
-        <img src="images/product1.jpg">
-        <p>TBA News Shirt</p>
-      </a>
-
-      <a href="https://www.etsy.com/listing/2" target="_blank" class="etsy-item">
-        <img src="images/product2.jpg">
-        <p>Press Freedom Hoodie</p>
-      </a>
-
-      <a href="https://www.etsy.com/listing/3" target="_blank" class="etsy-item">
-        <img src="images/product3.jpg">
-        <p>Journalist Mug</p>
-      </a>
-
-    </div>
-
-  </div>
-</section>
-
- < --- REPLACE ETSY GRID -->
-  <section class="section etsy">
-  <div class="container">
-    <h2>Official TBA News Store</h2>
-
-    <div id="etsyGrid" class="etsy-grid"></div>
-
-  </div>
-</section>
-
-<!---------------------------------->
-<!---- ABOUT ---->
-<!---------------------------------->
-<section id="about" class="section">
-
-  <div class="container narrow">
-  <h2>About TBA News Network</h2>
-
-  <p>
-    TBA News Network is an independent, investigative media organization founded by journalist SDWJR, dedicated to truth, accountability, and fearless reporting. We spotlight underreported stories across the United States, Africa, and the global Black diaspora — with a focus on civil rights, policing, governance, corruption, and systems of power affecting marginalized communities.
-    
-    <a href="https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.0" target="_blank">
-      Read more
-    </a>
-  </p>
-</div>
-</section>
-
-<!---------------------------------->
-<!---- CONTACT ---->
-<!---------------------------------->
-<section id="contact" class="section dark">
-
-  <div class="container narrow">
-
-    <h2>Contact / Send a Tip</h2>
-    <p>Email:tbanewsnetwork@gmx.com</p>
-    <p>Confidential sources are protected.</p>
-
-  </div>
-
-</section>
-
-<!---------------------------------->
-<!---- FOOTER ---->
-<!---------------------------------->
-<footer class="footer">
-  <div class="container">
-    <p>© 2026 TBA News Network | Independent Journalism</p>
-  </div>
-</footer>
-
-<!---- JAVASCRIPT ---->
-<script src="js/script.js"></script>
-
-</body>
-</html>     
+</header>     
