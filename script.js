@@ -101,3 +101,55 @@ if(substackBtn){
 
   });
 }
+
+/* SUBSTACK POPUP TIMER */
+const popup = document.getElementById("substackPopup");
+const closePopup = document.getElementById("popupClose");
+
+if(popup){
+
+  setTimeout(()=>{
+    // only show if user hasn’t closed before
+    if(!localStorage.getItem("popupClosed")){
+      popup.classList.add("active");
+    }
+  },20000);
+
+}
+
+if(closePopup){
+  closePopup.addEventListener("click",()=>{
+    popup.classList.remove("active");
+    localStorage.setItem("popupClosed",true);
+  });
+}
+
+/* SUBSTACK CLICK TRACKING WITH PAGE INFO */
+function trackSubstackClick(btnId){
+
+  const btn = document.getElementById(btnId);
+
+  if(btn){
+    btn.addEventListener("click", ()=>{
+
+      let clicks = JSON.parse(localStorage.getItem("substackClicks")) || {};
+
+      const page = window.location.pathname;
+
+      if(!clicks[page]){
+        clicks[page] = 0;
+      }
+
+      clicks[page]++;
+
+      localStorage.setItem("substackClicks", JSON.stringify(clicks));
+
+      console.log("Substack clicks per page:", clicks);
+
+    });
+  }
+
+}
+
+trackSubstackClick("substackBtn");
+trackSubstackClick("popupSubstackBtn");
