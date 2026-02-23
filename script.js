@@ -153,3 +153,22 @@ function trackSubstackClick(btnId){
 
 trackSubstackClick("substackBtn");
 trackSubstackClick("popupSubstackBtn");
+
+/* DONATION POPUP AFTER 35s */
+const donatePopup = document.getElementById("donatePopup");
+const donateClose = document.getElementById("donateClose");
+
+if(donatePopup){
+  setTimeout(()=>{
+    if(!localStorage.getItem("donateClosed")){
+      donatePopup.classList.add("active");
+    }
+  },35000);
+}
+
+if(donateClose){
+  donateClose.addEventListener("click",()=>{
+    donatePopup.classList.remove("active");
+    localStorage.setItem("donateClosed",true);
+  });
+}
