@@ -263,3 +263,12 @@ animation:ticker 25s linear infinite;
   color:white;
   cursor:pointer;
 }
+
+.store{
+  text-align:center;
+}
+
+.store h2{
+  margin-bottom:10px;
+}
+
