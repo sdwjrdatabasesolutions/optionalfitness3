@@ -220,3 +220,46 @@ animation:ticker 25s linear infinite;
 .substack-icon{
   font-size:18px;
 }
+
+/* POPUP OVERLAY */
+.popup-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.75);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition:0.4s ease;
+  z-index:9999;
+}
+
+/* SHOW POPUP */
+.popup-overlay.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* POPUP BOX */
+.popup-box{
+  background:#111;
+  color:white;
+  padding:40px;
+  max-width:420px;
+  border-radius:16px;
+  text-align:center;
+  box-shadow:0 20px 60px rgba(0,0,0,0.6);
+}
+
+/* CLOSE BUTTON */
+.popup-close{
+  position:absolute;
+  top:20px;
+  right:30px;
+  font-size:26px;
+  background:none;
+  border:none;
+  color:white;
+  cursor:pointer;
+}
