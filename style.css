@@ -288,3 +288,32 @@ animation:ticker 25s linear infinite;
   transform:translateY(-1px);
 }
 
+/* ETSY GRID */
+.etsy-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+  margin-top:30px;
+}
+
+.etsy-item{
+  text-align:center;
+  text-decoration:none;
+  color:white;
+  background:#111;
+  padding:20px;
+  border-radius:12px;
+  transition:0.3s;
+}
+
+.etsy-item img{
+  width:100%;
+  border-radius:10px;
+  margin-bottom:10px;
+}
+
+.etsy-item:hover{
+  transform:translateY(-5px);
+  box-shadow:0 12px 25px rgba(0,0,0,0.4);
+}
+
