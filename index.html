@@ -1,5 +1,3 @@
-<!--- NEW SITE-->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,167 +6,258 @@
     <title>TBA News Network | Independent Journalism</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Quick responsive fix for video embed */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        /* Ensure card content flows well */
+        .card {
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+        }
+        .card p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+    </style>
 </head>
 <body>
-    <!-- Donation Ribbon -->
-    <div id="donationRibbon" class="donation-ribbon">
-        <span>BREAKING: Support Independent Journalism | Your contribution keeps real reporting alive</span>
-        <a href="https://YOURDONATIONLINK.com" target="_blank">Donate Now</a>
-        <button id="ribbonClose">×</button>
-    </div>
 
-    <!-- Substack Popup -->
-    <div id="substackPopup" class="popup-overlay">
-        <div class="popup-box">
-            <button id="popupClose" class="popup-close">×</button>
-            <h3>Stay Ahead</h3>
-            <p>Get real reporting, analysis, and exclusive updates straight to your inbox.</p>
-            <a href="https://substack.com/@tbanewsnetwork" target="_blank" class="btn btn-substack" id="popupSubstackBtn">
-                Subscribe Free on Substack
+<!-- Donation Ribbon -->
+<div id="donationRibbon" class="donation-ribbon">
+    <span>BREAKING: Support Independent Journalism | Your contribution keeps real reporting alive</span>
+    <a href="https://YOURDONATIONLINK.com" target="_blank">Donate Now</a>
+    <button id="ribbonClose">×</button>
+</div>
+
+<!-- Donate Popup -->
+<div id="donatePopup" class="popup-overlay">
+    <div class="popup-box">
+        <button id="donateClose" class="popup-close">×</button>
+        <h3>Support Independent Journalism</h3>
+        <p>Your support keeps real reporting alive and thriving. Every donation helps us investigate the stories that matter.</p>
+        <a href="https://YOURDONATIONLINK.com" target="_blank" class="btn btn-primary">Donate Now</a>
+    </div>
+</div>
+
+<!-- Substack Popup -->
+<div id="substackPopup" class="popup-overlay">
+    <div class="popup-box">
+        <button id="popupClose" class="popup-close">×</button>
+        <h3>Stay Ahead</h3>
+        <p>Get real reporting, analysis, and exclusive updates straight to your inbox.</p>
+        <a href="https://substack.com/@tbanewsnetwork" target="_blank" class="btn btn-substack" id="popupSubstackBtn">
+            Subscribe Free on Substack
+        </a>
+    </div>
+</div>
+
+<!-- Navigation -->
+<header class="navbar" id="navbar">
+    <div class="container nav-container">
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/mycircle.png" alt="TBA News Network Logo" onerror="this.src='https://via.placeholder.com/50x50?text=TBA'">
+            </a>
+            <span class="logo-text">TBA NEWS NETWORK</span>
+        </div>
+        <button class="mobile-menu-btn" id="menuBtn">☰</button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#network">News</a></li>
+            <li><a href="#articles">New York</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="https://YOURDONATIONLINK.com" class="nav-donate-btn" target="_blank">Donate</a></li>
+        </ul>
+    </div>
+</header>
+
+<!-- Breaking News Ticker -->
+<div class="ticker-wrap">
+    <div class="ticker-label">BREAKING</div>
+    <div class="ticker">
+        <div class="ticker-move" id="tickerContent">Loading breaking news...</div>
+    </div>
+</div>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1600" class="hero-bg" alt="News background">
+    <div class="container hero-content">
+        <h2>TBA News Network</h2>
+        <p>Independent Media | Global Reporting | Truth-Driven Journalism</p>
+        <div class="cta-buttons">
+            <a href="#articles" class="btn btn-primary">Latest Stories</a>
+            <a href="#network" class="btn btn-secondary">Explore Network</a>
+            <a href="https://substack.com/@tbanewsnetwork" class="btn btn-substack" target="_blank">
+                <span>✉</span> Subscribe on Substack
             </a>
         </div>
     </div>
+</section>
 
-    <!-- Donate Popup -->
-    <div id="donatePopup" class="popup-overlay">
-        <div class="popup-box">
-            <button id="donateClose" class="popup-close">×</button>
-            <h3>Support Independent Journalism</h3>
-            <p>Your support keeps real reporting alive and thriving. Every donation helps us investigate the stories that matter.</p>
-            <a href="https://YOURDONATIONLINK.com" target="_blank" class="btn btn-primary">
-                Donate Now
+<!-- Network Section -->
+<section id="network" class="section">
+    <div class="container">
+        <h2 class="section-title">Our Network</h2>
+        <div class="grid">
+          
+           <!-- TBA NEWS: LIBERIA LATEST NEWS - EMBEDDED VIDEO -->
+            <div class="card">
+                <img src="images/bongcounty.png" alt="Press Secretary and Justice Ministry">
+                <h3>Institutional Tensions Flare: Press Secretary Breaks Ranks with Justice Ministry Over Ethnic Security Group</h3>
+                
+                <!-- Video embed for Liberia Press Secretary Kula Fofana -->
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/kpC3b4FYBK0" 
+                        title="TBA News Network: Liberia Press Security Kula Fofana called to Resigned" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                
+                <p><strong>Monrovia, Liberia</strong> – A sharp divergence in messaging has emerged within the Executive Branch of the Liberian government, raising questions about policy cohesion regarding a controversial community group.</p>
+                
+                <p>Presidential Press Secretary Attorney <strong>Kula Bonah Nyei Fofana</strong> has publicly distanced herself from a firm prohibition issued by the Ministry of Justice against the National Fula Security of Liberia (NFSL), describing the group as "largely misunderstood" rather than a threat. In a detailed commentary titled "Releasing the Accelerator a Bit: The Fulani Security Saga," Fofana characterized the NFSL as a community-oriented organization that has been wrongfully branded a security risk. Her stance stands in direct contrast to a directive from the Ministry of Justice, led by Cllr. N. Oswald Tweh, which ordered the "immediate cessation and desistance" of the group's activities.</p>
+                
+                <p>The Ministry of Justice moved swiftly to assert the state's authority, declaring that national security and public order are 'constitutional responsibilities of legally established state institutions.' The Liberia National Police (LNP) corroborated this position, stating it had never authorized nor formally engaged with the NFSL.</p>
+                
+                <!-- Watch more context link -->
+                <p><em>📺 Watch the full report and analysis in the video above as Press Secretary Kula Fofana addresses the controversy.</em></p>
+                
+                <a class="read-more" href="https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.o25up6qjcd0c" target="_blank">Read Full Story →</a>
+            </div>
+          
+            <!-- Liberian Nurses Article -->
+            <div class="card">
+                <img src="bongcounty.png" alt="Phebe Hospital">
+                <h3>Liberian Nurses at Phebe Hospital Prepare for Strike</h3>
+                <p>BONG COUNTY, LIBERIA — Operations at Phebe Hospital were disrupted Friday as nurses prepared for a strike expected Monday.</p>
+                <a class="read-more" href=" https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.o25up6qjcd0c" target="_blank">Read Full Story →</a>
+            </div>
+          
+            <!-- Harvest Intercontinental Church -->
+            <div class="card">
+                <img src="images/libpic.png" alt="Harvest Intercontinental Church Medical Mission in Liberia">
+                <h3>Harvest Intercontinental Church Provides Free Medical Services</h3>
+                <p>Humanitarian medical outreach providing free surgeries, consultations, and essential healthcare at JFK and Redemption Hospitals.</p>
+                <a class="read-more" href="https://open.substack.com/pub/tbanewsnetwork/p/harvest-intercontinental-church-delivers" target="_blank">Read Full Story on Substack →</a>
+            </div>
+
+            <!-- Liberia Betting Boom -->
+            <div class="card">
+                <img src="images/liberia-betting.jpg" alt="Children and betting machines in Liberia">
+                <h3>Kids as Young as 10 Caught in Liberia’s Growing Betting Boom</h3>
+                <p>Children are gambling on portable sports betting terminals and slot machines, raising serious concerns.</p>
+                <a class="read-more" href="https://open.substack.com/pub/tbanewsnetwork" target="_blank">Read Full Story on Substack →</a>
+            </div>
+
+            <!-- Social Justice Article -->
+            <div class="card">
+                <img src="iceshotgirl.png" alt="Protest">
+                <h3>Woman Shot in Face with Less-Lethal Round During ICE Protest Files Claim Against LAPD</h3>
+                <p>LOS ANGELES — A woman shot in the face with a less-lethal round during a protest against ICE has filed a claim against LAPD for excessive force.</p>
+                <a class="read-more" href="https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.wzj4uxxy54tj" target="_blank">Read Full Story →</a>
+            </div>
+
+            <!-- Israel Lebanon Article -->
+            <div class="card">
+                <img src="strike.png" alt="Lebanon">
+                <h3>Israeli Strikes Kill at Least 10 in Lebanon</h3>
+                <p>BEIRUT, LEBANON — At least 10 people were killed in Lebanon following Israeli airstrikes on multiple locations.</p>
+                <a class="read-more" href="https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.fzjnqzdxmosi" target="_blank">Read Full Story →</a>
+            </div>
+
+            <!-- Mexico Cartel Leader -->
+            <div class="card">
+                <img src="images/mexico-cartel-hero.jpg" alt="Mexico Military Operation">
+                <h3>Mexico’s Most-Wanted Drug Leader Killed in Military Operation</h3>
+                <p>MEXICO CITY, MEXICO — A military operation led to the death of Mexico’s most-wanted drug cartel leader, triggering armed clashes and warnings for US tourists.</p>
+                <a class="read-more" href="https://thetbanewsnetwork.substack.com/p/mexico-drug-leader-killed" target="_blank">Read Full Story →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Articles Preview Section -->
+<section id="articles" class="section dark">
+    <div class="container">
+        <h2 class="section-title">Latest Stories</h2>
+        <div class="grid">
+            <a href="#" class="card article-card">
+                <img src="https://images.unsplash.com/photo-1576610616656-d3aa5d1f4534?q=80&w=500" alt="City Hall">
+                <h3>Mayor Mandani Coverage</h3>
+                <p>Inside City Hall decisions and political strategy.</p>
+                <span class="read-more">Read Full Story →</span>
+            </a>
+            <a href="#" class="card article-card">
+                <img src="https://images.unsplash.com/photo-1575527048224-6e11a2a9ab85?q=80&w=500" alt="Governor">
+                <h3>New York Governor Analysis</h3>
+                <p>Expert coverage of Governor Kathy Hochul's policies and legislative actions.</p>
+                <span class="read-more">Read Full Story →</span>
             </a>
         </div>
     </div>
+</section>
 
-    <!-- Navigation -->
-    <header class="navbar" id="navbar">
-        <div class="container nav-container">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="images/mycircle.png" alt="TBA News Network Logo" onerror="this.src='https://via.placeholder.com/50x50?text=TBA'">
-                </a>
-                <span class="logo-text">TBA NEWS NETWORK</span>
-            </div>
-            <button class="mobile-menu-btn" id="menuBtn">☰</button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#network">News</a></li>
-                <li><a href="#articles">New York</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="https://YOURDONATIONLINK.com" class="nav-donate-btn" target="_blank">Donate</a></li>
-            </ul>
-        </div>
-    </header>
+<!-- Etsy Store Section -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Official TBA News Store</h2>
+        <p class="section-subtitle">Support independent journalism with our merchandise</p>
+        <div id="etsyGrid" class="etsy-grid"></div>
+    </div>
+</section>
 
-    <!-- Breaking News Ticker -->
-    <div class="ticker-wrap">
-        <div class="ticker-label">BREAKING</div>
-        <div class="ticker">
-            <div class="ticker-move" id="tickerContent">Loading breaking news...</div>
+<!-- About Section -->
+<section id="about" class="section dark">
+    <div class="container narrow">
+        <h2 class="section-title">About TBA News Network</h2>
+        <p>TBA News Network is an independent, investigative media organization founded by journalist SDWJR, dedicated to truth, accountability, and fearless reporting. We spotlight underreported stories across the US, Africa, and the global Black diaspora — with focus on civil rights, policing, governance, corruption, and systems of power affecting marginalized communities.</p>
+        <div class="text-center">
+            <a href="https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.0" target="_blank" class="btn btn-secondary">Read More</a>
         </div>
     </div>
+</section>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1600" class="hero-bg" alt="News background">
-        <div class="container hero-content">
-            <h2>TBA News Network</h2>
-            <p>Independent Media | Global Reporting | Truth-Driven Journalism</p>
-            <div class="cta-buttons">
-                <a href="#articles" class="btn btn-primary">Latest Stories</a>
-                <a href="#network" class="btn btn-secondary">Explore Network</a>
-                <a href="https://substack.com/@tbanewsnetwork" class="btn btn-substack" target="_blank" id="substackBtn">
-                    <span>✉</span> Subscribe on Substack
-                </a>
-            </div>
+<!-- Contact Section -->
+<section id="contact" class="section">
+    <div class="container narrow">
+        <h2 class="section-title">Contact / Send a Tip</h2>
+        <div class="contact-card">
+            <p class="contact-email">📧 tbanewsnetwork@gmx.com</p>
+            <p class="contact-note">Confidential sources are protected.</p>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Network Section -->
-    <section id="network" class="section">
-        <div class="container">
-            <h2 class="section-title">Our Network</h2>
-            <div class="grid">
-                <!-- Example Card -->
-                <div class="card">
-                    <img src="bongcounty.png" alt="Phebe Hospital">
-                    <div class="card-content">
-                        <h3>Liberian Nurses at Phebe Hospital Prepare for Strike</h3>
-                        <p>BONG COUNTY, LIBERIA — Operations at Phebe Hospital in Suakoko were disrupted as nurses prepared for a strike, raising concerns about healthcare access.</p>
-                        <a class="read-more" href="#" target="_blank">Read Full Story →</a>
-                    </div>
-                </div>
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <p>© 2026 TBA News Network | Independent Journalism</p>
+    </div>
+</footer>
 
-                <div class="card">
-                    <img src="images/libpic.png" alt="Harvest Medical">
-                    <div class="card-content">
-                        <h3>Harvest Intercontinental Church Provides Free Medical Services</h3>
-                        <p>MONROVIA, LIBERIA — Church-led medical outreach delivers free surgeries and essential healthcare to underserved Liberians at JFK and Redemption Hospitals.</p>
-                        <a class="read-more" href="#" target="_blank">Read Full Story →</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="iceshotgirl.png" alt="Protest">
-                    <div class="card-content">
-                        <h3>Woman Shot During ICE Protest Files Claim Against LAPD</h3>
-                        <p>LOS ANGELES, CALIFORNIA — The woman cites excessive force after being injured during a protest against ICE actions in Los Angeles.</p>
-                        <a class="read-more" href="#" target="_blank">Read Full Story →</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="strike.png" alt="Lebanon">
-                    <div class="card-content">
-                        <h3>Israeli Strikes Kill at Least 10 in Lebanon</h3>
-                        <p>BEIRUT, LEBANON — Israeli airstrikes hit multiple locations, causing casualties and displacing families in southern and eastern Lebanon.</p>
-                        <a class="read-more" href="#" target="_blank">Read Full Story →</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Etsy Store Section -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Official TBA News Store</h2>
-            <p class="section-subtitle">Support independent journalism with our merchandise</p>
-            <div id="etsyGrid" class="etsy-grid"></div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section dark">
-        <div class="container narrow">
-            <h2 class="section-title">About TBA News Network</h2>
-            <p class="about-text">TBA News Network is an independent, investigative media organization founded by journalist SDWJR, dedicated to truth, accountability, and fearless reporting. We spotlight underreported stories across the United States, Africa, and the global Black diaspora.</p>
-            <div class="text-center">
-                <a href="#" target="_blank" class="btn btn-secondary">Read More</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container narrow">
-            <h2 class="section-title">Contact / Send a Tip</h2>
-            <div class="contact-card">
-                <p class="contact-email">📧 tbanewsnetwork@gmx.com</p>
-                <p class="contact-note">Confidential sources are protected.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>© 2026 TBA News Network | Independent Journalism</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
