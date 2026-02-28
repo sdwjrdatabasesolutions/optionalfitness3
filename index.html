@@ -4,39 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TBA News Network | Independent Journalism</title>
+    
+    <!-- External CSS Files -->
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Quick responsive fix for video embed */
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            height: 0;
-            overflow: hidden;
-            max-width: 100%;
-            margin: 1.5rem 0;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-        /* Ensure card content flows well */
-        .card {
-            display: flex;
-            flex-direction: column;
-            height: fit-content;
-        }
-        .card p {
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-    </style>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
@@ -90,6 +66,23 @@
     </div>
 </header>
 
+<!-- Social Media Follow Bar -->
+<div style="background: var(--dark-gray); padding: 10px 0; border-bottom: 2px solid var(--news-red); margin-top: 132px;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <span style="color: white; font-weight: 600;">Follow TBA News:</span>
+        <div class="social-share">
+            <a href="https://facebook.com/tbanewsnetwork" target="_blank" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/tbanewsnetwork" target="_blank" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com/company/tbanewsnetwork" target="_blank" class="share-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://instagram.com/tbanewsnetwork" target="_blank" class="share-btn instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://tiktok.com/@tbanewsnetwork" target="_blank" class="share-btn tiktok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://youtube.com/@tbanewsnetwork" target="_blank" class="share-btn youtube"><i class="fab fa-youtube"></i></a>
+            <a href="https://whatsapp.com/channel/0029Va8z5z5z5z5z5z5z5z5" target="_blank" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://t.me/tbanewsnetwork" target="_blank" class="share-btn telegram"><i class="fab fa-telegram-plane"></i></a>
+        </div>
+    </div>
+</div>
+
 <!-- Breaking News Ticker -->
 <div class="ticker-wrap">
     <div class="ticker-label">BREAKING</div>
@@ -111,6 +104,14 @@
                 <span>✉</span> Subscribe on Substack
             </a>
         </div>
+        
+        <!-- Hero Share Buttons -->
+        <div class="share-group" style="justify-content: center; margin-top: 30px;">
+            <span style="color: white; margin-right: 10px;">Share TBA News:</span>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://tbanewsnetwork.com" target="_blank" class="share-btn facebook"><i class="fab fa-facebook-f"></i><span>Facebook</span></a>
+            <a href="https://twitter.com/intent/tweet?url=https://tbanewsnetwork.com&text=TBA%20News%20Network%20-%20Independent%20Journalism" target="_blank" class="share-btn twitter"><i class="fab fa-twitter"></i><span>Twitter</span></a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://tbanewsnetwork.com" target="_blank" class="share-btn linkedin"><i class="fab fa-linkedin-in"></i><span>LinkedIn</span></a>
+        </div>
     </div>
 </section>
 
@@ -118,6 +119,17 @@
 <section id="network" class="section">
     <div class="container">
         <h2 class="section-title">Our Network</h2>
+        
+        <!-- Section Share Buttons -->
+        <div class="share-group" style="justify-content: center; margin-bottom: 30px;">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://tbanewsnetwork.com#network" target="_blank" class="share-btn facebook"><i class="fab fa-facebook-f"></i><span>Share</span></a>
+            <a href="https://twitter.com/intent/tweet?url=https://tbanewsnetwork.com&text=Latest%20news%20from%20TBA%20News%20Network" target="_blank" class="share-btn twitter"><i class="fab fa-twitter"></i><span>Tweet</span></a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://tbanewsnetwork.com" target="_blank" class="share-btn linkedin"><i class="fab fa-linkedin-in"></i><span>Post</span></a>
+            <a href="https://www.instagram.com/tbanewsnetwork" target="_blank" class="share-btn instagram"><i class="fab fa-instagram"></i><span>Instagram</span></a>
+            <a href="https://www.tiktok.com/@tbanewsnetwork" target="_blank" class="share-btn tiktok"><i class="fab fa-tiktok"></i><span>TikTok</span></a>
+            <a href="https://youtube.com/@tbanewsnetwork" target="_blank" class="share-btn youtube"><i class="fab fa-youtube"></i><span>YouTube</span></a>
+        </div>
+        
         <div class="grid">
           
            <!-- TBA NEWS: LIBERIA LATEST NEWS - EMBEDDED VIDEO -->
@@ -145,14 +157,34 @@
                 <!-- Watch more context link -->
                 <p><em>📺 Watch the full report and analysis in the video above as Press Secretary Kula Fofana addresses the controversy.</em></p>
                 
+                <!-- Social Share Buttons for this article -->
+                <div class="social-share">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.o25up6qjcd0c" target="_blank" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/intent/tweet?url=https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.o25up6qjcd0c&text=Institutional%20Tensions%20Flare%20in%20Liberia%20-%20TBA%20News" target="_blank" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.o25up6qjcd0c" target="_blank" class="share-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/tbanewsnetwork" target="_blank" class="share-btn instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@tbanewsnetwork" target="_blank" class="share-btn tiktok"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://youtube.com/@tbanewsnetwork" target="_blank" class="share-btn youtube"><i class="fab fa-youtube"></i></a>
+                </div>
+                
                 <a class="read-more" href="https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.o25up6qjcd0c" target="_blank">Read Full Story →</a>
             </div>
           
             <!-- Liberian Nurses Article -->
             <div class="card">
-                <img src="bongcounty.png" alt="Phebe Hospital">
+                <img src="images/bongcounty.png" alt="Phebe Hospital">
                 <h3>Liberian Nurses at Phebe Hospital Prepare for Strike</h3>
                 <p>BONG COUNTY, LIBERIA — Operations at Phebe Hospital were disrupted Friday as nurses prepared for a strike expected Monday.</p>
+                
+                <!-- Social Share Buttons for this article -->
+                <div class="social-share">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.o25up6qjcd0c" target="_blank" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/intent/tweet?url=https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.o25up6qjcd0c&text=Liberian%20Nurses%20at%20Phebe%20Hospital%20Prepare%20for%20Strike" target="_blank" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.o25up6qjcd0c" target="_blank" class="share-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/tbanewsnetwork" target="_blank" class="share-btn instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@tbanewsnetwork" target="_blank" class="share-btn tiktok"><i class="fab fa-tiktok"></i></a>
+                </div>
+                
                 <a class="read-more" href=" https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.o25up6qjcd0c" target="_blank">Read Full Story →</a>
             </div>
           
@@ -161,6 +193,15 @@
                 <img src="images/libpic.png" alt="Harvest Intercontinental Church Medical Mission in Liberia">
                 <h3>Harvest Intercontinental Church Provides Free Medical Services</h3>
                 <p>Humanitarian medical outreach providing free surgeries, consultations, and essential healthcare at JFK and Redemption Hospitals.</p>
+                
+                <!-- Social Share Buttons for this article -->
+                <div class="social-share">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://open.substack.com/pub/tbanewsnetwork/p/harvest-intercontinental-church-delivers" target="_blank" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/intent/tweet?url=https://open.substack.com/pub/tbanewsnetwork/p/harvest-intercontinental-church-delivers&text=Harvest%20Intercontinental%20Church%20Provides%20Free%20Medical%20Services%20in%20Liberia" target="_blank" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://open.substack.com/pub/tbanewsnetwork/p/harvest-intercontinental-church-delivers" target="_blank" class="share-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/tbanewsnetwork" target="_blank" class="share-btn instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+                
                 <a class="read-more" href="https://open.substack.com/pub/tbanewsnetwork/p/harvest-intercontinental-church-delivers" target="_blank">Read Full Story on Substack →</a>
             </div>
 
@@ -169,22 +210,46 @@
                 <img src="images/liberia-betting.jpg" alt="Children and betting machines in Liberia">
                 <h3>Kids as Young as 10 Caught in Liberia’s Growing Betting Boom</h3>
                 <p>Children are gambling on portable sports betting terminals and slot machines, raising serious concerns.</p>
+                
+                <!-- Social Share Buttons for this article -->
+                <div class="social-share">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://open.substack.com/pub/tbanewsnetwork" target="_blank" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/intent/tweet?url=https://open.substack.com/pub/tbanewsnetwork&text=Kids%20as%20Young%20as%2010%20Caught%20in%20Liberia%E2%80%99s%20Growing%20Betting%20Boom" target="_blank" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://open.substack.com/pub/tbanewsnetwork" target="_blank" class="share-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                
                 <a class="read-more" href="https://open.substack.com/pub/tbanewsnetwork" target="_blank">Read Full Story on Substack →</a>
             </div>
 
             <!-- Social Justice Article -->
             <div class="card">
-                <img src="iceshotgirl.png" alt="Protest">
+                <img src="images/iceshotgirl.png" alt="Protest">
                 <h3>Woman Shot in Face with Less-Lethal Round During ICE Protest Files Claim Against LAPD</h3>
                 <p>LOS ANGELES — A woman shot in the face with a less-lethal round during a protest against ICE has filed a claim against LAPD for excessive force.</p>
+                
+                <!-- Social Share Buttons for this article -->
+                <div class="social-share">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.wzj4uxxy54tj" target="_blank" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/intent/tweet?url=https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.wzj4uxxy54tj&text=Woman%20Shot%20in%20Face%20with%20Less-Lethal%20Round%20During%20ICE%20Protest%20Files%20Claim%20Against%20LAPD" target="_blank" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.wzj4uxxy54tj" target="_blank" class="share-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                
                 <a class="read-more" href="https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.wzj4uxxy54tj" target="_blank">Read Full Story →</a>
             </div>
 
             <!-- Israel Lebanon Article -->
             <div class="card">
-                <img src="strike.png" alt="Lebanon">
+                <img src="images/strike.png" alt="Lebanon">
                 <h3>Israeli Strikes Kill at Least 10 in Lebanon</h3>
                 <p>BEIRUT, LEBANON — At least 10 people were killed in Lebanon following Israeli airstrikes on multiple locations.</p>
+                
+                <!-- Social Share Buttons for this article -->
+                <div class="social-share">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.fzjnqzdxmosi" target="_blank" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/intent/tweet?url=https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.fzjnqzdxmosi&text=Israeli%20Strikes%20Kill%20at%20Least%2010%20in%20Lebanon" target="_blank" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.fzjnqzdxmosi" target="_blank" class="share-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                
                 <a class="read-more" href="https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.fzjnqzdxmosi" target="_blank">Read Full Story →</a>
             </div>
 
@@ -193,6 +258,14 @@
                 <img src="images/mexico-cartel-hero.jpg" alt="Mexico Military Operation">
                 <h3>Mexico’s Most-Wanted Drug Leader Killed in Military Operation</h3>
                 <p>MEXICO CITY, MEXICO — A military operation led to the death of Mexico’s most-wanted drug cartel leader, triggering armed clashes and warnings for US tourists.</p>
+                
+                <!-- Social Share Buttons for this article -->
+                <div class="social-share">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://thetbanewsnetwork.substack.com/p/mexico-drug-leader-killed" target="_blank" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/intent/tweet?url=https://thetbanewsnetwork.substack.com/p/mexico-drug-leader-killed&text=Mexico%E2%80%99s%20Most-Wanted%20Drug%20Leader%20Killed%20in%20Military%20Operation" target="_blank" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://thetbanewsnetwork.substack.com/p/mexico-drug-leader-killed" target="_blank" class="share-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                
                 <a class="read-more" href="https://thetbanewsnetwork.substack.com/p/mexico-drug-leader-killed" target="_blank">Read Full Story →</a>
             </div>
         </div>
@@ -204,6 +277,16 @@
     <section id="about" class="section dark">
         <div class="container narrow">
             <h2 class="section-title">DHS releases Columbia University student</h2>
+            
+            <!-- Sticky Share Buttons for this article -->
+            <div class="sticky-share">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.0" target="_blank" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/intent/tweet?url=https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.0&text=Columbia%20student%20released%20from%20ICE%20custody%20after%20Mamdani-Trump%20meeting" target="_blank" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.0" target="_blank" class="share-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/tbanewsnetwork" target="_blank" class="share-btn instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@tbanewsnetwork" target="_blank" class="share-btn tiktok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://youtube.com/@tbanewsnetwork" target="_blank" class="share-btn youtube"><i class="fab fa-youtube"></i></a>
+            </div>
             
             <p>In an early morning raid that has ignited nationwide outrage, federal agents stormed a Columbia University dormitory and detained a 29-year-old neuroscience student in front of her roommate—allegedly under the false pretense of searching for a missing child. Elmina Aghayeva, a popular social media influencer from Azerbaijan, was handcuffed and taken into ICE custody after agents reportedly posed as NYPD officers using fake badges and a phony missing persons bulletin. Her crime? A visa status the government claims was terminated nearly a decade ago. Her ordeal—from a desperate Instagram plea to a dramatic White House intervention—raises urgent questions about how far federal power will reach into the lives of international students.</p>
             
@@ -224,6 +307,13 @@
             
             <p style="color: #ccc; font-style: italic; text-align: center; margin-top: 0; margin-bottom: 25px; font-size: 0.9rem;">Watch: LiveNOW from FOX coverage of the detention and release</p>
             
+            <!-- Share buttons for this section -->
+            <div class="share-group" style="justify-content: center; margin: 30px 0;">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.0" target="_blank" class="share-btn facebook"><i class="fab fa-facebook-f"></i><span>Share on Facebook</span></a>
+                <a href="https://twitter.com/intent/tweet?url=https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.0&text=Columbia%20student%20released%20from%20ICE%20custody%20after%20Mamdani-Trump%20meeting" target="_blank" class="share-btn twitter"><i class="fab fa-twitter"></i><span>Share on Twitter</span></a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.0" target="_blank" class="share-btn linkedin"><i class="fab fa-linkedin-in"></i><span>Share on LinkedIn</span></a>
+            </div>
+            
             <div class="text-center">
                 <a href="https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.0" target="_blank" class="btn btn-secondary">Read the Full Investigation</a>
             </div>
@@ -236,6 +326,13 @@
 <section class="section dark"> 
     <div class="container">
         <h1 class="section-title">Latest Video Coverage</h1>
+        
+        <!-- Share buttons for section -->
+        <div class="share-group" style="justify-content: center; margin-bottom: 30px;">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://tbanewsnetwork.com#video" target="_blank" class="share-btn facebook"><i class="fab fa-facebook-f"></i><span>Share</span></a>
+            <a href="https://twitter.com/intent/tweet?url=https://tbanewsnetwork.com&text=Latest%20Video%20Coverage%20from%20TBA%20News" target="_blank" class="share-btn twitter"><i class="fab fa-twitter"></i><span>Tweet</span></a>
+        </div>
+        
         <h2 class="sub-video-title">Mayor Mamdani Addresses Snow Blizzard</h2>
 
         <div class="video-wrapper">
@@ -247,6 +344,13 @@
         </div>
 
         <p>Mayor Mamdani speaks on emergency preparedness, city services, and public safety during the snowstorm.</p>
+        
+        <!-- Share buttons for this video -->
+        <div class="social-share" style="justify-content: center; margin: 20px 0;">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://youtu.be/fjA6wEQ76cM" target="_blank" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/intent/tweet?url=https://youtu.be/fjA6wEQ76cM&text=Mayor%20Mamdani%20Addresses%20Snow%20Blizzard" target="_blank" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://youtu.be/fjA6wEQ76cM" target="_blank" class="share-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+        </div>
 
         <a href="https://thetbanewsnetwork.substack.com" target="_blank" class="read-more">
             Read Full Report →
@@ -267,6 +371,13 @@
         </div>
 
         <p>Mayor Mamdani provides updates on snow removal, emergency response, and city safety during the snowstorm.</p>
+        
+        <!-- Share buttons for this video -->
+        <div class="social-share" style="justify-content: center; margin: 20px 0;">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://youtu.be/AKsD8VW0jO0" target="_blank" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/intent/tweet?url=https://youtu.be/AKsD8VW0jO0&text=PBA%20calling%20for%20arrests%20after%20snowballs%20thrown%20at%20NYPD%20officers" target="_blank" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://youtu.be/AKsD8VW0jO0" target="_blank" class="share-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+        </div>
 
         <a href="https://thetbanewsnetwork.substack.com" target="_blank" class="read-more">
             Read Full Report →
@@ -276,6 +387,13 @@
   
    <!-- Added content immediately under H2 -->
         <h3>New York Governor Analysis</h3>
+        
+        <!-- Share buttons for governor section -->
+        <div class="share-group" style="justify-content: center; margin: 20px 0;">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://tbanewsnetwork.com#governor" target="_blank" class="share-btn facebook"><i class="fab fa-facebook-f"></i><span>Share</span></a>
+            <a href="https://twitter.com/intent/tweet?url=https://tbanewsnetwork.com&text=New%20York%20Governor%20Analysis%20from%20TBA%20News" target="_blank" class="share-btn twitter"><i class="fab fa-twitter"></i><span>Tweet</span></a>
+        </div>
+        
         <!-- First Hochul Video -->
         <div class="video-wrapper" style="margin-top:20px;">
             <iframe 
@@ -302,6 +420,16 @@
     <div class="container">
         <h2 class="section-title">Official TBA News Store</h2>
         <p class="section-subtitle">Support independent journalism with our merchandise</p>
+        
+        <!-- Share store section -->
+        <div class="social-share" style="justify-content: center; margin-bottom: 30px;">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://tbanewsnetwork.com#store" target="_blank" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/intent/tweet?url=https://tbanewsnetwork.com&text=Support%20TBA%20News%20with%20official%20merchandise" target="_blank" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://tbanewsnetwork.com" target="_blank" class="share-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/tbanewsnetwork" target="_blank" class="share-btn instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@tbanewsnetwork" target="_blank" class="share-btn tiktok"><i class="fab fa-tiktok"></i></a>
+        </div>
+        
         <div id="etsyGrid" class="etsy-grid"></div>
     </div>
 </section>
@@ -311,9 +439,23 @@
     <div class="container narrow">
         <h2 class="section-title">About TBA News Network</h2>
         
+        <!-- Sticky share for about section -->
+        <div class="sticky-share">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://tbanewsnetwork.com#about" target="_blank" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/intent/tweet?url=https://tbanewsnetwork.com&text=About%20TBA%20News%20Network%20-%20Independent%20Journalism" target="_blank" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://tbanewsnetwork.com" target="_blank" class="share-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        
         <p>TBA News Network is an independent, investigative media organization founded by journalist SDWJR. We were established to fill the critical void left by mainstream media—a space where stories of systemic injustice, institutional abuse, and violations of public trust often go untold. We operate on a simple but radical belief: journalism is most valuable when it challenges power, not when it protects it. We serve as a watchdog for the voiceless, providing a platform for fearless reporting on the issues that shape our world.</p>
         
         <p>With a dedicated focus on civil rights, policing, governance, and corruption, TBA News Network digs deep into the systems that affect marginalized communities across the United States, Africa, and the global Black diaspora. We are not just reporters; we are truth-seekers committed to transparency. We prioritize the public interest over political access, corporate approval, or personal comfort. At TBA News Network, we don't just report the news—we investigate the truth behind it, amplifying underreported stories and voices excluded from dominant narratives.</p>
+        
+        <!-- Share about section -->
+        <div class="share-group" style="justify-content: center; margin: 30px 0;">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://tbanewsnetwork.com#about" target="_blank" class="share-btn facebook"><i class="fab fa-facebook-f"></i><span>Share TBA News</span></a>
+            <a href="https://twitter.com/intent/tweet?url=https://tbanewsnetwork.com&text=TBA%20News%20Network%20-%20Independent%20Journalism" target="_blank" class="share-btn twitter"><i class="fab fa-twitter"></i><span>Tweet about us</span></a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://tbanewsnetwork.com" target="_blank" class="share-btn linkedin"><i class="fab fa-linkedin-in"></i><span>Follow on LinkedIn</span></a>
+        </div>
         
         <div class="text-center">
             <a href="https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.0" target="_blank" class="btn btn-secondary">Read More</a>
@@ -325,6 +467,13 @@
 <section id="contact" class="section">
     <div class="container narrow">
         <h2 class="section-title">Contact / Send a Tip</h2>
+        
+        <!-- Share contact section -->
+        <div class="social-share" style="justify-content: center; margin-bottom: 30px;">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://tbanewsnetwork.com#contact" target="_blank" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/intent/tweet?url=https://tbanewsnetwork.com&text=Contact%20TBA%20News%20Network%20to%20send%20a%20tip" target="_blank" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+        
         <div class="contact-card">
             <p class="contact-email">📧 tbanewsnetwork@gmx.com</p>
             <p class="contact-note">Confidential sources are protected.</p>
@@ -335,10 +484,44 @@
 <!-- Footer -->
 <footer class="footer">
     <div class="container">
+        <!-- Footer social links -->
+        <div class="social-share" style="justify-content: center; margin-bottom: 20px;">
+            <a href="https://facebook.com/tbanewsnetwork" target="_blank" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/tbanewsnetwork" target="_blank" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com/company/tbanewsnetwork" target="_blank" class="share-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://instagram.com/tbanewsnetwork" target="_blank" class="share-btn instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://tiktok.com/@tbanewsnetwork" target="_blank" class="share-btn tiktok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://youtube.com/@tbanewsnetwork" target="_blank" class="share-btn youtube"><i class="fab fa-youtube"></i></a>
+            <a href="https://whatsapp.com/channel/0029Va8z5z5z5z5z5z5z5z5" target="_blank" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://t.me/tbanewsnetwork" target="_blank" class="share-btn telegram"><i class="fab fa-telegram-plane"></i></a>
+        </div>
         <p>© 2026 TBA News Network | Independent Journalism</p>
     </div>
 </footer>
 
+<!-- External JavaScript -->
 <script src="script.js"></script>
+
+<!-- Additional inline script for share tracking -->
+<script>
+// Share tracking functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Track share clicks
+    document.querySelectorAll('.share-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            const platform = this.classList.contains('facebook') ? 'Facebook' :
+                            this.classList.contains('twitter') ? 'Twitter' :
+                            this.classList.contains('linkedin') ? 'LinkedIn' :
+                            this.classList.contains('instagram') ? 'Instagram' :
+                            this.classList.contains('tiktok') ? 'TikTok' :
+                            this.classList.contains('youtube') ? 'YouTube' : 'Other';
+            
+            console.log(`Shared on ${platform}`);
+            // You can add Google Analytics or other tracking here
+        });
+    });
+});
+</script>
+
 </body>
 </html>
