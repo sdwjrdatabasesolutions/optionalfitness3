@@ -24,9 +24,6 @@ body {
     line-height: 1.6;
 }
 
-
-
-
 /* =====================
    Containers & Layout
 ===================== */
@@ -161,7 +158,10 @@ body {
     gap: 15px;
 }
 
-.logo img { height: 50px; border-radius: 50%; }
+.logo img { 
+    height: 50px; 
+    border-radius: 50%; 
+}
 
 .logo-text {
     font-weight: 700;
@@ -441,6 +441,82 @@ body {
 }
 
 /* =====================
+   Social Share Buttons
+===================== */
+.social-share {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0 10px;
+    flex-wrap: wrap;
+}
+
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+
+.share-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+.share-btn.facebook { background: #1877f2; }
+.share-btn.twitter { background: #1da1f2; }
+.share-btn.linkedin { background: #0077b5; }
+.share-btn.instagram { background: linear-gradient(45deg, #f09433, #d62976, #962fbf, #4f5bd5); }
+.share-btn.tiktok { background: #000000; }
+.share-btn.youtube { background: #ff0000; }
+.share-btn.whatsapp { background: #25d366; }
+.share-btn.telegram { background: #0088cc; }
+
+.share-btn i {
+    font-size: 16px;
+}
+
+/* For larger share buttons in articles */
+.share-group {
+    display: flex;
+    gap: 12px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.share-group .share-btn {
+    width: auto;
+    padding: 8px 16px;
+    border-radius: 30px;
+    gap: 8px;
+}
+
+.share-group .share-btn i {
+    font-size: 18px;
+}
+
+.share-group .share-btn span {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Sticky share bar for articles */
+.sticky-share {
+    position: sticky;
+    top: 200px;
+    float: left;
+    margin-left: -60px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* =====================
    ETSY ITEM
 ===================== */
 .etsy-item {
@@ -593,6 +669,46 @@ body {
 }
 
 /* =====================
+   Video Player
+===================== */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border: 0;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* =====================
    FOOTER
 ===================== */
 .footer {
@@ -619,6 +735,12 @@ body {
 /* =====================
    RESPONSIVE DESIGN
 ===================== */
+@media (max-width: 1200px) {
+    .sticky-share {
+        display: none;
+    }
+}
+
 @media (max-width: 1024px) {
     .grid, .etsy-grid {
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -768,23 +890,5 @@ body {
 
 .donation-ribbon.hidden + .navbar + .ticker-wrap + .hero {
     margin-top: 80px;
-}
-
-/* Video Player */
-.video-wrapper{
-    position:relative;
-    padding-bottom:56.25%;
-    height:0;
-    overflow:hidden;
-    border-radius:12px;
-}
-
-.video-wrapper iframe{
-    position:absolute;
-    width:100%;
-    height:100%;
-    left:0;
-    top:0;
-    border:0;
 }
 
