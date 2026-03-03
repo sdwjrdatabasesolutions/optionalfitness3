@@ -101,9 +101,9 @@
   if(etsyGrid){
     const products=[
       {name:'100+ Enterprise AI Consulting Prompts',desc:'Enterprise-Level AI Strategy Toolkit for Business Leaders',price:'View on Etsy',img:'images/consultation.PNG',url:'https://www.etsy.com/listing/4417375114/100-enterprise-ai-consulting-prompts'},
-      {name:'TBA News T-Shirt',desc:'Show your support for independent journalism',price:'$24.99',img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=500',url:'https://www.etsy.com/shop/YOURSTORENAME'},
-      {name:'Press Freedom Hoodie',desc:'Wear the cause — warm and bold',price:'$49.99',img:'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=500',url:'https://www.etsy.com/shop/YOURSTORENAME'},
-      {name:'Truth Seeker Cap',desc:'Cap with TBA News branding',price:'$19.99',img:'https://images.unsplash.com/photo-1588850561391-1e2e7a2a9a3b?q=80&w=500',url:'https://www.etsy.com/shop/YOURSTORENAME'}
+     {name:'Enterprise Restaurant Database',desc:'SQL System with Mobile App Backend, and Security & Analytics',price:'$250.00',img:'images/codebook.PNG',url:'https://www.etsy.com/listing/4416564491/enterprise-restaurant-database-sql?ref=shop_home_active_5&dd=1&logging_key=a98819aa26851f0800d85e843825097e12437668%3A4416564491'},
+      {name:'Restaurant Management Database SYSTEM',desc:'Complete SQL Database with Mobile App & Analytics',price:'$199.00',img:'images/codebook2.jpg',url:'https://www.etsy.com/listing/4416600276/restaurant-management-database-system?ref=shop_home_feat_2&dd=1&logging_key=d330f3a4df351009e54489e6f680b956da7c8ad9%3A4416600276'},
+      {name:'SQL Database Template for Restaurants',desc:'Inventory Tracking, Customer Management & Staff Scheduling',price:'$99.00',img:'https://images.unsplash.com/photo-1588850561391-1e2e7a2a9a3b?q=80&w=500',url:'https://www.etsy.com/listing/4416400325/sql-database-template-for-restaurants?ref=shop_home_active_6&dd=1&logging_key=e055cfa1be79803b9b812a43f687be4840f19e27%3A4416400325'}
     ];
     products.forEach(p=>{
       const div=document.createElement('div');
