@@ -1,189 +1,164 @@
-// script.js
-document.addEventListener('DOMContentLoaded', function() {
-    // ===== MOBILE MENU TOGGLE =====
-    const menuBtn = document.getElementById('menuBtn');
-    const navLinks = document.getElementById('navLinks');
+(function(){
+  // TICKER
+  const items=[
+    "Mayor Mandani expands press access at City Hall",
+    "TBA News Network launches independent journalism platform",
+    "NYC housing debate intensifies after policy announcement",
+    "Liberian nurses prepare for strike at Phebe Hospital",
+    "LAPD faces lawsuit over protest injury",
+    "Israeli strikes impact Lebanon communities",
+    "U.S.–Israeli strikes kill Khamenei — Iran in political crisis",
+    "FBI investigates Austin bar shooting as terrorism",
+    "Columbia student released from ICE after Mamdani-Trump meeting"
+  ];
+  const t=document.getElementById('tickerContent');
+  if(t) t.innerText=items.join(' ✦ ');
 
-    if (menuBtn && navLinks) {
-        menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
-
-        // Close menu when clicking a link
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => navLinks.classList.remove('active'));
-        });
-    }
-
-    // ===== SMOOTH SCROLL =====
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
+  // RIBBON CLOSE
+  const ribbon=document.getElementById('ribbon');
+  const ribbonClose=document.getElementById('ribbonClose');
+  const navbar=document.querySelector('.navbar');
+  const tickerBar=document.querySelector('.ticker-bar');
+  const pagePush=document.querySelector('.page-push');
+  if(ribbonClose){
+    ribbonClose.addEventListener('click',()=>{
+      ribbon.classList.add('hidden');
+      navbar.style.top='0';
+      if(tickerBar) tickerBar.style.top='62px';
+      if(pagePush) pagePush.style.height='102px';
     });
+  }
 
-    // ===== NAVBAR SHADOW ON SCROLL =====
-    const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-        if (!navbar) return;
-        navbar.style.boxShadow = window.scrollY > 20
-            ? '0 4px 20px rgba(0, 0, 0, 0.1)'
-            : '0 2px 20px rgba(0, 0, 0, 0.05)';
+  // HAMBURGER
+  const hamburger=document.getElementById('hamburger');
+  const navMobile=document.getElementById('navMobile');
+  if(hamburger&&navMobile){
+    hamburger.addEventListener('click',()=>{
+      navMobile.classList.toggle('open');
+      hamburger.innerHTML=navMobile.classList.contains('open')
+        ?'<i class="fas fa-times"></i>'
+        :'<i class="fas fa-bars"></i>';
     });
+    navMobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+      navMobile.classList.remove('open');
+      hamburger.innerHTML='<i class="fas fa-bars"></i>';
+    }));
+  }
 
-    // ===== BREAKING NEWS TICKER =====
-    const tickerData = [
-        "Mayor Mandani expands press access at City Hall",
-        "TBA News Network launches independent journalism platform",
-        "NYC housing debate intensifies after policy announcement",
-        "Liberian nurses prepare for strike at Phebe Hospital",
-        "LAPD faces lawsuit over protest injury",
-        "Israeli strikes impact Lebanon communities"
+  // SMOOTH SCROLL + NAV ACTIVE
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',function(e){
+      const target=document.querySelector(this.getAttribute('href'));
+      if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'});}
+    });
+  });
+
+  // NAVBAR SCROLL SHADOW + ACTIVE NAV
+  const navLinks=document.querySelectorAll('.nav-links a, .nav-mobile a');
+  window.addEventListener('scroll',()=>{
+    const nb=document.querySelector('.navbar');
+    if(nb) nb.style.boxShadow=window.scrollY>10?'0 4px 24px rgba(0,0,0,.5)':'';
+    const sp=window.scrollY+120;
+    document.querySelectorAll('section[id]').forEach(sec=>{
+      if(sp>=sec.offsetTop&&sp<sec.offsetTop+sec.offsetHeight){
+        navLinks.forEach(l=>{
+          l.classList.remove('active');
+          if(l.getAttribute('href')==='#'+sec.id) l.classList.add('active');
+        });
+      }
+    });
+  });
+
+  // FADE-IN OBSERVER
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting) e.target.classList.add('visible');});
+  },{threshold:0.08});
+  document.querySelectorAll('.fadein').forEach(el=>io.observe(el));
+
+  // POPUPS
+  function showPopup(id,delay,storageKey){
+    const pop=document.getElementById(id);
+    if(!pop||localStorage.getItem(storageKey)) return;
+    setTimeout(()=>pop.classList.add('active'),delay);
+  }
+  showPopup('substackPopup',6000,'subClosed');
+  showPopup('donatePopup',14000,'donClosed');
+  document.getElementById('popupClose')?.addEventListener('click',()=>{
+    document.getElementById('substackPopup').classList.remove('active');
+    localStorage.setItem('subClosed','1');
+  });
+  document.getElementById('donateClose')?.addEventListener('click',()=>{
+    document.getElementById('donatePopup').classList.remove('active');
+    localStorage.setItem('donClosed','1');
+  });
+  window.addEventListener('click',e=>{
+    if(e.target.id==='substackPopup') e.target.classList.remove('active');
+    if(e.target.id==='donatePopup') e.target.classList.remove('active');
+  });
+
+  // ETSY GRID
+  const etsyGrid=document.getElementById('etsyGrid');
+  if(etsyGrid){
+    const products=[
+      {name:'100+ Enterprise AI Consulting Prompts',desc:'Enterprise-Level AI Strategy Toolkit for Business Leaders',price:'View on Etsy',img:'images/consultation.PNG',url:'https://www.etsy.com/listing/4417375114/100-enterprise-ai-consulting-prompts'},
+      {name:'TBA News T-Shirt',desc:'Show your support for independent journalism',price:'$24.99',img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=500',url:'https://www.etsy.com/shop/YOURSTORENAME'},
+      {name:'Press Freedom Hoodie',desc:'Wear the cause — warm and bold',price:'$49.99',img:'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=500',url:'https://www.etsy.com/shop/YOURSTORENAME'},
+      {name:'Truth Seeker Cap',desc:'Cap with TBA News branding',price:'$19.99',img:'https://images.unsplash.com/photo-1588850561391-1e2e7a2a9a3b?q=80&w=500',url:'https://www.etsy.com/shop/YOURSTORENAME'}
     ];
-    const ticker = document.getElementById("tickerContent");
-    if (ticker) ticker.innerText = tickerData.join(" ✦ ");
-
-    // ===== POPUPS =====
-    const substackPopup = document.getElementById("substackPopup");
-    const donatePopup = document.getElementById("donatePopup");
-    const popupClose = document.getElementById("popupClose");
-    const donateClose = document.getElementById("donateClose");
-    const ribbon = document.getElementById("donationRibbon");
-    const ribbonClose = document.getElementById("ribbonClose");
-
-    function showPopup(popup, delay = 5000, duration = 3000, storageKey) {
-        if (!popup || (storageKey && localStorage.getItem(storageKey))) return;
-        setTimeout(() => {
-            popup.classList.add('active');
-            setTimeout(() => popup.classList.remove('active'), duration);
-        }, delay);
-    }
-
-    showPopup(substackPopup, 5000, 3000, 'popupClosed');
-    showPopup(donatePopup, 12000, 3000, 'donateClosed');
-
-    if (popupClose) popupClose.addEventListener('click', () => {
-        substackPopup.classList.remove('active');
-        localStorage.setItem('popupClosed', 'true');
+    products.forEach(p=>{
+      const div=document.createElement('div');
+      div.className='etsy-card fadein';
+      div.innerHTML=`<a href="${p.url}" target="_blank"><img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x200?text=TBA+Store'"><h3>${p.name}</h3><p>${p.desc}</p><span class="price">${p.price}</span></a>`;
+      etsyGrid.appendChild(div);
+      io.observe(div);
     });
+  }
 
-    if (donateClose) donateClose.addEventListener('click', () => {
-        donatePopup.classList.remove('active');
-        localStorage.setItem('donateClosed', 'true');
+  // IMAGE ERROR FALLBACK
+  document.querySelectorAll('img').forEach(img=>{
+    img.addEventListener('error',()=>{
+      if(!img.dataset.fallback){img.dataset.fallback='1';img.src='https://via.placeholder.com/600x400?text=TBA+News';}
     });
+  });
 
-    // Close popups when clicking outside
-    window.addEventListener('click', (e) => {
-        if (e.target === substackPopup) substackPopup.classList.remove('active');
-        if (e.target === donatePopup) donatePopup.classList.remove('active');
+  // SHARE TRACKING
+  document.addEventListener('click',e=>{
+    const btn=e.target.closest('.sh-btn,.soc-btn');
+    if(!btn) return;
+    const platform=['fb','facebook'].some(c=>btn.classList.contains(c))?'Facebook':
+                   ['tw','twitter'].some(c=>btn.classList.contains(c))?'Twitter':
+                   ['li','linkedin'].some(c=>btn.classList.contains(c))?'LinkedIn':
+                   btn.classList.contains('ig')?'Instagram':
+                   btn.classList.contains('tt')?'TikTok':
+                   btn.classList.contains('yt')?'YouTube':
+                   btn.classList.contains('wa')?'WhatsApp':
+                   btn.classList.contains('tg')?'Telegram':'Other';
+    console.log('Shared on',platform);
+  });
+
+  // ANIMATE HERO STATS COUNTER
+  function animateCounter(el,target){
+    const suffix=el.textContent.replace(/[0-9]/g,'');
+    let cur=0;const inc=target/50;
+    const t=setInterval(()=>{
+      cur=Math.min(cur+inc,target);
+      el.textContent=Math.round(cur)+suffix;
+      if(cur>=target) clearInterval(t);
+    },30);
+  }
+  const statsObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.querySelectorAll('.num').forEach(n=>{
+          const raw=n.textContent;
+          const num=parseInt(raw);
+          if(!isNaN(num)) animateCounter(n,num);
+        });
+        statsObs.unobserve(e.target);
+      }
     });
+  },{threshold:.5});
+  const heroStats=document.querySelector('.hero-stats');
+  if(heroStats) statsObs.observe(heroStats);
 
-    // ===== DONATION RIBBON =====
-    if (ribbon && ribbonClose) {
-        ribbonClose.addEventListener('click', () => {
-            ribbon.style.display = 'none';
-            ribbon.classList.add('hidden');
-        });
-    }
-
-    function trackDonationClicks() {
-        document.querySelectorAll('a[href*="cash.app"]').forEach(link => {
-            link.addEventListener('click', () => {
-                console.log('Donation link clicked');
-                // Analytics code can be added here
-            });
-        });
-    }
-    trackDonationClicks();
-
-    // ===== SUBSTACK CLICK TRACKING =====
-    function trackSubstackClick(btnId) {
-        const btn = document.getElementById(btnId);
-        if (btn) btn.addEventListener('click', () => console.log(`${btnId} clicked`));
-    }
-    trackSubstackClick('substackBtn');
-    trackSubstackClick('popupSubstackBtn');
-
-    // ===== ETSY GRID =====
-    const etsyGrid = document.getElementById('etsyGrid');
-    if (etsyGrid) {
-        const products = [
-            { name: 'TBA News T-Shirt', price: '$24.99', img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=500' },
-            { name: 'Press Freedom Hoodie', price: '$49.99', img: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=500' },
-            { name: 'Journalist Mug', price: '$14.99', img: 'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?q=80&w=500' },
-            { name: 'Truth Seeker Cap', price: '$19.99', img: 'https://images.unsplash.com/photo-1588850561391-1e2e7a2a9a3b?q=80&w=500' }
-        ];
-
-        products.forEach(product => {
-            const item = document.createElement('a');
-            item.href = 'https://www.etsy.com/shop/YOURSTORENAME';
-            item.target = '_blank';
-            item.className = 'etsy-item';
-            item.innerHTML = `
-                <img src="${product.img}" alt="${product.name}" loading="lazy">
-                <p>${product.name}</p>
-                <small>${product.price}</small>
-            `;
-            etsyGrid.appendChild(item);
-        });
-    }
-
-    // ===== FADE-IN SECTIONS ON SCROLL =====
-    const sections = document.querySelectorAll('.section');
-    sections.forEach(section => section.classList.add('fade-in'));
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-    }, { threshold: 0.1 });
-
-    sections.forEach(section => observer.observe(section));
-
-    // ===== IMAGE ERROR HANDLING =====
-    document.querySelectorAll('img').forEach(img => {
-        img.addEventListener('error', () => {
-            img.src = 'https://via.placeholder.com/500x300?text=Image+Not+Found';
-        });
-    });
-
-    // ===== ACTIVE NAV LINK ON SCROLL =====
-    function updateActiveNavLink() {
-        const scrollPosition = window.scrollY + 100;
-        document.querySelectorAll('section[id]').forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionBottom = sectionTop + section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-            
-            if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                document.querySelectorAll('.nav-links a').forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === '#' + sectionId) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
-    }
-    window.addEventListener('scroll', updateActiveNavLink);
-
-    // ===== SHARE BUTTON TRACKING =====
-    document.querySelectorAll('.share-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            const platform = this.classList.contains('facebook') ? 'Facebook' :
-                            this.classList.contains('twitter') ? 'Twitter' :
-                            this.classList.contains('linkedin') ? 'LinkedIn' :
-                            this.classList.contains('instagram') ? 'Instagram' :
-                            this.classList.contains('tiktok') ? 'TikTok' :
-                            this.classList.contains('youtube') ? 'YouTube' : 
-                            this.classList.contains('whatsapp') ? 'WhatsApp' :
-                            this.classList.contains('telegram') ? 'Telegram' : 'Other';
-            
-            console.log(`Shared on ${platform}`);
-            // You can add Google Analytics here
-            // gtag('event', 'share', { 'platform': platform });
-        });
-    });
-});
+})();
