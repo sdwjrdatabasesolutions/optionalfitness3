@@ -892,3 +892,55 @@ body {
     margin-top: 80px;
 }
 
+/* Add these to your cleaned CSS */
+
+/* Social follow bar */
+.social-follow-bar {
+    background: var(--dark-gray);
+    padding: 10px 0;
+    border-bottom: 2px solid var(--news-red);
+    margin-top: 132px;
+}
+
+.social-follow-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.social-follow-label {
+    color: white;
+    font-weight: 600;
+}
+
+/* Sub video title */
+.sub-video-title {
+    font-size: 1.8rem;
+    margin: 40px 0 20px;
+    text-align: center;
+}
+
+/* Price tag for Etsy */
+.price {
+    display: inline-block;
+    background: var(--news-red);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+/* Fix for any remaining inline styles */
+.contact-email {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.contact-note {
+    color: var(--medium-gray);
+}
+
