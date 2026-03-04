@@ -97,22 +97,36 @@
   });
 
   // ETSY GRID
-  const etsyGrid=document.getElementById('etsyGrid');
-  if(etsyGrid){
-    const products=[
-      {name:'100+ Enterprise AI Consulting Prompts',desc:'Enterprise-Level AI Strategy Toolkit for Business Leaders',price:'View on Etsy',img:'images/consultation.PNG',url:'https://www.etsy.com/listing/4417375114/100-enterprise-ai-consulting-prompts'},
-     {name:'Enterprise Restaurant Database',desc:'SQL System with Mobile App Backend, and Security & Analytics',price:'$250.00',img:'images/codebook.PNG',url:'https://www.etsy.com/listing/4416564491/enterprise-restaurant-database-sql?ref=shop_home_active_5&dd=1&logging_key=a98819aa26851f0800d85e843825097e12437668%3A4416564491'},
-      {name:'Restaurant Management Database SYSTEM',desc:'Complete SQL Database with Mobile App & Analytics',price:'$199.00',img:'images/codebook2.jpg',url:'https://www.etsy.com/listing/4416600276/restaurant-management-database-system?ref=shop_home_feat_2&dd=1&logging_key=d330f3a4df351009e54489e6f680b956da7c8ad9%3A4416600276'},
-      {name:'SQL Database Template for Restaurants',desc:'Inventory Tracking, Customer Management & Staff Scheduling',price:'$99.00',img:'https://images.unsplash.com/photo-1588850561391-1e2e7a2a9a3b?q=80&w=500',url:'https://www.etsy.com/listing/4416400325/sql-database-template-for-restaurants?ref=shop_home_active_6&dd=1&logging_key=e055cfa1be79803b9b812a43f687be4840f19e27%3A4416400325'}
-    ];
-    products.forEach(p=>{
-      const div=document.createElement('div');
-      div.className='etsy-card fadein';
-      div.innerHTML=`<a href="${p.url}" target="_blank"><img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x200?text=TBA+Store'"><h3>${p.name}</h3><p>${p.desc}</p><span class="price">${p.price}</span></a>`;
-      etsyGrid.appendChild(div);
-      io.observe(div);
-    });
-  }
+const products=[
+  {
+    name:'100+ Enterprise AI Consulting Prompts',
+    desc:'Enterprise-Level AI Strategy Toolkit for Business Leaders',
+    price:'View on Etsy',
+    img:'images/consultation.PNG',
+    url:'https://www.etsy.com/listing/4417375114/100-enterprise-ai-consulting-prompts'
+  },
+  {
+    name:'Enterprise Restaurant Database',
+    desc:'SQL System with Mobile App Backend, and Security & Analytics',
+    price:'$250.00',
+    img:'images/codebook.PNG',
+    url:'https://www.etsy.com/listing/4416564491/enterprise-restaurant-database-sql'
+  },
+  {
+    name:'Restaurant Management Database SYSTEM',
+    desc:'Complete SQL Database with Mobile App & Analytics',
+    price:'$199.00',
+    img:'images/codebook2.jpg',
+    url:'https://www.etsy.com/listing/4416600276/restaurant-management-database-system'
+  },
+ {
+  name:'SQL Database Template for Restaurants',
+  desc:'Inventory Tracking, Customer Management & Staff Scheduling',
+  price:'$99.00',
+  img:'images/codebook3.PNG',
+  url:'https://www.etsy.com/listing/4416400325/sql-database-template-for-restaurants'
+},
+];
 
   // IMAGE ERROR FALLBACK
   document.querySelectorAll('img').forEach(img=>{
