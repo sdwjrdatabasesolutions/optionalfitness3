@@ -174,7 +174,7 @@ body{font-family:var(--font-body);background:var(--off-white);color:var(--dark);
 .card:hover .card-img img{transform:scale(1.04)}
 .card-img{overflow:hidden;position:relative}
 .card-img img{width:100%;height:220px;object-fit:cover;transition:.4s;display:block}
-.card.card-big .card-img img{height:420px}
+.card.card-big .card-img img{height:300px}
 .card-img .cat-badge{
   position:absolute;top:12px;left:12px;
   background:var(--red);color:#fff;font-family:var(--font-ui);
@@ -188,7 +188,7 @@ body{font-family:var(--font-body);background:var(--off-white);color:var(--dark);
 .card-body{padding:18px 20px 22px;flex:1;display:flex;flex-direction:column}
 .card-meta{font-family:var(--font-ui);font-size:.68rem;color:var(--red);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
 .card h3{font-family:var(--font-head);font-size:1.15rem;font-weight:700;line-height:1.35;color:var(--dark);margin-bottom:10px}
-.card.card-big h3{font-size:1.5rem}
+.card.card-big h3{font-size:1.3rem}
 .card p.excerpt{font-size:.85rem;color:#555;line-height:1.65;margin-bottom:14px;-webkit-line-clamp:3;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden}
 .card .read-more{
   margin-top:auto;color:var(--red);font-family:var(--font-ui);font-size:.72rem;
