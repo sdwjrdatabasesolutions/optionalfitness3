@@ -380,6 +380,10 @@ body{font-family:var(--font-body);background:var(--off-white);color:var(--dark);
   .btn{width:100%;justify-content:center}
   .sec-head{flex-direction:column;align-items:flex-start}
 }
+  @media(max-width:768px){
+  .card[style*="flex-direction:row"]{flex-direction:column!important}
+  .card[style*="flex-direction:row"] > div:first-child{flex:0 0 auto!important;max-width:100%!important;min-height:220px!important}
+}
 </style>
 </head>
 <body>
@@ -512,6 +516,42 @@ body{font-family:var(--font-body);background:var(--off-white);color:var(--dark);
       </div>
       <a href="https://substack.com/@tbanewsnetwork" target="_blank" class="sec-more">All Stories <i class="fas fa-arrow-right"></i></a>
     </div>
+    <!-- ADD NEW CONTENT-->
+    <!-- LARIJANI / SOLEIMANI FEATURED CARD -->
+    <div class="card fadein" style="margin-bottom:2px;display:flex;flex-direction:row;align-items:stretch;background:#fff;overflow:hidden;border-left:5px solid var(--red)">
+      <div style="flex:0 0 360px;max-width:360px;position:relative;overflow:hidden">
+        <img src="https://images.unsplash.com/photo-1580060839134-75a5edca2e99?q=80&w=800" alt="Iran Security Chiefs Killed" style="width:100%;height:100%;object-fit:cover;display:block;min-height:280px;transition:.4s">
+        <span class="cat-badge" style="position:absolute;top:12px;left:12px">Iran — Confirmed</span>
+        <span class="time-badge" style="position:absolute;bottom:10px;right:10px">Mar 2026</span>
+      </div>
+      <div style="flex:1;padding:28px 32px;display:flex;flex-direction:column;justify-content:center">
+        <div class="card-meta" style="margin-bottom:10px">
+          <span class="live-indicator"><span class="live-dot"></span> Developing Story</span>
+          &nbsp;·&nbsp; By SDWJR | TBA News Network
+        </div>
+        <h3 style="font-family:var(--font-head);font-size:1.55rem;font-weight:900;line-height:1.25;color:var(--dark);margin-bottom:14px">
+          Iran Confirms Security Chief Larijani and Basij Commander Soleimani Killed in Strikes
+        </h3>
+        <p style="font-size:.9rem;color:#444;line-height:1.75;margin-bottom:10px">
+          <strong>TEHRAN —</strong> The Iranian government has officially confirmed the deaths of two of its most powerful internal security figures: Ali Larijani, the longtime security chief and former parliament speaker who served as one of Supreme Leader Khamenei's most trusted advisors, and Gholamreza Soleimani, the commanding general of the Basij — Iran's feared internal paramilitary militia responsible for suppressing domestic dissent.
+        </p>
+        <p style="font-size:.9rem;color:#444;line-height:1.75;margin-bottom:10px">
+          The confirmed killings come in the wake of coordinated U.S.–Israeli strikes that have now decapitated Iran's military and political command structure. Larijani's death removes a key architect of Iran's regional strategy, while the loss of Basij commander Soleimani is expected to send shockwaves through Iran's domestic security apparatus — the very force used to crush the 2019 and 2022 protest uprisings.
+        </p>
+        <p style="font-size:.9rem;color:#444;line-height:1.75;margin-bottom:18px">
+          Iranian state media released a brief official statement confirming both deaths but offered no details on location or timing of the strikes. Western intelligence officials, speaking on condition of anonymity, described the dual eliminations as a decisive blow to Iran's command-and-control capability, leaving the Islamic Republic in an acute leadership vacuum at one of the most critical moments in its history.
+        </p>
+        <div class="share-strip" style="margin-bottom:14px">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://tbanewsnetwork.com" target="_blank" class="sh-btn fb"><i class="fab fa-facebook-f"></i> Share</a>
+          <a href="https://twitter.com/intent/tweet?url=https://tbanewsnetwork.com&text=Iran+confirms+Larijani+and+Basij+commander+Soleimani+killed" target="_blank" class="sh-btn tw"><i class="fab fa-twitter"></i> Tweet</a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://tbanewsnetwork.com" target="_blank" class="sh-btn li"><i class="fab fa-linkedin-in"></i> Post</a>
+        </div>
+        <a href="https://substack.com/@tbanewsnetwork" target="_blank" class="read-more" style="margin-top:auto">Read Full Story <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- FEATURED + SIDE -->
+    <div class="grid-featured" style="margin-bottom:2px">
 
     <!-- FEATURED + SIDE -->
     <div class="grid-featured" style="margin-bottom:2px">
