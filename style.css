@@ -384,3 +384,39 @@ body{font-family:var(--font-body);background:var(--off-white);color:var(--dark);
   .card-horizontal .card-photo{flex:0 0 auto;max-width:100%;min-height:220px}
 }
 
+/* ─── HORIZONTAL CARD ─── */
+.card-horizontal{
+  flex-direction:row;
+  align-items:stretch;
+  border-left:5px solid var(--red);
+}
+.card-horizontal .card-photo{
+  flex:0 0 360px;
+  max-width:360px;
+  position:relative;
+  overflow:hidden;
+}
+.card-horizontal .card-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  min-height:280px;
+  transition:.4s;
+}
+.card-horizontal .card-body{
+  justify-content:center;
+  padding:28px 32px;
+}
+.card-horizontal h3{
+  font-size:1.55rem;
+}
+@media(max-width:768px){
+  .card-horizontal{flex-direction:column}
+  .card-horizontal .card-photo{
+    flex:0 0 auto;
+    max-width:100%;
+    min-height:220px;
+  }
+}
+
