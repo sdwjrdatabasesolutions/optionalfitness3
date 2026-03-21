@@ -557,18 +557,36 @@ body{font-family:var(--font-body);background:var(--off-white);color:var(--dark);
     
 
     <!-- END HERE--<
-    <!-- LARIJANI / SOLEIMANI FEATURED CARD -->
-    <div class="card fadein" style="margin-bottom:2px;display:flex;flex-direction:row;align-items:stretch;background:#fff;overflow:hidden;border-left:5px solid var(--red)">
-      <div style="flex:0 0 360px;max-width:360px;position:relative;overflow:hidden">
-        <img src="https://images.unsplash.com/photo-1580060839134-75a5edca2e99?q=80&w=800" alt="Iran Security Chiefs Killed" style="width:100%;height:100%;object-fit:cover;display:block;min-height:280px;transition:.4s">
-        <span class="cat-badge" style="position:absolute;top:12px;left:12px">Iran — Confirmed</span>
-        <span class="time-badge" style="position:absolute;bottom:10px;right:10px">Mar 2026</span>
-      </div>
-      <div style="flex:1;padding:28px 32px;display:flex;flex-direction:column;justify-content:center">
-        <div class="card-meta" style="margin-bottom:10px">
-          <span class="live-indicator"><span class="live-dot"></span> Developing Story</span>
-          &nbsp;·&nbsp; By SDWJR | TBA News Network
-        </div>
+   <!-- LARIJANI / SOLEIMANI FEATURED CARD -->
+<div class="card fadein" style="margin-bottom:2px;display:flex;flex-direction:row;align-items:stretch;background:#fff;overflow:hidden;border-left:5px solid var(--red)">
+  
+  <div style="flex:0 0 360px;max-width:360px;position:relative;overflow:hidden;min-height:280px;">
+    <img 
+      src="images/iranchiefkilled.jpg" alt="Iran Security Chiefs Killed"loading="lazy"
+      onerror="this.onerror=null;this.src='images/fallback.jpg';"
+      style="width:100%;height:100%;object-fit:cover;display:block;transition:.4s;position:absolute;top:0;left:0;"
+    >
+    <span class="cat-badge" style="position:absolute;top:12px;left:12px">Iran — Confirmed</span>
+    <span class="time-badge" style="position:absolute;bottom:10px;right:10px">Mar 2026</span>
+  </div>
+
+  <div style="flex:1;padding:28px 32px;display:flex;flex-direction:column;justify-content:center">
+    <div class="card-meta" style="margin-bottom:10px">
+      <span class="live-indicator"><span class="live-dot"></span> Developing Story</span>
+      &nbsp;·&nbsp; By SDWJR | TBA News Network
+    </div>
+Summary of fixes:
+
+Issue	Fix
+height:100% had no parent height to reference	Moved min-height:280px to the parent <div>
+object-fit:cover wasn't working reliably	Added position:absolute;top:0;left:0 on the <img> so it fills the relatively-positioned parent
+No fallback if image fails	Added onerror handler
+No lazy loading	Added loading="lazy"
+The key fix is the parent needs min-height + position:relative, and the image needs position:absolute to correctly stretch and cover its container when using object-fit:cover.
+
+
+
+
         <h3 style="font-family:var(--font-head);font-size:1.55rem;font-weight:900;line-height:1.25;color:var(--dark);margin-bottom:14px">
           Iran Confirms Security Chief Larijani and Basij Commander Soleimani Killed in Strikes
         </h3>
@@ -949,7 +967,7 @@ body{font-family:var(--font-body);background:var(--off-white);color:var(--dark);
       <!-- Featured Sports Story -->
       <div class="card fadein" style="background:var(--dark3);">
         <div class="card-img">
-          <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=800" alt="Olympics" onerror="this.src='https://via.placeholder.com/800x400?text=Olympics'">
+          <img src="images/iranchiefkilled." alt="Olympics" onerror="this.src='https://via.placeholder.com/800x400?text=Olympics'">
           <span class="cat-badge">Olympics</span>
           <span class="time-badge">Mar 2026</span>
         </div>
