@@ -1090,7 +1090,7 @@ body{font-family:var(--font-body);background:var(--off-white);color:var(--dark);
   function animateCounter(el,target){
     const suffix=el.textContent.replace(/[0-9]/g,'');
     let cur=0;const inc=target/50;
-    const t=setInterval(()=>{
+    const timer=setInterval(()=>{
       cur=Math.min(cur+inc,target);
       el.textContent=Math.round(cur)+suffix;
       if(cur>=target) clearInterval(t);
