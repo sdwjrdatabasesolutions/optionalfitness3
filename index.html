@@ -1065,7 +1065,7 @@ body{font-family:var(--font-body);background:var(--off-white);color:var(--dark);
     const timer=setInterval(()=>{
       cur=Math.min(cur+inc,target);
       el.textContent=Math.round(cur)+suffix;
-      if(cur>=target) clearInterval(t);
+      if(cur>=target) clearInterval(timer);
     },30);
   }
   const statsObs=new IntersectionObserver(entries=>{
