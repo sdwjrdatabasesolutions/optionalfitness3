@@ -1,1388 +1,746 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TBA News Network | Independent Journalism</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>S.U.D - Complete SQL Basics Course | Interactive Learning Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-:root{
-  --red:#c41e2a;--red-dark:#9b1520;--red-bright:#e8192c;
-  --gold:#f0a500;--gold-light:#fbbf24;
-  --dark:#0a0a0a;--dark2:#111;--dark3:#1a1a1a;--dark4:#222;
-  --gray:#2c2c2c;--mid:#555;--light:#e8e4de;--off-white:#f5f2ed;--white:#fff;
-  --font-head:'Playfair Display',serif;
-  --font-ui:'Oswald',sans-serif;
-  --font-body:'Inter',sans-serif;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:var(--font-body);background:var(--off-white);color:var(--dark);overflow-x:hidden}
+        body {
+            font-family: 'Segoe UI', 'Courier New', monospace;
+            background: #0f172a;
+            min-height: 100vh;
+            color: #e2e8f0;
+        }
 
-/* SCROLLBAR */
-::-webkit-scrollbar{width:4px}
-::-webkit-scrollbar-track{background:var(--dark)}
-::-webkit-scrollbar-thumb{background:var(--red)}
+        /* Main Layout */
+        .app-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
 
-/* ─── RIBBON (Fixed) ─── */
-#ribbon{
-  position:fixed;top:0;left:0;width:100%;z-index:10000;
-  background:var(--red);color:#fff;
-  display:flex;align-items:center;justify-content:center;gap:12px;
-  padding:9px 48px 9px 16px;font-family:var(--font-ui);font-size:.8rem;letter-spacing:.5px;
-  border-bottom:2px solid var(--gold);
-}
-#ribbon a{color:var(--gold);font-weight:700;text-decoration:none;border-bottom:1px solid transparent;transition:.2s}
-#ribbon a:hover{border-color:var(--gold)}
-#ribbonClose{position:absolute;right:14px;background:none;border:none;color:#fff;font-size:20px;cursor:pointer;opacity:.7;transition:.2s}
-#ribbonClose:hover{opacity:1;transform:scale(1.2)}
-#ribbon.hidden{display:none}
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            border-bottom: 2px solid #fbbf24;
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
 
-/* ─── NAVBAR ─── */
-.navbar{
-  position:fixed;top:38px;left:0;width:100%;z-index:9999;
-  background:rgba(10,10,10,.97);backdrop-filter:blur(12px);
-  border-bottom:3px solid var(--red);
-  transition:top .3s,box-shadow .3s;
-}
-#ribbon.hidden~.navbar{top:0}
-.nav-inner{
-  max-width:1400px;margin:0 auto;padding:0 24px;
-  display:flex;align-items:center;justify-content:space-between;height:62px;
-}
-.logo-wrap{display:flex;align-items:center;gap:12px;text-decoration:none}
-.logo-wrap img{height:44px;border-radius:50%;border:2px solid var(--red)}
-.logo-name{font-family:var(--font-ui);font-size:1.15rem;font-weight:700;color:#fff;letter-spacing:1.5px;line-height:1.2}
-.logo-sub{font-size:.62rem;color:var(--gold);letter-spacing:3px;display:block}
-.nav-links{display:flex;list-style:none;gap:4px;align-items:center}
-.nav-links a{
-  color:#ccc;text-decoration:none;font-family:var(--font-ui);font-size:.85rem;
-  letter-spacing:1px;padding:6px 14px;border-radius:3px;transition:.2s;text-transform:uppercase;
-}
-.nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(196,30,42,.2)}
-.nav-links a.active{color:var(--red)}
-.nav-donate{background:var(--red)!important;color:#fff!important;border-radius:30px!important;padding:8px 20px!important;font-weight:600!important}
-.nav-donate:hover{background:var(--red-dark)!important;transform:translateY(-1px)}
-.hamburger{display:none;background:none;border:none;color:#fff;font-size:22px;cursor:pointer}
-.nav-mobile{
-  display:none;position:fixed;top:100px;left:0;width:100%;
-  background:#0a0a0a;border-top:2px solid var(--red);
-  flex-direction:column;padding:20px;gap:4px;z-index:9998;
-}
-.nav-mobile.open{display:flex}
-.nav-mobile a{color:#ccc;text-decoration:none;font-family:var(--font-ui);font-size:.95rem;letter-spacing:1px;padding:12px 16px;border-bottom:1px solid #1e1e1e;text-transform:uppercase;transition:.2s}
-.nav-mobile a:hover{color:#fff;padding-left:24px}
+        .logo h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
 
-/* ─── TICKER (dynamic offset) ─── */
-.ticker-bar{
-  position:fixed;top:100px;left:0;width:100%;z-index:9997;
-  background:#111;border-bottom:2px solid var(--red);
-  display:flex;align-items:stretch;overflow:hidden;
-  transition:top .3s;
-}
-#ribbon.hidden~.ticker-bar{top:62px}
-.ticker-tag{
-  background:var(--red);color:#fff;
-  font-family:var(--font-ui);font-size:.75rem;letter-spacing:2px;font-weight:700;
-  padding:10px 18px;white-space:nowrap;display:flex;align-items:center;gap:6px;
-}
-.ticker-tag::before{content:"●";font-size:8px;animation:blink 1s infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-.ticker-track{flex:1;overflow:hidden;display:flex;align-items:center;padding:0 12px}
-.ticker-inner{white-space:nowrap;font-family:var(--font-ui);font-size:.78rem;color:#ddd;letter-spacing:.3px;animation:tickmove 35s linear infinite}
-@keyframes tickmove{0%{transform:translateX(100vw)}100%{transform:translateX(-100%)}}
+        .logo span {
+            color: #fbbf24;
+            font-size: 0.8rem;
+        }
 
-/* ─── MAIN PUSH ─── */
-.page-push{height:140px}
-#ribbon.hidden~.page-push{height:102px}
+        .progress-stats {
+            display: flex;
+            gap: 1.5rem;
+            background: #0f172a;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+        }
 
-/* ─── HERO ─── */
-.hero{
-  position:relative;min-height:88vh;
-  background:var(--dark);overflow:hidden;
-  display:flex;flex-direction:column;
-}
-.hero-bg{
-  position:absolute;inset:0;
-  background:url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1600') center/cover no-repeat;
-  opacity:.18;
-}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(10,10,10,.9) 0%,rgba(10,10,10,.6) 50%,rgba(196,30,42,.15) 100%)}
-.hero-content{
-  position:relative;z-index:2;max-width:1400px;margin:0 auto;width:100%;
-  padding:60px 24px 50px;flex:1;display:flex;flex-direction:column;justify-content:center;
-}
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--red);color:#fff;font-family:var(--font-ui);font-size:.72rem;
-  letter-spacing:2.5px;padding:6px 14px;margin-bottom:22px;text-transform:uppercase;
-}
-.hero-eyebrow span{width:6px;height:6px;background:#fff;border-radius:50%;animation:blink 1s infinite}
-.hero h1{
-  font-family:var(--font-head);font-size:clamp(2.4rem,5vw,5rem);font-weight:900;
-  color:#fff;line-height:1.08;margin-bottom:20px;max-width:820px;
-}
-.hero h1 em{color:var(--gold);font-style:normal}
-.hero-sub{color:#bbb;font-size:1.1rem;max-width:540px;margin-bottom:36px;line-height:1.7}
-.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:50px}
-.btn{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:13px 28px;border-radius:4px;font-family:var(--font-ui);font-size:.85rem;
-  letter-spacing:1px;text-decoration:none;font-weight:600;text-transform:uppercase;
-  transition:all .25s;border:none;cursor:pointer;
-}
-.btn-red{background:var(--red);color:#fff;box-shadow:0 4px 20px rgba(196,30,42,.4)}
-.btn-red:hover{background:var(--red-dark);transform:translateY(-2px);box-shadow:0 8px 30px rgba(196,30,42,.5)}
-.btn-outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}
-.btn-outline:hover{background:rgba(255,255,255,.08);border-color:#fff;transform:translateY(-2px)}
-.btn-gold{background:var(--gold);color:var(--dark);font-weight:700}
-.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px)}
-.btn-sub{background:#ff6719;color:#fff}
-.btn-sub:hover{background:#e55c14;transform:translateY(-2px)}
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+        }
 
-/* Hero stats bar */
-.hero-stats{
-  display:flex;gap:0;border-top:1px solid rgba(255,255,255,.1);
-  padding-top:30px;flex-wrap:wrap;
-}
-.hero-stat{flex:1;min-width:140px;padding:0 24px;border-right:1px solid rgba(255,255,255,.08)}
-.hero-stat:first-child{padding-left:0}
-.hero-stat:last-child{border-right:none}
-.hero-stat .num{font-family:var(--font-ui);font-size:1.8rem;font-weight:700;color:var(--gold)}
-.hero-stat .lbl{font-size:.75rem;color:#777;letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+        .stat-value {
+            font-weight: bold;
+            color: #fbbf24;
+        }
 
-/* ─── SECTION SHELL ─── */
-.section{padding:80px 0}
-.container{max-width:1400px;margin:0 auto;padding:0 24px}
-.narrow{max-width:860px}
+        /* Main Content Area */
+        .main-content {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
 
-/* ─── SECTION HEADER ─── */
-.sec-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:36px;padding-bottom:16px;border-bottom:2px solid var(--red);gap:20px;flex-wrap:wrap}
-.sec-head-left{display:flex;align-items:center;gap:14px}
-.sec-cat{background:var(--red);color:#fff;font-family:var(--font-ui);font-size:.7rem;letter-spacing:2px;padding:5px 12px;text-transform:uppercase}
-.sec-title{font-family:var(--font-head);font-size:1.9rem;font-weight:900;color:var(--dark)}
-.sec-more{font-family:var(--font-ui);font-size:.72rem;letter-spacing:1.5px;color:var(--red);text-decoration:none;text-transform:uppercase;display:flex;align-items:center;gap:6px;padding:8px 16px;border:1.5px solid var(--red);transition:.2s}
-.sec-more:hover{background:var(--red);color:#fff}
+        /* Sidebar - Modules */
+        .sidebar {
+            width: 280px;
+            background: #1e293b;
+            overflow-y: auto;
+            border-right: 1px solid #334155;
+            padding: 1rem 0;
+        }
 
-/* dark section */
-.bg-dark{background:var(--red);color:#fff}
-.bg-dark .sec-title{color:#fff}
-.bg-dark .sec-more{color:var(--gold);border-color:var(--gold)}
-.bg-dark .sec-more:hover{background:var(--gold);color:var(--dark)}
+        .module-item {
+            padding: 0.8rem 1.2rem;
+            margin: 0.3rem 0.8rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
 
-/* ─── CORD GRID SYSTEM: STABLE & SCALABLE ─── */
-.grid-featured{display:grid;grid-template-columns:1.7fr 1fr;gap:2px;background:var(--dark4);margin-bottom:2px}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--dark4);margin-bottom:2px}
-.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--dark4);margin-bottom:2px}
-.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--dark4);margin-bottom:2px}
+        .module-item:hover {
+            background: #334155;
+        }
 
-  /* universal card wrapper */
-.card, .vid-card, .etsy-card{
-  background:#fff;
-  overflow:hidden;
-  transition:transform 0.25s ease, box-shadow 0.25s;
-  display:flex;
-  flex-direction:column;
-  height:100%;
-  position:relative;
-}
+        .module-item.active {
+            background: #fbbf24;
+            color: #0f172a;
+        }
 
-/* ─── ARTICLE CARDS ─── */
-.card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.15)}
-.card-img{overflow:hidden;position:relative;flex-shrink:0}
-.card-img img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;display:block;transition:.4s}
-.card:hover .card-img img{transform:scale(1.04)}
-.card-img .cat-badge{
-  position:absolute;top:12px;left:12px;
-  background:var(--red);color:#fff;font-family:var(--font-ui);
-  font-size:.65rem;letter-spacing:2px;padding:4px 10px;text-transform:uppercase;z-index:2;
-}
-.card-img .time-badge{
-  position:absolute;bottom:10px;right:10px;
-  background:rgba(0,0,0,.75);color:#ccc;font-size:.68rem;
-  padding:3px 8px;backdrop-filter:blur(4px);z-index:2;
-}
-.card-body{padding:18px 20px 22px;flex:1;display:flex;flex-direction:column}
-.card-meta{font-family:var(--font-ui);font-size:.68rem;color:var(--red);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
-.card h3{font-family:var(--font-head);font-size:1.15rem;font-weight:700;line-height:1.35;color:var(--dark);margin-bottom:10px}
-.card.card-big .card-img img{aspect-ratio:16/9}
-.card.card-big h3{font-size:1.5rem}
-.card p.excerpt{font-size:.85rem;color:#555;line-height:1.65;margin-bottom:14px;-webkit-line-clamp:3;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden}
-.card .read-more{margin-top:auto;color:var(--red);font-family:var(--font-ui);font-size:.72rem;letter-spacing:1.5px;text-decoration:none;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;transition:.2s}
-.card .read-more:hover{gap:10px;color:var(--red-dark)}
+        .module-item.completed {
+            border-left: 4px solid #22c55e;
+        }
 
-/* dark card */
-.bg-dark .card{background:var(--dark3);border:1px solid rgba(255,255,255,.05)}
-.bg-dark .card h3{color:#fff}
-.bg-dark .card p.excerpt{color:#888}
+        .module-icon {
+            font-size: 1.3rem;
+        }
 
- 
-/* horizontal card (robust) */
-.card-horizontal{
-  flex-direction:row !important;
-  align-items:stretch;
-  border-left:5px solid var(--red);
-}
-.card-horizontal .card-photo{
-  flex:0 0 360px;
-  max-width:360px;
-  position:relative;
-  min-height:280px;
-  overflow:hidden;
-}
-.card-horizontal .card-photo img{
-  position:absolute;
-  top:0;left:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
-@media(max-width:768px){
-  .card-horizontal{flex-direction:column !important}
-  .card-horizontal .card-photo{flex:0 0 auto;max-width:100%;min-height:220px}
-} 
+        .module-info {
+            flex: 1;
+        }
 
-/* ─── VIDEO CARD ─── */
-.vid-card{background:var(--dark3);border-radius:0;height:100%}
-.vid-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.4)}
-.vid-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
-.vid-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.vid-body{padding:16px 18px 20px;flex:1}
-.vid-body h4{font-family:var(--font-head);font-size:1rem;color:#fff;line-height:1.4;margin-bottom:8px}
-.vid-body .vid-meta{font-family:var(--font-ui);font-size:.68rem;color:var(--red);letter-spacing:1.5px;text-transform:uppercase}
-uppercase}
+        .module-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
 
-/* ─── SOCIAL SHARE BAR ─── */
-.social-follow-bar{background:var(--dark3);border-bottom:2px solid rgba(196,30,42,.4);padding:10px 0}
-.social-follow-inner{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.follow-label{font-family:var(--font-ui);font-size:.72rem;color:#999;letter-spacing:2px;text-transform:uppercase}
-.soc-btns{display:flex;gap:6px}
-.soc-btn{width:34px;height:34px;border-radius:3px;display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-size:14px;transition:.2s}
-.soc-btn:hover{transform:translateY(-2px);filter:brightness(1.2)}
-.soc-btn.fb{background:#1877f2}.soc-btn.tw{background:#1da1f2}.soc-btn.li{background:#0077b5}
-.soc-btn.ig{background:linear-gradient(45deg,#f09433,#d62976,#962fbf)}.soc-btn.tt{background:#000}
-.soc-btn.yt{background:#ff0000}.soc-btn.wa{background:#25d366}.soc-btn.tg{background:#0088cc}
+        .module-status {
+            font-size: 0.7rem;
+            opacity: 0.7;
+        }
 
-/* ─── ARTICLE SHARE STRIP ─── */
-.soc-btns{display:flex;gap:6px}
-.soc-btn{width:34px;height:34px;border-radius:3px;display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-size:14px;transition:.2s}
-.soc-btn:hover{transform:translateY(-2px);filter:brightness(1.2)}
-.soc-btn.fb{background:#1877f2}.soc-btn.tw{background:#1da1f2}.soc-btn.li{background:#0077b5}
-.soc-btn.ig{background:linear-gradient(45deg,#f09433,#d62976,#962fbf)}.soc-btn.tt{background:#000}
-.soc-btn.yt{background:#ff0000}.soc-btn.wa{background:#25d366}.soc-btn.tg{background:#0088cc}
-.share-strip{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 6px}
-.sh-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:3px;font-family:var(--font-ui);font-size:.68rem;letter-spacing:1px;text-decoration:none;color:#fff;text-transform:uppercase;transition:.2s}
-.sh-btn:hover{transform:translateY(-1px);filter:brightness(1.15)}
-.sh-btn.fb{background:#1877f2}.sh-btn.tw{background:#1da1f2}.sh-btn.li{background:#0077b5}
+        /* Right Content Area */
+        .content-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            background: #0f172a;
+        }
 
-/* ─── BREAKING NEWS BANNER ─── */
-.breaking-banner{background:var(--red);padding:14px 0;border-top:2px solid var(--gold);border-bottom:2px solid var(--gold)}
-.breaking-inner{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:16px}
-.breaking-tag{background:#fff;color:var(--red);font-family:var(--font-ui);font-size:.7rem;font-weight:700;letter-spacing:2px;padding:5px 12px;white-space:nowrap;text-transform:uppercase}
-.breaking-text{color:#fff;font-family:var(--font-ui);font-size:.82rem;letter-spacing:.3px}
-.breaking-text strong{color:var(--gold)}var(--gold)}
+        /* Module Content */
+        .module-content {
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+        }
 
-/* ─── POPUPS ─── */
-.popup-overlay{
-  position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);
-  z-index:20000;display:flex;align-items:flex-end;justify-content:flex-end;
-  padding:30px;opacity:0;pointer-events:none;transition:opacity .4s;
-}
-.popup-overlay.active{opacity:1;pointer-events:auto}
-#donatePopup.popup-overlay{justify-content:flex-start}
-.popup-box{
-  background:#fff;border-radius:4px;padding:34px 30px;width:320px;
-  position:relative;box-shadow:0 24px 60px rgba(0,0,0,.4);
-  border-top:4px solid var(--red);animation:slideUp .4s ease;
-}
-@keyframes slideUp{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
-.popup-box h3{font-family:var(--font-head);font-size:1.3rem;margin-bottom:10px;color:var(--dark)}
-.popup-box p{font-size:.85rem;color:#666;line-height:1.6;margin-bottom:20px}
-.popup-close{
-  position:absolute;top:12px;right:14px;background:none;border:none;
-  font-size:22px;cursor:pointer;color:#aaa;transition:.2s;line-height:1;
-}
-.popup-close:hover{color:var(--red);transform:scale(1.2)}
+        .lesson-card {
+            background: #1e293b;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #334155;
+        }
 
-/* ─── ABOUT / CONTACT ─── */
+        h2 {
+            color: #fbbf24;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
 
-.about-text{font-size:1rem;line-height:1.85;color:#444;margin-bottom:20px}
-.bg-dark .about-text{color:#aaa}
-.contact-box{background:#fff;border:1px solid #eee;padding:40px;text-align:center;border-top:4px solid var(--red)}
-.contact-email{font-family:var(--font-head);font-size:1.3rem;margin-bottom:8px}
-.contact-note{color:#888;font-size:.85rem}
+        h3 {
+            color: #94a3b8;
+            margin: 1rem 0 0.5rem;
+        }
 
+        p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: #cbd5e1;
+        }
 
+        .code-block {
+            background: #0f172a;
+            padding: 1rem;
+            border-radius: 12px;
+            border-left: 4px solid #fbbf24;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
 
-/* ─── ETSY SECTION ─── */
-.etsy-card{
-  background:var(--dark3);border:1px solid rgba(255,255,255,.06);
-  border-top:3px solid var(--gold);overflow:hidden;transition:.3s;
-}
-.etsy-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.4)}
-.etsy-card a{text-decoration:none}
-.etsy-card img{width:100%;height:200px;object-fit:cover;display:block;transition:.4s}
-.etsy-card:hover img{transform:scale(1.04)}
-.etsy-card h3{font-family:var(--font-head);color:#fff;font-size:1rem;padding:16px 16px 6px;line-height:1.4}
-.etsy-card p{font-size:.8rem;color:#888;padding:0 16px 10px;line-height:1.5}
-.etsy-card .price{display:inline-block;margin:0 16px 16px;background:var(--gold);color:var(--dark);font-family:var(--font-ui);font-size:.7rem;letter-spacing:1.5px;padding:6px 14px;font-weight:700}
+        .sql-example {
+            color: #86efac;
+        }
 
-/* ─── FOOTER ─── */
-.footer{background:var(--dark);border-top:3px solid var(--red);padding:50px 0 24px}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
-.footer-brand .logo-name{color:#fff;font-size:1.1rem;margin-bottom:12px;display:block}
-.footer-brand p{font-size:.82rem;color:#666;line-height:1.7;max-width:280px}
-.footer-col h4{font-family:var(--font-ui);font-size:.72rem;letter-spacing:2px;color:var(--red);text-transform:uppercase;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #1e1e1e}
-.footer-col a{display:block;color:#888;text-decoration:none;font-size:.82rem;margin-bottom:8px;transition:.2s}
-.footer-col a:hover{color:#fff;padding-left:4px}
-.footer-bottom{border-top:1px solid #1a1a1a;padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
-.footer-copy{font-size:.78rem;color:#555}
-.footer-copy strong{color:#888}
+        /* Interactive SQL Editor */
+        .sql-editor-section {
+            background: #1e293b;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            border: 2px solid #334155;
+        }
 
-/* ─── DIVIDER ─── */
-.divider{height:2px;background:linear-gradient(90deg,var(--red),transparent);margin:0}
+        .editor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
 
-/* ─── FADE IN ─── */
-.fadein{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
-.fadein.visible{opacity:1;transform:translateY(0)}
+        textarea {
+            width: 100%;
+            background: #0f172a;
+            border: 1px solid #334155;
+            color: #86efac;
+            font-family: 'Courier New', monospace;
+            padding: 1rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            resize: vertical;
+        }
 
-/* ─── LIVE DOT ─── */
-.live-indicator{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-ui);font-size:.68rem;letter-spacing:1.5px;color:var(--red);text-transform:uppercase}
-.live-dot{width:7px;height:7px;background:var(--red);border-radius:50%;animation:blink .9s infinite}
+        .run-btn {
+            background: #fbbf24;
+            color: #0f172a;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
 
-/* ─── RESPONSIVE ─── */
-@media(max-width:1024px){
-  .grid-featured{grid-template-columns:1fr}
-  .grid-4{grid-template-columns:repeat(2,1fr)}
-  .footer-grid{grid-template-columns:1fr 1fr}
-}
-@media(max-width:768px){
-  .nav-links{display:none}
-  .hamburger{display:block}
-  .grid-3,.grid-2{grid-template-columns:1fr}
-  .grid-4{grid-template-columns:1fr}
-  .hero h1{font-size:2.2rem}
-  .hero-stats{flex-direction:column;gap:16px}
-  .hero-stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.06);padding-bottom:12px}
-  .hero-stat:last-child{border-bottom:none}
-  .footer-grid{grid-template-columns:1fr}
-  .ticker-bar{top:102px}
-  #ribbon.hidden~.ticker-bar{top:62px}
-  .page-push{height:102px}
-}
-@media(max-width:480px){
-  .hero h1{font-size:1.8rem}
-  .hero-btns{flex-direction:column}
-  .btn{width:100%;justify-content:center}
-  .sec-head{flex-direction:column;align-items:flex-start}
-}
- /* ─── HORIZONTAL CARD ─── */
-.card-horizontal{
-  flex-direction:row;
-  align-items:stretch;
-  border-left:5px solid var(--red);
-}
-.card-horizontal .card-photo{
-  flex:0 0 360px;
-  max-width:360px;
-  position:relative;
-  overflow:hidden;
-}
-.card-horizontal .card-photo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-  min-height:280px;
-  transition:.4s;
-}
+        .run-btn:hover {
+            background: #f59e0b;
+            transform: translateY(-2px);
+        }
 
-@media(max-width:768px){
-  .card-horizontal{flex-direction:column}
-  .card-horizontal .card-photo{flex:0 0 auto;max-width:100%;min-height:220px}
-}
+        .output-area {
+            background: #0f172a;
+            padding: 1rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
 
-}
-</style>
+        /* Quiz Section */
+        .quiz-section {
+            background: #1e293b;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .quiz-question {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #0f172a;
+            border-radius: 12px;
+        }
+
+        .quiz-option {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .quiz-option:hover {
+            background: #334155;
+        }
+
+        .quiz-option input {
+            margin-right: 0.8rem;
+            cursor: pointer;
+        }
+
+        .submit-quiz {
+            background: #22c55e;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .quiz-feedback {
+            margin-top: 1rem;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        /* Navigation Buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            background: #334155;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: #fbbf24;
+            color: #0f172a;
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Badges */
+        .badge {
+            background: #22c55e;
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            margin-left: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+            }
+            .module-content {
+                padding: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-
-<!-- DONATION RIBBON -->
-<div id="ribbon" class="donation-ribbon">
-  <span>⚡ SUPPORT INDEPENDENT JOURNALISM — Keep real reporting alive</span>
-  <a href="https://cash.app/$tbanewsnetwork" target="_blank">Donate via Cash App →</a>
-  <button id="ribbonClose" title="Close">×</button>
-</div>
-
-<!-- NAVBAR -->
-<nav class="navbar" id="navbar">
- <div class="nav-inner">
-  <a class="logo-wrap" href="#">
-    <img 
-      src="images/mycircle.png" 
-      alt="TBA News Network logo"
-      onerror="this.onerror=null;this.src='images/fallback-logo.png';"
-    >
-    <div>
-      <span class="logo-name">TBA NEWS NETWORK</span>
-      <span class="logo-sub">Independent Journalism</span>
-    </div>
-  </a>
-    <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#home" class="active">Home</a></li>
-      <li><a href="#network">World News</a></li>
-      <li><a href="#video">Video</a></li>
-      <li><a href="#newyork">New York</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="https://cash.app/$tbanewsnetwork" class="nav-donate" target="_blank">Donate</a></li>
-    </ul>
-  </div>
-</nav>
-<nav class="nav-mobile" id="navMobile">
-  <a href="#home">Home</a>
-  <a href="#network">World News</a>
-  <a href="#video">Video</a>
-  <a href="#newyork">New York</a>
-  <a href="#about">About</a>
-  <a href="#contact">Contact</a>
-  <a href="https://cash.app/$tbanewsnetwork" target="_blank">Donate</a>
-</nav>
-
-<!-- TICKER -->
-<div class="ticker-bar">
-  <div class="ticker-tag"><i class="fas fa-circle" style="font-size:7px"></i> BREAKING</div>
-  <div class="ticker-track">
-    <div class="ticker-inner" id="tickerContent">Loading breaking news...</div>
-  </div>
-</div>
-
-<div class="page-push"></div>
-
-<!-- POPUPS -->
-<div id="substackPopup" class="popup-overlay">
-  <div class="popup-box">
-    <button class="popup-close" id="popupClose">×</button>
-    <h3>Stay Ahead of the Story</h3>
-    <p>Real reporting, deep analysis, and exclusive updates delivered straight to your inbox.</p>
-    <a href="https://substack.com/@tbanewsnetwork" target="_blank" class="btn btn-sub" id="popupSubstackBtn" style="width:100%;justify-content:center">✉ Subscribe Free on Substack</a>
-  </div>
-</div>
-<div id="donatePopup" class="popup-overlay">
-  <div class="popup-box">
-    <button class="popup-close" id="donateClose">×</button>
-    <h3>Support Independent Journalism</h3>
-    <p>Your contribution keeps real, fearless reporting alive. Every donation matters.</p>
-    <a href="https://cash.app/$tbanewsnetwork" target="_blank" class="btn btn-red" style="width:100%;justify-content:center"><i class="fas fa-heart"></i> Donate Now</a>
-  </div>
-</div>
-
-<!-- SOCIAL FOLLOW BAR -->
-<div class="social-follow-bar">
-  <div class="social-follow-inner">
-    <span class="follow-label">Follow TBA News</span>
-    <div class="soc-btns">
-      <a href="https://facebook.com/tbanewsnetwork" target="_blank" class="soc-btn fb"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://twitter.com/tbanewsnetwork" target="_blank" class="soc-btn tw"><i class="fab fa-twitter"></i></a>
-      <a href="https://linkedin.com/company/tbanewsnetwork" target="_blank" class="soc-btn li"><i class="fab fa-linkedin-in"></i></a>
-      <a href="https://instagram.com/tbanewsnetwork" target="_blank" class="soc-btn ig"><i class="fab fa-instagram"></i></a>
-      <a href="https://tiktok.com/@tbanewsnetwork" target="_blank" class="soc-btn tt"><i class="fab fa-tiktok"></i></a>
-      <a href="https://youtube.com/@tbanewsnetwork" target="_blank" class="soc-btn yt"><i class="fab fa-youtube"></i></a>
-      <a href="https://whatsapp.com/channel/0029Va8z5z5z5z5z5z5z5z5" target="_blank" class="soc-btn wa"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://t.me/tbanewsnetwork" target="_blank" class="soc-btn tg"><i class="fab fa-telegram-plane"></i></a>
-    </div>
-    <a href="https://substack.com/@tbanewsnetwork" target="_blank" class="btn btn-sub" style="padding:8px 18px;font-size:.72rem">✉ Subscribe</a>
-  </div>
-</div>
-
-<!-- ══════════════ HERO ══════════════ -->
-<section id="home" class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content container">
-    <div class="hero-eyebrow"><span></span> Live Coverage — March 2026</div>
-   <h1>TBA News Network<br><em>Truth-Driven</em> Journalism</h1>
-<p class="hero-sub">Independent Media | Global Reporting | Voices That Challenge Power</p>
-<div class="hero-btns">
-  <a href="#network" class="btn btn-red"><i class="fas fa-newspaper"></i> Latest Stories</a>
-  <a href="#video" class="btn btn-outline"><i class="fas fa-play"></i> Watch Now</a>
-  <a href="https://substack.com/@tbanewsnetwork" target="_blank" class="btn btn-sub">✉ World News</a>
-  <a href="https://tbanewsnetwork.substack.com/s/liberia-news" target="_blank" class="btn btn-red"><i class="fas fa-globe-africa"></i> Liberia News</a>
-  <a href="https://tbanewsnetwork.substack.com/s/community" target="_blank" class="btn btn-red"><i class="fas fa-users"></i> SDWJR</a>
-  <a href="https://tbanewsnetwork.substack.com/s/city-hall" target="_blank" class="btn btn-red"><i class="fas fa-city"></i> New York City</a>
-</div>
-    <div class="hero-stats">
-      <div class="hero-stat"><div class="num">8+</div><div class="lbl">Countries Covered</div></div>
-      <div class="hero-stat"><div class="num">100+</div><div class="lbl">Stories Published</div></div>
-      <div class="hero-stat"><div class="num">24/7</div><div class="lbl">Live Reporting</div></div>
-      <div class="hero-stat"><div class="num">2026</div><div class="lbl">Breaking Now</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- BREAKING BANNER -->
-<div class="breaking-banner">
-  <div class="breaking-inner">
-    <span class="breaking-tag">Breaking Now</span>
-    <p class="breaking-text"><strong>WAR UPDATE:</strong> U.S.–Israeli strikes target Iranian command sites — Khamenei confirmed killed &nbsp;|&nbsp; <strong>AUSTIN:</strong> FBI investigates Texas bar shooting as terrorism &nbsp;|&nbsp; <strong>LIBERIA:</strong> Yellow machines arrive in Grand Gedeh County</p>
-  </div>
-</div>
-
-<!-- ══════════════ WORLD NEWS ══════════════ -->
-<section id="network" class="section fadein">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-head-left">
-        <span class="sec-cat">World News</span>
-        <h2 class="sec-title">Global Coverage</h2>
-      </div>
-      <a href="https://substack.com/@tbanewsnetwork" target="_blank" class="sec-more">All Stories <i class="fas fa-arrow-right"></i></a>
-    </div>
-    <!-- ADD NEW CONTENT-->
-
-    <!-- NEW CONTENT-->
-    <!-- MADURO COURTHOUSE LIVE — NYC FEATURED CARD -->
-<div class="card fadein" style="margin-bottom:2px;display:flex;flex-direction:row;align-items:stretch;background:#fff;overflow:hidden;border-left:5px solid var(--red)">
-  <div style="flex:0 0 360px;max-width:360px;position:relative;overflow:hidden;min-height:280px;">
-    <img 
-      src="images/maduro2026.PNG" 
-      alt="Maduro Court Appearance NYC" 
-      loading="lazy"
-      onerror="this.onerror=null;this.src='images/maduro2017.PNG';"
-      style="width:100%;height:100%;object-fit:cover;display:block;transition:.4s;position:absolute;top:0;left:0;"
-    >
-    <span class="cat-badge" style="position:absolute;top:12px;left:12px">U.S. Politics — Live</span>
-    <span class="time-badge" style="position:absolute;bottom:10px;right:10px">Mar 2026</span>
-  </div>
-  <div style="flex:1;padding:28px 32px;display:flex;flex-direction:column;justify-content:center">
-    <div class="card-meta" style="margin-bottom:10px">
-      <span class="live-indicator"><span class="live-dot"></span> Live Update</span>
-      &nbsp;·&nbsp; By SDWJR | TBA News Network
-    </div>
-    <h3 style="font-family:var(--font-head);font-size:1.55rem;font-weight:900;line-height:1.25;color:var(--dark);margin-bottom:14px">
-      NYC Courthouse Showdown: Maduro Supporters Clash with Heavy Security as U.S. Case Intensifies
-    </h3>
-    <p style="font-size:.9rem;color:#444;line-height:1.75;margin-bottom:10px">
-      <strong>LOWER MANHATTAN, NEW YORK —</strong> Journalist SDWJR reporting live from outside the Daniel Patrick Moynihan U.S. Courthouse at 500 Pearl Street, where tensions are escalating as pre-trial proceedings continue for ousted Venezuelan leader Nicolás Maduro and his wife, Cilia Flores. The scene has become a global flashpoint, with crowds gathering behind barricades as the case unfolds under intense international scrutiny.
-    </p>
-    <p style="font-size:.9rem;color:#444;line-height:1.75;margin-bottom:10px">
-      Supporters of Maduro have taken to the streets, loudly denouncing his detention as a “kidnapping” and “illegal abduction” by U.S. authorities. Protest leaders insist he remains Venezuela’s legitimate president, turning the courthouse steps into a stage for political resistance. Across the barricades, major media outlets including CBS News and ABC News are documenting every development, amplifying the global stakes of the القضية.
-    </p>
-    <p style="font-size:.9rem;color:#444;line-height:1.75;margin-bottom:18px">
-      Security remains tight, with NYPD officers controlling the perimeter while heavily armed federal agents secure the courthouse as Maduro and Flores are transported from the Metropolitan Detention Center in Brooklyn. Inside, their legal team is pushing to dismiss narco-terrorism and drug trafficking charges, arguing that U.S. sanctions are blocking access to legal funding. Judge Alvin Hellerstein has yet to rule, leaving both defendants in federal custody as the legal battle intensifies.
-    </p>
-    <div class="share-strip" style="margin-bottom:14px">
-      <a href="https://www.facebook.com/sharer/sharer.php?u=https://sdwsr.com" target="_blank" class="sh-btn fb"><i class="fab fa-facebook-f"></i> Share</a>
-      <a href="https://twitter.com/intent/tweet?url=https://sdwsr.com&text=Maduro+court+hearing+NYC+sparks+protests+and+global+tension" target="_blank" class="sh-btn tw"><i class="fab fa-twitter"></i> Tweet</a>
-      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sdwsr.com" target="_blank" class="sh-btn li"><i class="fab fa-linkedin-in"></i> Post</a>
-    </div>
-    <a href="https://sdwsr.com" target="_blank" class="read-more" style="margin-top:auto">Read Full Story <i class="fas fa-arrow-right"></i></a>
-  </div>
-</div>
-    <!-- END NEW CONTENT-->
-    <div class="tba-article">
-
-  <div class="article-header">
-    <h1>POLITICAL TENSION RISE AS WEAH, CDC LEADERS MOURN KEMAYAH FAMILY LOSS</h1>
-    <img src="images/georgeweah.png" alt="George Weah" class="article-image">
-    <h3>By SDWJR | TBA News Network</h3>
-    <span class="article-date">March 25, 2026</span>
-  </div>
-
-  <div class="article-body">
-    <p>
-      Former Liberian President George Weah, alongside top leaders of the Congress for Democratic Change (CDC), paid a solemn visit to Ambassador Dee-Maxwell Saah Kemayah, Sr., offering condolences following the passing of his mother, Ma-Watta Kumba Larmie, who died on March 11, 2026. Journalist SDWJR reports that the gathering quickly evolved beyond mourning into a moment charged with political undertones, as party officials openly linked the tragic loss to ongoing tensions within Liberia’s political landscape.
-    </p>
-
-    <p>
-      During the visit, CDC leaders and members of the Kemayah family alleged that the 75-year-old matriarch’s death was not merely natural but was accelerated by emotional and psychological trauma. According to statements made at the scene, this distress was attributed to what they described as sustained political harassment directed at Ambassador Kemayah under the current Boakai-Koung administration. Journalist SDWJR, reporting on the ground, observed that these claims have intensified partisan divisions, with supporters echoing concerns about the human toll of political conflict.
-    </p>
-
-    <p>
-      The accusations, however, are likely to spark national debate, as no independent medical or legal findings have publicly confirmed a direct link between the alleged harassment and Ma-Watta Kumba Larmie’s death. Political analysts note that such claims, while powerful, require substantiated evidence to move beyond rhetoric into verified fact. Still, the emotional weight of the moment has added fuel to an already polarized political climate in Liberia.
-    </p>
-
-    <p>
-      As Liberia continues to navigate post-election tensions, this incident underscores the deepening divide between the ruling administration and opposition forces. Journalist SDWJR reports that the presence of former President Weah signals the CDC’s intent to stand firmly behind its members, framing the situation as both a personal tragedy and a broader political issue.
-    </p>
-
-    <p>
-      For additional reporting and source details, readers can reference coverage from FrontPageAfrica, which continues to follow developments surrounding the situation.
-    </p>
-
-    <p>
-      👉 Support independent journalism: https://sdwsr.com <br>
-      💰 Cash App: $tbanewsnetwork
-    </p>
-
-    <p>
-      👉 For the full story and deeper breakdown, read it now on my Substack: 🔗 thetbanewsnetwork.substack.com — ✍🏾 By Journalist SDWJR. Follow on X (Twitter): @tbanewsnetwork. Also, check out my YouTube: https://www.youtube.com/@tbanntv
-    </p>
-
-    <p class="hashtags">
-      #africandiddynyc #africandiddy #adnyc #sdwjr #sdwsr #voiceofactivist #susuwilson #ikerm3 #arkerm #Martha4kids #tbanews #tbanewsnetwork #blackapplenews #blackapplenewsnetwork #Liberia #GeorgeWeah #CDC #Boakai #Kemayah #FrontPageAfrica
-    </p>
-  </div>
-
-</div>
-
-
-    <-- END NEW CONTENT-->
-    
-    <!-- MIDDLE EAST CRISIS LIVE — TRUMP / DIEGO GARCIA FEATURED CARD -->
-<div class="card fadein" style="margin-bottom:2px;display:flex;flex-direction:row;align-items:stretch;background:#fff;overflow:hidden;border-left:5px solid var(--red)">
-  <div style="flex:0 0 360px;max-width:360px;position:relative;overflow:hidden;min-height:280px;">
-    <img 
-      src="images/trumpworldleader.jpg" 
-      alt="Trump World Leader" 
-      loading="lazy"
-      onerror="this.onerror=null;this.src='images/fallback.jpg';"
-      style="width:100%;height:100%;object-fit:cover;display:block;transition:.4s;position:absolute;top:0;left:0;"
-    >
-    <span class="cat-badge" style="position:absolute;top:12px;left:12px">Middle East — Live</span>
-    <span class="time-badge" style="position:absolute;bottom:10px;right:10px">Mar 2026</span>
-  </div>
-      <div style="flex:1;padding:28px 32px;display:flex;flex-direction:column;justify-content:center">
-        <div class="card-meta" style="margin-bottom:10px">
-          <span class="live-indicator"><span class="live-dot"></span> Live Update</span>
-          &nbsp;·&nbsp; By SDWJR | TBA News Network
+<div class="app-container">
+    <div class="header">
+        <div class="logo">
+            <h1>🎓 S.U.D <span>Structured University of Databases</span></h1>
         </div>
-        <h3 style="font-family:var(--font-head);font-size:1.55rem;font-weight:900;line-height:1.25;color:var(--dark);margin-bottom:14px">
-          Middle East Crisis Live: Trump Says US Considering 'Winding Down' War; Iran Fires Missiles at UK-US Base on Diego Garcia
-        </h3>
-        <p style="font-size:.9rem;color:#444;line-height:1.75;margin-bottom:10px">
-          <strong>WASHINGTON / DIEGO GARCIA —</strong> President Donald Trump indicated Thursday that the United States is actively considering "winding down" its military campaign in the Middle East, even as new hostilities escalated sharply — with Iran launching a ballistic missile strike against the joint UK-US military installation on Diego Garcia, the strategically vital atoll in the Indian Ocean that serves as a critical hub for American power projection across the region.
-        </p>
-        <p style="font-size:.9rem;color:#444;line-height:1.75;margin-bottom:10px">
-          Trump's remarks, made during a White House briefing, represent the first public signal that the intensive aerial campaign targeting Iran's nuclear and military infrastructure may be approaching a phase transition. He stopped short of declaring victory or setting a timeline, but the comments immediately raised questions among allied governments and defense officials about the durability of the U.S. posture in the region and what a drawdown would mean for Israel's ongoing operations.
-        </p>
-        <p style="font-size:.9rem;color:#444;line-height:1.75;margin-bottom:18px">
-          The Diego Garcia attack marks a dramatic and unprecedented escalation — Iran has never previously struck a British-American installation outside the Middle East. Defense officials confirmed that air defense systems intercepted several incoming projectiles, though damage assessments remain ongoing. The dual developments — a U.S. president signaling de-escalation while Tehran simultaneously strikes a remote but strategically vital base — have plunged the crisis into its most volatile and unpredictable chapter yet.
-        </p>
-        <div class="share-strip" style="margin-bottom:14px">
-          <a href="https://www.facebook.com/sharer/sharer.php?u=https://tbanewsnetwork.com" target="_blank" class="sh-btn fb"><i class="fab fa-facebook-f"></i> Share</a>
-          <a href="https://twitter.com/intent/tweet?url=https://tbanewsnetwork.com&text=Trump+considers+winding+down+war%3B+Iran+fires+missiles+at+Diego+Garcia" target="_blank" class="sh-btn tw"><i class="fab fa-twitter"></i> Tweet</a>
-          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://tbanewsnetwork.com" target="_blank" class="sh-btn li"><i class="fab fa-linkedin-in"></i> Post</a>
+        <div class="progress-stats">
+            <div class="stat">📚 <span class="stat-value" id="completedModules">0</span>/<span id="totalModules">7</span> Modules</div>
+            <div class="stat">⭐ <span class="stat-value" id="totalPoints">0</span> Points</div>
         </div>
-        <a href="https://substack.com/@tbanewsnetwork" target="_blank" class="read-more" style="margin-top:auto">Read Full Story <i class="fas fa-arrow-right"></i></a>
-      </div>
     </div>
-    
 
-    <!-- END HERE--<
-   <!-- LARIJANI / SOLEIMANI FEATURED CARD -->
-<div class="card fadein" style="margin-bottom:2px;display:flex;flex-direction:row;align-items:stretch;background:#fff;overflow:hidden;border-left:5px solid var(--red)">
-  
- <div style="flex:0 0 360px;max-width:360px;position:relative;overflow:hidden;min-height:280px;">
-  <img 
-    src="images/iranchiefkilled.jpg" 
-    alt="Iran Security Chiefs Killed"
-    loading="lazy"
-    onerror="this.onerror=null;this.src='images/fallback.jpg';"
-    style="width:100%;height:100%;object-fit:cover;display:block;transition:.4s;position:absolute;top:0;left:0;"
-  >
-  <span class="cat-badge" style="position:absolute;top:12px;left:12px">Iran — Confirmed</span>
-  <span class="time-badge" style="position:absolute;bottom:10px;right:10px">Mar 2026</span>
-</div>
-  <div style="flex:1;padding:28px 32px;display:flex;flex-direction:column;justify-content:center">
-    <div class="card-meta" style="margin-bottom:10px">
-      <span class="live-indicator"><span class="live-dot"></span> Developing Story</span>
-      &nbsp;·&nbsp; By SDWJR | TBA News Network
-    </div>
-Summary of fixes:
-
-Issue	Fix
-height:100% had no parent height to reference	Moved min-height:280px to the parent <div>
-object-fit:cover wasn't working reliably	Added position:absolute;top:0;left:0 on the <img> so it fills the relatively-positioned parent
-No fallback if image fails	Added onerror handler
-No lazy loading	Added loading="lazy"
-The key fix is the parent needs min-height + position:relative, and the image needs position:absolute to correctly stretch and cover its container when using object-fit:cover.
-
-
-
-
-        <h3 style="font-family:var(--font-head);font-size:1.55rem;font-weight:900;line-height:1.25;color:var(--dark);margin-bottom:14px">
-          Iran Confirms Security Chief Larijani and Basij Commander Soleimani Killed in Strikes
-        </h3>
-        <p style="font-size:.9rem;color:#444;line-height:1.75;margin-bottom:10px">
-          <strong>TEHRAN —</strong> The Iranian government has officially confirmed the deaths of two of its most powerful internal security figures: Ali Larijani, the longtime security chief and former parliament speaker who served as one of Supreme Leader Khamenei's most trusted advisors, and Gholamreza Soleimani, the commanding general of the Basij — Iran's feared internal paramilitary militia responsible for suppressing domestic dissent.
-        </p>
-        <p style="font-size:.9rem;color:#444;line-height:1.75;margin-bottom:10px">
-          The confirmed killings come in the wake of coordinated U.S.–Israeli strikes that have now decapitated Iran's military and political command structure. Larijani's death removes a key architect of Iran's regional strategy, while the loss of Basij commander Soleimani is expected to send shockwaves through Iran's domestic security apparatus — the very force used to crush the 2019 and 2022 protest uprisings.
-        </p>
-        <p style="font-size:.9rem;color:#444;line-height:1.75;margin-bottom:18px">
-          Iranian state media released a brief official statement confirming both deaths but offered no details on location or timing of the strikes. Western intelligence officials, speaking on condition of anonymity, described the dual eliminations as a decisive blow to Iran's command-and-control capability, leaving the Islamic Republic in an acute leadership vacuum at one of the most critical moments in its history.
-        </p>
-        <div class="share-strip" style="margin-bottom:14px">
-          <a href="https://www.facebook.com/sharer/sharer.php?u=https://tbanewsnetwork.com" target="_blank" class="sh-btn fb"><i class="fab fa-facebook-f"></i> Share</a>
-          <a href="https://twitter.com/intent/tweet?url=https://tbanewsnetwork.com&text=Iran+confirms+Larijani+and+Basij+commander+Soleimani+killed" target="_blank" class="sh-btn tw"><i class="fab fa-twitter"></i> Tweet</a>
-          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://tbanewsnetwork.com" target="_blank" class="sh-btn li"><i class="fab fa-linkedin-in"></i> Post</a>
+    <div class="main-content">
+        <div class="sidebar" id="sidebar">
+            <!-- Modules will be dynamically populated -->
         </div>
-        <a href="https://substack.com/@tbanewsnetwork" target="_blank" class="read-more" style="margin-top:auto">Read Full Story <i class="fas fa-arrow-right"></i></a>
-      </div>
-    </div>
 
-
-
-    <!-- FEATURED + SIDE -->
-    <div class="grid-featured" style="margin-bottom:2px">
-      <!-- BIG FEATURE: Khamenei -->
-      <div class="card card-big">
-        <div class="card-img">
-          <img src="images/iranleader.jpg" alt="Khamenei" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=60'">
-          <span class="cat-badge">Iran — Breaking</span>
-          <span class="time-badge">Mar 2, 2026</span>
+        <div class="content-area" id="contentArea">
+            <!-- Dynamic content loads here -->
         </div>
-        <div class="card-body">
-          <div class="card-meta"><span class="live-indicator"><span class="live-dot"></span> Live Update</span> &nbsp;·&nbsp; By SDWJR | TBA News</div>
-          <h3>Who Was Ayatollah Khamenei: Iran's Supreme Leader Killed in U.S.–Israeli Strikes</h3>
-          <p class="excerpt">Ayatollah Ali Khamenei, Iran's supreme leader for more than three decades and one of the most powerful figures in the Middle East, was killed in coordinated U.S.–Israeli strikes targeting senior Iranian leadership — marking a historic turning point for the Islamic Republic.</p>
-          <div class="share-strip">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://tbanewsnetwork.com" target="_blank" class="sh-btn fb"><i class="fab fa-facebook-f"></i> Share</a>
-            <a href="https://twitter.com/intent/tweet?url=https://tbanewsnetwork.com&text=Khamenei+killed+in+US-Israel+strikes" target="_blank" class="sh-btn tw"><i class="fab fa-twitter"></i> Tweet</a>
-        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://tbanewsnetwork.com" target="_blank" class="sh-btn li"><i class="fab fa-linkedin-in"></i> Post</a>
-          </div>
-          <a href="https://substack.com/@tbanewsnetwork" target="_blank" class="read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      
-
-      
-      <!-- SIDE STACK -->
-<div style="display:flex;flex-direction:column;gap:2px;background:var(--dark4)">
-  <!-- Iran-Israel War Recap -->
-  <div class="card" style="flex:1">
-    <div class="card-img">
-      <img src="images/iranvsisrael2026.jpg" alt="Iran Israel US War" onerror="this.src='https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?w=600&q=60'" style="height:160px">
-      <span class="cat-badge">War Recap</span>
     </div>
-    <div class="card-body">
-      <div class="card-meta">Mar 2, 2026 · World</div>
-      <h3>War Recap: Iran vs Israel and the United States</h3>
-      <p class="excerpt">Iran, Israel, and the U.S. are now in open regional war — tracing from April 2024 drone barrages to today's direct military confrontation.</p>
-      <a href="iran-israel-us-war-recap.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-    </div>
-  </div>
-  <!-- Lebanon  -->
-  <div class="card" style="flex:1">
-   <img 
-  src="images/10peopledead.jpg" 
-  alt="Israeli strikes in Lebanon"
-  onerror="this.onerror=null;this.src='images/fallback.jpg';"
-  style="height:160px;width:100%;object-fit:cover;"
->
-
-    <div class="card-body">
-      <div class="card-meta">Mar 2, 2026 · Middle East</div>
-      <h3>Israeli Strikes in Lebanon Kill at Least 10, Including Senior Hezbollah Official</h3>
-      <div class="share-strip">
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https://substack.com/@tbanewsnetwork" target="_blank" class="sh-btn fb"><i class="fab fa-facebook-f"></i> Share</a>
-        <a href="https://twitter.com/intent/tweet?url=https://substack.com/@tbanewsnetwork&text=Israeli+Strikes+in+Lebanon+Kill+at+Least+10" target="_blank" class="sh-btn tw"><i class="fab fa-twitter"></i> Tweet</a>
-      </div>
-      <a href="https://substack.com/@tbanewsnetwork" target="_blank" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-    </div>
-  </div>
-  <!-- ↓ PASTE YOUR NEW CARD RIGHT HERE ↓ -->
-  <!-- BERUIT PROTEST-->
-  <div class="card" style="flex:1">
-    <div class="card-img">
-      <img src="images/berutprotest.jpg" alt="Protesters in Beirut" 
-           onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=60'" 
-           style="height:160px">
-      <span class="cat-badge">PROTEST</span>
-      <span class="time-badge">Mar 2026</span>
-    </div>
-    <div class="card-body">
-      <div class="card-meta">Mar 2026 · Lebanon</div>
-      <h3>Beirut Protests Erupt After Israeli Strikes: Thousands Demand Government Action</h3>
-      <p class="excerpt">Thousands of Lebanese citizens took to the streets of Beirut following the latest Israeli airstrikes, demanding government accountability and international intervention as casualties mount.</p>
-      <div class="share-strip">
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https://substack.com/@tbanewsnetwork" target="_blank" class="sh-btn fb"><i class="fab fa-facebook-f"></i> Share</a>
-        <a href="https://twitter.com/intent/tweet?url=https://substack.com/@tbanewsnetwork&text=Beirut+Protests+Erupt+After+Israeli+Strikes" target="_blank" class="sh-btn tw"><i class="fab fa-twitter"></i> Tweet</a>
-      </div>
-      <a href="https://substack.com/@tbanewsnetwork" target="_blank" class="read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
-    </div>
-  </div>
-  <!-- END NEW CARD -->
 </div>
 
-    <!-- Protest Against Trump-->
+<script>
+    // Complete Course Data with 7 Modules
+    const courseData = {
+        modules: [
+            {
+                id: 1,
+                title: "Module 1: SQL Fundamentals",
+                icon: "🎯",
+                completed: false,
+                points: 100,
+                content: {
+                    lessons: [
+                        "<h2>🎯 What is SQL?</h2><p>SQL (Structured Query Language) is the standard language for relational database management. It allows you to communicate with databases to retrieve, insert, update, and delete data.</p>",
+                        "<h3>📝 Basic SELECT Statement</h3><p>The SELECT statement is used to retrieve data from a database. Basic syntax:</p><div class='code-block'><code class='sql-example'>SELECT column1, column2 FROM table_name;<br>SELECT * FROM table_name; -- Selects all columns</code></div>"
+                    ],
+                    exercises: [
+                        {
+                            type: "sql",
+                            description: "Write a query to select all columns from a table called 'students'",
+                            solution: "SELECT * FROM students;",
+                            hint: "Use the asterisk (*) to select all columns"
+                        }
+                    ],
+                    quiz: {
+                        question: "What does SQL stand for?",
+                        options: ["Structured Query Language", "Simple Question Language", "Standard Query Logic", "System Query Language"],
+                        correct: 0,
+                        explanation: "SQL stands for Structured Query Language, used to communicate with databases."
+                    }
+                }
+            },
+            {
+                id: 2,
+                title: "Module 2: Filtering Data",
+                icon: "🔍",
+                completed: false,
+                points: 100,
+                content: {
+                    lessons: [
+                        "<h2>🔍 WHERE Clause</h2><p>The WHERE clause filters records based on specific conditions.</p><div class='code-block'><code class='sql-example'>SELECT * FROM students WHERE age > 18;<br>SELECT name FROM students WHERE graduation_year = 2024;</code></div>",
+                        "<h3>📊 Comparison Operators</h3><p>=, >, <, >=, <=, <> (not equal)</p>"
+                    ],
+                    exercises: [
+                        {
+                            type: "sql",
+                            description: "Write a query to select all students whose age is greater than 20 from a table called 'students'",
+                            solution: "SELECT * FROM students WHERE age > 20;",
+                            hint: "Use WHERE clause with the > operator"
+                        }
+                    ],
+                    quiz: {
+                        question: "Which operator is used to filter records WHERE age is greater than 25?",
+                        options: ["age < 25", "age = 25", "age > 25", "age <= 25"],
+                        correct: 2,
+                        explanation: "The > operator means 'greater than'"
+                    }
+                }
+            },
+            {
+                id: 3,
+                title: "Module 3: Sorting & Limiting",
+                icon: "📊",
+                completed: false,
+                points: 100,
+                content: {
+                    lessons: [
+                        "<h2>📊 ORDER BY & LIMIT</h2><p>Sort results using ORDER BY and limit results using LIMIT.</p><div class='code-block'><code class='sql-example'>SELECT * FROM students ORDER BY name ASC;<br>SELECT * FROM students LIMIT 5;<br>SELECT * FROM students ORDER BY graduation_year DESC LIMIT 10;</code></div>"
+                    ],
+                    exercises: [
+                        {
+                            type: "sql",
+                            description: "Write a query to select all students ordered by name in ascending order",
+                            solution: "SELECT * FROM students ORDER BY name ASC;",
+                            hint: "Use ORDER BY with ASC keyword"
+                        }
+                    ],
+                    quiz: {
+                        question: "How do you sort results in descending order?",
+                        options: ["ORDER BY column ASC", "ORDER BY column DESC", "SORT BY column", "ORDER column DESC"],
+                        correct: 1,
+                        explanation: "DESC keyword sorts in descending order"
+                    }
+                }
+            },
+            {
+                id: 4,
+                title: "Module 4: Inserting Data",
+                icon: "✏️",
+                completed: false,
+                points: 100,
+                content: {
+                    lessons: [
+                        "<h2>✏️ INSERT Statement</h2><p>Add new records to a table using INSERT INTO.</p><div class='code-block'><code class='sql-example'>INSERT INTO students (name, age, graduation_year) VALUES ('John Doe', 22, 2025);</code></div>"
+                    ],
+                    exercises: [
+                        {
+                            type: "sql",
+                            description: "Write a query to insert a new student named 'Alice Brown', age 21, graduation year 2026",
+                            solution: "INSERT INTO students (name, age, graduation_year) VALUES ('Alice Brown', 21, 2026);",
+                            hint: "Use INSERT INTO with VALUES"
+                        }
+                    ],
+                    quiz: {
+                        question: "Which SQL statement is used to add new data to a table?",
+                        options: ["ADD RECORD", "INSERT INTO", "ADD NEW", "CREATE RECORD"],
+                        correct: 1,
+                        explanation: "INSERT INTO is used to add new records"
+                    }
+                }
+            },
+            {
+                id: 5,
+                title: "Module 5: Updating Data",
+                icon: "🔄",
+                completed: false,
+                points: 100,
+                content: {
+                    lessons: [
+                        "<h2>🔄 UPDATE Statement</h2><p>Modify existing records using UPDATE.</p><div class='code-block'><code class='sql-example'>UPDATE students SET graduation_year = 2024 WHERE name = 'John Doe';<br>UPDATE students SET age = age + 1 WHERE graduation_year = 2025;</code></div><p><strong>Warning:</strong> Always use WHERE with UPDATE, otherwise ALL records will be updated!</p>"
+                    ],
+                    exercises: [
+                        {
+                            type: "sql",
+                            description: "Write a query to update the graduation year to 2025 for the student named 'Alice Brown'",
+                            solution: "UPDATE students SET graduation_year = 2025 WHERE name = 'Alice Brown';",
+                            hint: "Use UPDATE with SET and WHERE"
+                        }
+                    ],
+                    quiz: {
+                        question: "What happens if you forget the WHERE clause in an UPDATE statement?",
+                        options: ["Nothing happens", "Error occurs", "All records are updated", "Only first record updates"],
+                        correct: 2,
+                        explanation: "Without WHERE, ALL rows in the table are updated!"
+                    }
+                }
+            },
+            {
+                id: 6,
+                title: "Module 6: JOINs",
+                icon: "🔗",
+                completed: false,
+                points: 100,
+                content: {
+                    lessons: [
+                        "<h2>🔗 INNER JOIN</h2><p>JOIN combines rows from two or more tables based on a related column.</p><div class='code-block'><code class='sql-example'>SELECT students.name, courses.course_name<br>FROM students<br>INNER JOIN enrollments ON students.id = enrollments.student_id<br>INNER JOIN courses ON enrollments.course_id = courses.id;</code></div>",
+                        "<h3>Types of JOINs:</h3><p>• INNER JOIN: Returns records with matching values in both tables<br>• LEFT JOIN: Returns all records from left table, matched from right<br>• RIGHT JOIN: Returns all records from right table, matched from left</p>"
+                    ],
+                    exercises: [
+                        {
+                            type: "sql",
+                            description: "Write a query using INNER JOIN to get student names and their course names",
+                            solution: "SELECT students.name, courses.course_name FROM students INNER JOIN enrollments ON students.id = enrollments.student_id INNER JOIN courses ON enrollments.course_id = courses.id;",
+                            hint: "You need to join three tables"
+                        }
+                    ],
+                    quiz: {
+                        question: "Which JOIN returns all records from the left table even if there are no matches?",
+                        options: ["INNER JOIN", "RIGHT JOIN", "LEFT JOIN", "FULL JOIN"],
+                        correct: 2,
+                        explanation: "LEFT JOIN returns all records from the left table"
+                    }
+                }
+            },
+            {
+                id: 7,
+                title: "Module 7: Aggregation",
+                icon: "📈",
+                completed: false,
+                points: 100,
+                content: {
+                    lessons: [
+                        "<h2>📈 Aggregate Functions</h2><p>Perform calculations on data: COUNT, SUM, AVG, MIN, MAX, GROUP BY.</p><div class='code-block'><code class='sql-example'>SELECT COUNT(*) as total_students FROM students;<br>SELECT AVG(age) as average_age FROM students;<br>SELECT graduation_year, COUNT(*) FROM students GROUP BY graduation_year;</code></div>"
+                    ],
+                    exercises: [
+                        {
+                            type: "sql",
+                            description: "Write a query to count how many students are in each graduation year",
+                            solution: "SELECT graduation_year, COUNT(*) FROM students GROUP BY graduation_year;",
+                            hint: "Use GROUP BY with COUNT"
+                        }
+                    ],
+                    quiz: {
+                        question: "Which aggregate function would you use to find the oldest student?",
+                        options: ["COUNT()", "AVG()", "MAX()", "SUM()"],
+                        correct: 2,
+                        explanation: "MAX() returns the maximum value"
+                    }
+                }
+            }
+        ]
+    };
+
+    let currentModule = 1;
+    let moduleAnswers = {};
+    let totalPoints = 0;
+
+    // Initialize from localStorage if available
+    function loadProgress() {
+        const saved = localStorage.getItem('sudCourseProgress');
+        if (saved) {
+            const data = JSON.parse(saved);
+            totalPoints = data.totalPoints || 0;
+            moduleAnswers = data.moduleAnswers || {};
+            courseData.modules.forEach((mod, idx) => {
+                mod.completed = data.completedModules && data.completedModules[mod.id] || false;
+            });
+        }
+        updateStats();
+    }
+
+    function saveProgress() {
+        const completedModules = {};
+        courseData.modules.forEach(mod => {
+            completedModules[mod.id] = mod.completed;
+        });
+        localStorage.setItem('sudCourseProgress', JSON.stringify({
+            totalPoints: totalPoints,
+            moduleAnswers: moduleAnswers,
+            completedModules: completedModules
+        }));
+    }
+
+    function updateStats() {
+        const completed = courseData.modules.filter(m => m.completed).length;
+        document.getElementById('completedModules').textContent = completed;
+        document.getElementById('totalPoints').textContent = totalPoints;
+    }
+
+    function renderSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        sidebar.innerHTML = courseData.modules.map(module => `
+            <div class="module-item ${currentModule === module.id ? 'active' : ''} ${module.completed ? 'completed' : ''}" onclick="loadModule(${module.id})">
+                <div class="module-icon">${module.icon}</div>
+                <div class="module-info">
+                    <div class="module-title">${module.title}</div>
+                    <div class="module-status">${module.completed ? '✓ Completed' : `${module.points} points`}</div>
+                </div>
+                ${module.completed ? '<span class="badge">✓</span>' : ''}
+            </div>
+        `).join('');
+    }
+
+    function checkQuiz(moduleId, questionIndex) {
+        const module = courseData.modules.find(m => m.id === moduleId);
+        if (!module || module.completed) return;
+
+        const selected = document.querySelector(`input[name="quiz_${moduleId}"]:checked`);
+        if (!selected) {
+            alert('Please select an answer!');
+            return;
+        }
+
+        const isCorrect = parseInt(selected.value) === module.content.quiz.correct;
+        const feedbackDiv = document.getElementById(`quiz-feedback-${moduleId}`);
         
-    <!-- BOTTOM ROW: 3 cards -->
-    <div class="grid-3">
-      <!-- Texas Bar Shooting -->
-      <div class="card fadein">
-        <div class="card-img">
-          <img src="images/senegalshooter.png" alt="Texas bar shooting" onerror="this.src='https://images.unsplash.com/photo-1453873531674-2151bcd01707?w=600&q=60'">
-          <span class="cat-badge">USA</span>
-          <span class="time-badge">Mar 2, 2026</span>
-        </div>
-        <div class="card-body">
-          <div class="card-meta">Austin, Texas · Terrorism</div>
-          <h3>Suspect in Texas Bar Shooting Wore 'Property of Allah' Clothing and Iranian Flag Emblem</h3>
-          <p class="excerpt">FBI and Joint Terrorism Task Force investigate the shooting that killed two and wounded 14 at an Austin bar as a possible act of terrorism.</p>
-          <div class="share-strip">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://open.substack.com/pub/tbanewsnetwork/p/suspect-in-texas-bar-shooting-wore" target="_blank" class="sh-btn fb"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://twitter.com/intent/tweet?url=https://open.substack.com/pub/tbanewsnetwork/p/suspect-in-texas-bar-shooting-wore&text=Texas+Bar+Shooting+Investigation" target="_blank" class="sh-btn tw"><i class="fab fa-twitter"></i></a>
-          </div>
-          <a href="https://open.substack.com/pub/tbanewsnetwork/p/suspect-in-texas-bar-shooting-wore" target="_blank" class="read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-      <!-- Mexico -->
-      <div class="card fadein">
-        <div class="card-img">
-          <img src="images/mexicancartel.jpg" alt="Mexico" onerror="this.src='https://images.unsplash.com/photo-1534030347209-467a5b0ad3e6?w=600&q=60'">
-          <span class="cat-badge">Mexico</span>
-          <span class="time-badge">Mar 2026</span>
-        </div>
-        <div class="card-body">
-          <div class="card-meta">Mexico City · Crime</div>
-          <h3>Mexico's Most-Wanted Drug Leader Killed in Military Operation</h3>
-          <p class="excerpt">A military operation led to the death of Mexico's most-wanted drug cartel leader, triggering armed clashes and warnings for US tourists.</p>
-          <div class="share-strip">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://thetbanewsnetwork.substack.com/p/mexico-drug-leader-killed" target="_blank" class="sh-btn fb"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://twitter.com/intent/tweet?url=https://thetbanewsnetwork.substack.com/p/mexico-drug-leader-killed&text=Mexico+cartel+leader+killed" target="_blank" class="sh-btn tw"><i class="fab fa-twitter"></i></a>
-          </div>
-          <a href="https://thetbanewsnetwork.substack.com/p/mexico-drug-leader-killed" target="_blank" class="read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-     <!-- Liberia -->
-<div class="card fadein">
-  <div class="card-img">
-    <img src="images/kemayah_weah.png" alt="Liberia" onerror="this.src='https://unsplash.com'">
-    <span class="cat-badge">Liberia</span>
-    <span class="time-badge">Mar 25, 2026</span>
-  </div>
-  <div class="card-body">
-    <div class="card-meta">Monrovia · Africa</div>
-    <h3>Weah, CDC Leaders Console Kemayah Amid Mother’s Death; Claims of Political Harassment Surface</h3>
-    <p class="excerpt">Former President George Weah leads a CDC delegation to sympathize with former Minister Kemayah, as the family links his mother’s passing to the trauma of past political arrests.</p>
-    <div class="share-strip">
-      <a href="https://facebook.com" target="_blank" class="sh-btn fb"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://twitter.com" target="_blank" class="sh-btn tw"><i class="fab fa-twitter"></i></a>
-    </div>
-    <a href="YOUR_POST_URL_HERE" target="_blank" class="read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
-  </div>
-</div>
+        if (isCorrect) {
+            feedbackDiv.innerHTML = `<div class="quiz-feedback" style="background:#22c55e20; border-left:4px solid #22c55e;">✅ Correct! ${module.content.quiz.explanation}</div>`;
+            if (!module.completed) {
+                module.completed = true;
+                totalPoints += module.points;
+                updateStats();
+                saveProgress();
+                renderSidebar();
+                // Show celebration
+                setTimeout(() => {
+                    alert(`🎉 Congratulations! You completed ${module.title} and earned ${module.points} points!`);
+                }, 100);
+            }
+        } else {
+            const correctAnswer = module.content.quiz.options[module.content.quiz.correct];
+            feedbackDiv.innerHTML = `<div class="quiz-feedback" style="background:#ef444420; border-left:4px solid #ef4444;">❌ Incorrect. The correct answer is: ${correctAnswer}. ${module.content.quiz.explanation}</div>`;
+        }
+    }
 
-<div class="card fadein">
-  <div class="card-img">
-    <img src="images/kanioLib.png" alt="Liberia" onerror="this.src='https://images.unsplash.com/photo-1589293955850-1f9c21a51d9d?w=600&q=60'">
-    <span class="cat-badge">Liberia</span>
-    <span class="time-badge">Mar 2, 2026</span>
-  </div>
-  <div class="card-body">
-    <div class="card-meta">Grand Gedeh · Africa</div>
-    <h3>SDWJR & Cllr. Kanio Bai Gbala Applaud Arrival of Yellow Machines in Grand Gedeh</h3>
-    <p class="excerpt">Heavy-duty equipment described as critical step toward accelerating road development and economic growth in Grand Gedeh County.</p>
-    <div class="share-strip">
-      <a href="https://www.facebook.com/sharer/sharer.php?u=https://open.substack.com/pub/tbanewsnetwork/p/sdwjr-and-cllr-kanio-bai-gbala-applaud" target="_blank" class="sh-btn fb"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://twitter.com/intent/tweet?url=https://open.substack.com/pub/tbanewsnetwork/p/sdwjr-and-cllr-kanio-bai-gbala-applaud&text=Yellow+Machines+Grand+Gedeh+Liberia" target="_blank" class="sh-btn tw"><i class="fab fa-twitter"></i></a>
-    </div>
-    <a href="https://open.substack.com/pub/tbanewsnetwork/p/sdwjr-and-cllr-kanio-bai-gbala-applaud" target="_blank" class="read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
-  </div>
-</div>
+    function runSQL(moduleId) {
+        const sqlInput = document.getElementById(`sql-input-${moduleId}`).value.trim();
+        const outputDiv = document.getElementById(`sql-output-${moduleId}`);
+        const module = courseData.modules.find(m => m.id === moduleId);
+        
+        if (!sqlInput) {
+            outputDiv.innerHTML = '<span style="color:#f87171;">⚠️ Please enter a SQL query first!</span>';
+            return;
+        }
 
-  
-</section>
+        // Simple validation for exercise solutions
+        const exercise = module.content.exercises[0];
+        const expectedSolution = exercise.solution.toLowerCase().replace(/\s+/g, ' ');
+        const userSolution = sqlInput.toLowerCase().replace(/\s+/g, ' ');
+        
+        if (userSolution.includes(expectedSolution) || expectedSolution.includes(userSolution) || 
+            (userSolution.includes('select * from students') && moduleId === 1) ||
+            (userSolution.includes('where age > 20') && moduleId === 2) ||
+            (userSolution.includes('order by name asc') && moduleId === 3) ||
+            (userSolution.includes("insert into students") && moduleId === 4) ||
+            (userSolution.includes("update students set") && moduleId === 5) ||
+            (userSolution.includes("inner join") && moduleId === 6) ||
+            (userSolution.includes("group by") && moduleId === 7)) {
+            
+            outputDiv.innerHTML = `<span style="color:#86efac;">✅ Correct! ${module.content.exercises[0].description}<br>Your query: ${sqlInput}<br><br>💡 Great job! You've mastered this concept.</span>`;
+            
+            // Auto-mark exercise as completed for this session
+            if (!moduleAnswers[`exercise_${moduleId}`]) {
+                moduleAnswers[`exercise_${moduleId}`] = true;
+                saveProgress();
+            }
+        } else {
+            outputDiv.innerHTML = `<span style="color:#fbbf24;">💡 Hint: ${module.content.exercises[0].hint}<br><br>Your query: ${sqlInput}<br>Expected pattern: ${exercise.solution}</span>`;
+        }
+    }
 
-<div class="divider"></div>
+    function loadModule(moduleId) {
+        currentModule = moduleId;
+        const module = courseData.modules.find(m => m.id === moduleId);
+        const contentArea = document.getElementById('contentArea');
+        
+        const lessonsHtml = module.content.lessons.join('');
+        
+        const quizHtml = `
+            <div class="quiz-section">
+                <h3>📝 Quiz: Test Your Knowledge</h3>
+                <div class="quiz-question">
+                    <p><strong>${module.content.quiz.question}</strong></p>
+                    ${module.content.quiz.options.map((opt, idx) => `
+                        <div class="quiz-option">
+                            <label>
+                                <input type="radio" name="quiz_${moduleId}" value="${idx}">
+                                ${opt}
+                            </label>
+                        </div>
+                    `).join('')}
+                    <button class="submit-quiz" onclick="checkQuiz(${moduleId}, 0)">Submit Answer</button>
+                    <div id="quiz-feedback-${moduleId}"></div>
+                </div>
+            </div>
+        `;
+        
+        const sqlEditorHtml = `
+            <div class="sql-editor-section">
+                <div class="editor-header">
+                    <h3>💻 Interactive SQL Practice</h3>
+                    <button class="run-btn" onclick="runSQL(${moduleId})">▶ Run Query</button>
+                </div>
+                <p><strong>Challenge:</strong> ${module.content.exercises[0].description}</p>
+                <textarea id="sql-input-${moduleId}" rows="4" placeholder="Write your SQL query here..."></textarea>
+                <div class="output-area" id="sql-output-${moduleId}">
+                    💡 Your query results will appear here...
+                </div>
+            </div>
+        `;
+        
+        const navHtml = `
+            <div class="nav-buttons">
+                <button class="nav-btn" ${moduleId === 1 ? 'disabled' : ''} onclick="loadModule(${moduleId - 1})">◀ Previous Module</button>
+                <button class="nav-btn" ${moduleId === 7 ? 'disabled' : ''} onclick="loadModule(${moduleId + 1})">Next Module ▶</button>
+            </div>
+        `;
+        
+        contentArea.innerHTML = `
+            <div class="module-content">
+                ${lessonsHtml}
+                ${sqlEditorHtml}
+                ${quizHtml}
+                ${navHtml}
+            </div>
+        `;
+        
+        renderSidebar();
+        
+        // Scroll to top
+        document.getElementById('contentArea').scrollTop = 0;
+    }
 
-<!-- ══════════════ VIDEO COVERAGE ══════════════ -->
-<section id="video" class="section bg-dark fadein">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-head-left">
-        <span class="sec-cat" style="background:var(--gold);color:var(--dark)">Video</span>
-        <h2 class="sec-title">Latest Video Coverage</h2>
-      </div>
-      <a href="https://youtube.com/@tbanewsnetwork" target="_blank" class="sec-more"><i class="fab fa-youtube"></i> YouTube Channel</a>
-    </div>
-    <div class="grid-4" style="margin-bottom:2px">
-      <div class="vid-card fadein">
-        <div class="vid-wrap"><iframe src="https://www.youtube.com/embed/RXhdQzRJBLI" title="Iran-Israel-US War Recap" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>
-        <div class="vid-body"><div class="vid-meta">War Coverage · Mar 2, 2026</div><h4>Iran–Israel–US War Recap: What You Need to Know</h4></div>
-      </div>
-      <div class="vid-card fadein">
-        <div class="vid-wrap"><iframe src="https://www.youtube.com/embed/HZtHrBTtEJI" title="Khamenei Profile" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>
-        <div class="vid-body"><div class="vid-meta">Iran · Vantage with Palki Sharma</div><h4>Who Was Ayatollah Khamenei?</h4></div>
-      </div>
-      <div class="vid-card fadein">
-        <div class="vid-wrap"><iframe src="https://www.youtube.com/embed/TEiDSNcLz44" title="Columbia ICE Release" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>
-        <div class="vid-body"><div class="vid-meta">New York · Immigration</div><h4>Columbia Student Released from ICE Custody After Mamdani–Trump Meeting</h4></div>
-      </div>
-      <div class="vid-card fadein">
-        <div class="vid-wrap"><iframe src="https://www.youtube.com/embed/TaUUDK4BgtM" title="Liberia Yellow Machines" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>
-        <div class="vid-body"><div class="vid-meta">Liberia · Infrastructure</div><h4>Yellow Machines Arrive in Grand Gedeh County</h4></div>
-      </div>
-    </div>
-    <div class="grid-3" style="margin-top:2px">
-      <div class="vid-card fadein">
-        <div class="vid-wrap"><iframe src="https://www.youtube.com/embed/fjA6wEQ76cM" title="Mamdani Snow" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>
-        <div class="vid-body"><div class="vid-meta">New York · City Hall</div><h4>Mayor Mamdani Addresses Snow Blizzard Emergency</h4></div>
-      </div>
-      <div class="vid-card fadein">
-        <div class="vid-wrap"><iframe src="https://www.youtube.com/embed/AKsD8VW0jO0" title="NYPD Snowballs" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>
-        <div class="vid-body"><div class="vid-meta">New York · NYPD</div><h4>PBA Calls for Arrests After Snowballs Thrown at NYPD Officers</h4></div>
-      </div>
-      <div class="vid-card fadein">
-        <div class="vid-wrap"><iframe src="https://www.youtube.com/embed/NBdUWMM8VNg" title="Hochul Snowstorm" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>
-        <div class="vid-body"><div class="vid-meta">New York State · Governor</div><h4>Governor Kathy Hochul Snowstorm Update</h4></div>
-      </div>
-    </div>
-    <div class="grid-2" style="margin-top:2px">
-      <div class="vid-card fadein">
-        <div class="vid-wrap"><iframe src="https://www.youtube.com/embed/pFOgOFUcFFQ" title="Facial Recognition" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>
-        <div class="vid-body"><div class="vid-meta">New York · Civil Rights</div><h4>Ban Facial Recognition Protest in New York City</h4></div>
-      </div>
-      <div class="vid-card fadein">
-        <div class="vid-wrap"><iframe src="https://www.youtube.com/embed/Vr-RffYT0rM" title="Texas Bar Shooting" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>
-        <div class="vid-body"><div class="vid-meta">Austin, Texas · Crime</div><h4>Texas Bar Shooting: FBI Terrorism Investigation Underway</h4></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══════════════ NEW YORK ══════════════ -->
-<section id="newyork" class="section fadein">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-head-left">
-        <span class="sec-cat">New York</span>
-        <h2 class="sec-title">City & State Coverage</h2>
-      </div>
-      <a href="https://substack.com/@tbanewsnetwork" target="_blank" class="sec-more">All NY Stories <i class="fas fa-arrow-right"></i></a>
-    </div>
-    <!-- Columbia / ICE featured -->
-    <div class="grid-featured" style="margin-bottom:2px">
-      <div class="card card-big">
-        <div class="card-img">
-          <img src="images/Columbiastudent.jpg" alt="Columbia University ICE raid" onerror="this.src='https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=900&q=60'">
-          <span class="cat-badge">Immigration</span>
-          <span class="time-badge">Mar 2026</span>
-        </div>
-        <div class="card-body">
-          <div class="card-meta">By SDWJR | TBA News Network</div>
-          <h3>DHS Releases Columbia University Student After Mayor Mamdani Intervenes at White House</h3>
-          <p class="excerpt">Federal agents stormed a Columbia University dormitory and detained Elmina Aghayeva, a 29-year-old neuroscience student from Azerbaijan — allegedly using fake NYPD badges and a phony missing persons bulletin. Hours later, Mayor Mamdani confronted President Trump directly, and she was released by evening.</p>
-          <div class="share-strip">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.0" target="_blank" class="sh-btn fb"><i class="fab fa-facebook-f"></i> Share</a>
-            <a href="https://twitter.com/intent/tweet?url=https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.0&text=Columbia+student+released+ICE+Mamdani" target="_blank" class="sh-btn tw"><i class="fab fa-twitter"></i> Tweet</a>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.0" target="_blank" class="sh-btn li"><i class="fab fa-linkedin-in"></i> Post</a>
-          </div>
-          <a href="https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.0" target="_blank" class="read-more">Read Full Investigation <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:2px;background:var(--dark4)">
-        <div class="card fadein" style="flex:1">
-          <div class="card-img">
-            <img src="images/mamdaniandhochul.jpg" alt="Mayor Mamdani and Governor Hochul" style="height:160px">
-            <span class="cat-badge">City Hall</span>
-          </div>
-          <div class="card-body">
-            <div class="card-meta">New York City · Governance</div>
-            <h3>Mayor Mandani Expands Press Access at City Hall</h3>
-            <p class="excerpt">A new open-door policy marks a shift in how the Mamdani administration engages with local media and the public.</p>
-            <a href="https://substack.com/@tbanewsnetwork" target="_blank" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-        <div class="card fadein" style="flex:1">
-          <div class="card-img">
-            <img src="images/jessejackson2026.jpg" alt="Jesse Jackson Funeral" style="height:160px">
-            <span class="cat-badge">Civil Rights</span>
-          </div>
-          <div class="card-body">
-            <div class="card-meta">WORLD· HUMAN RIGHTS</div>
-            <h3>Honor Rev. Jesse Jackson:South Carolina Pays Tribute to Live, Legacy and A Job Well Done</h3>
-            <p class="excerpt">South Carolina delivered a historic farewell Monday to one of its most influential native sons, the Rev. Jesse Jackson, honoring a life that reshaped American civil rights, politics, and global diplomacy.</p>
-            <a href="https://tbanewsnetwork.substack.com/p/honor-rev-jesse-jackson-south-carolina" target="_blank" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══════════════ SPORTS & ENTERTAINMENT ══════════════ -->
-<section id="sports" class="section bg-dark fadein">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-head-left">
-        <span class="sec-cat" style="background:var(--gold);color:var(--dark)">Sports & Entertainment</span>
-        <h2 class="sec-title">Latest in Sports & Culture</h2>
-      </div>
-      <a href="https://www.etsy.com/shop/SDWJRDATABASE" target="_blank" class="sec-more">Etsy Store <i class="fas fa-external-link-alt"></i></a>
-    </div>
+    // Initialize
+    loadProgress();
+    renderSidebar();
+    loadModule(1);
     
-    <div class="grid-4" style="margin-bottom:2px">
-      <!-- Sports Card 1: NBA -->
-      <div class="card fadein">
-        <div class="card-img">
-          <img src="https://images.unsplash.com/photo-1504450758481-7338eba7524a?q=80&w=600" alt="NBA Finals" onerror="this.src='https://via.placeholder.com/400x220?text=NBA+Finals'">
-          <span class="cat-badge">NBA</span>
-          <span class="time-badge">Mar 2026</span>
-        </div>
-        <div class="card-body">
-          <div class="card-meta">Basketball · Playoffs</div>
-          <h3>NBA Finals Preview: Lakers vs Celtics Set for Historic Showdown</h3>
-          <p class="excerpt">The two most iconic franchises in basketball history are set to meet in the NBA Finals for the first time since 2010.</p>
-          <div class="share-strip">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://tbanewsnetwork.com" target="_blank" class="sh-btn fb"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://twitter.com/intent/tweet?url=https://tbanewsnetwork.com&text=NBA+Finals+Preview" target="_blank" class="sh-btn tw"><i class="fab fa-twitter"></i></a>
-          </div>
-          <a href="#" class="read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-      
-      <!-- Entertainment Card 1: Music -->
-      <div class="card fadein">
-        <div class="card-img">
-          <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?q=80&w=600" alt="Music Festival" onerror="this.src='https://via.placeholder.com/400x220?text=Music+Festival'">
-          <span class="cat-badge">Music</span>
-          <span class="time-badge">Mar 2026</span>
-        </div>
-        <div class="card-body">
-          <div class="card-meta">Festivals · Live Events</div>
-          <h3>Coachella 2026 Lineup Announced: Beyoncé, Kendrick Lamar to Headline</h3>
-          <p class="excerpt">The world's biggest music festival returns with a star-studded lineup featuring major headliners and emerging artists.</p>
-          <div class="share-strip">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://tbanewsnetwork.com" target="_blank" class="sh-btn fb"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://twitter.com/intent/tweet?url=https://tbanewsnetwork.com&text=Coachella+2026+Lineup" target="_blank" class="sh-btn tw"><i class="fab fa-twitter"></i></a>
-          </div>
-          <a href="#" class="read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-      
-      <!-- Sports Card 2: Soccer -->
-      <div class="card fadein">
-        <div class="card-img">
-          <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=600" alt="World Cup" onerror="this.src='https://via.placeholder.com/400x220?text=World+Cup'">
-          <span class="cat-badge">Soccer</span>
-          <span class="time-badge">Mar 2026</span>
-        </div>
-        <div class="card-body">
-          <div class="card-meta">World Cup · 2026</div>
-          <h3>World Cup 2026: Host Cities Announced Across USA, Canada, Mexico</h3>
-          <p class="excerpt">The expanded 48-team tournament will feature matches in 16 cities across North America, with the final at MetLife Stadium.</p>
-          <div class="share-strip">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://tbanewsnetwork.com" target="_blank" class="sh-btn fb"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://twitter.com/intent/tweet?url=https://tbanewsnetwork.com&text=World+Cup+2026" target="_blank" class="sh-btn tw"><i class="fab fa-twitter"></i></a>
-          </div>
-          <a href="#" class="read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-      
-      <!-- Entertainment Card 2: Movies -->
-      <div class="card fadein">
-        <div class="card-img">
-          <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=600" alt="Summer Blockbusters" onerror="this.src='https://via.placeholder.com/400x220?text=Summer+Movies'">
-          <span class="cat-badge">Movies</span>
-          <span class="time-badge">Mar 2026</span>
-        </div>
-        <div class="card-body">
-          <div class="card-meta">Hollywood · Blockbusters</div>
-          <h3>Summer Movie Preview: Most Anticipated Films of 2026</h3>
-          <p class="excerpt">From superhero epics to indie darlings, here's your guide to the hottest movies hitting theaters this summer.</p>
-          <div class="share-strip">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://tbanewsnetwork.com" target="_blank" class="sh-btn fb"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://twitter.com/intent/tweet?url=https://tbanewsnetwork.com&text=Summer+Movies+2026" target="_blank" class="sh-btn tw"><i class="fab fa-twitter"></i></a>
-          </div>
-          <a href="#" class="read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-    </div>
-    
-    <div class="grid-2" style="margin-top:2px">
-      <!-- Featured Sports Story -->
-      <div class="card fadein" style="background:var(--dark3);">
-        <div class="card-img">
-          <img src="images/iranchiefkilled." alt="Olympics" onerror="this.src='https://via.placeholder.com/800x400?text=Olympics'">
-          <span class="cat-badge">Olympics</span>
-          <span class="time-badge">Mar 2026</span>
-        </div>
-        <div class="card-body">
-          <div class="card-meta"><span class="live-indicator"><span class="live-dot"></span> Countdown</span> &nbsp;·&nbsp; Summer Games</div>
-          <h3>Olympics 2026: Preparations Underway as Athletes Begin Final Training</h3>
-          <p class="excerpt">With 100 days until the opening ceremony, host city organizers unveil new venues and security measures for the world's largest sporting event.</p>
-          <a href="#" class="read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-      
-      <!-- Featured Entertainment Story -->
-      <div class="card fadein" style="background:var(--dark3);">
-        <div class="card-img">
-          <img src="https://images.unsplash.com/photo-1598387993441-a364fae9e406?q=80&w=800" alt="Award Show" onerror="this.src='https://via.placeholder.com/800x400?text=Award+Show'">
-          <span class="cat-badge">Awards</span>
-          <span class="time-badge">Mar 2026</span>
-        </div>
-        <div class="card-body">
-          <div class="card-meta">Oscars · 2026</div>
-          <h3>Academy Awards 2026: Full Winners List and Highlights</h3>
-          <p class="excerpt">The biggest night in Hollywood delivered surprises, emotional speeches, and historic wins. See the complete list of winners.</p>
-          <a href="#" class="read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ ABOUT ══════════════ -->
-<section id="about" class="section fadein">
-  <div class="container narrow" style="margin:0 auto">
-    <div class="sec-head">
-      <div class="sec-head-left">
-        <span class="sec-cat">About</span>
-        <h2 class="sec-title">About TBA News Network</h2>
-      </div>
-    </div>
-    <!-- SDWJR IMAGE-->
-   <div>
-  <img src="images/sdwjr.png" alt="SDWJR owner of TBA News Network" style="max-width:200px; border-radius:8px;">
-   </div>
-    <p class="about-text">TBA News Network is an independent, investigative media organization founded by journalist SDWJR. We were established to fill the critical void left by mainstream media — a space where stories of systemic injustice, institutional abuse, and violations of public trust often go untold. We operate on a simple but radical belief: journalism is most valuable when it challenges power, not when it protects it. We serve as a watchdog for the voiceless, providing a platform for fearless reporting on the issues that shape our world.</p>
-    <p class="about-text">With a dedicated focus on civil rights, policing, governance, and corruption, TBA News Network digs deep into the systems that affect marginalized communities across the United States, Africa, and the global Black diaspora. We prioritize the public interest over political access, corporate approval, or personal comfort. At TBA News Network, we don't just report the news — we investigate the truth behind it.</p>
-    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:30px">
-      <a href="https://docs.google.com/document/d/1vu5dwnMKkihuBCLL-qHoM2ANTJWwSH8hMdGnoWf4K1M/edit?tab=t.0" target="_blank" class="btn btn-red">Read Our Mission</a>
-      <a href="https://substack.com/@tbanewsnetwork" target="_blank" class="btn btn-sub">✉ Subscribe on Substack</a>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══════════════ CONTACT ══════════════ -->
-<section id="contact" class="section bg-dark fadein">
-  <div class="container narrow" style="margin:0 auto">
-    <div class="sec-head">
-      <div class="sec-head-left">
-        <span class="sec-cat">Contact</span>
-        <h2 class="sec-title">Send a Tip</h2>
-      </div>
-    </div>
-    <div class="contact-box">
-      <i class="fas fa-envelope" style="font-size:2.5rem;color:var(--red);margin-bottom:16px;display:block"></i>
-      <p class="contact-email">tbanewsnetwork@gmx.com</p>
-      <p class="contact-note">Confidential sources are protected. Encrypted tips welcome.</p>
-      <div style="margin-top:24px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-        <a href="mailto:tbanewsnetwork@gmx.com" class="btn btn-red"><i class="fas fa-envelope"></i> Email Us</a>
-        <a href="https://t.me/tbanewsnetwork" target="_blank" class="btn" style="background:#0088cc;color:#fff"><i class="fab fa-telegram-plane"></i> Telegram</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ FOOTER ══════════════ -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <span class="logo-name">TBA NEWS NETWORK</span>
-        <p>Independent investigative media. Challenging power. Amplifying the voiceless. Reporting the truth behind the news since day one.</p>
-        <div class="soc-btns" style="margin-top:20px">
-          <a href="https://facebook.com/tbanewsnetwork" target="_blank" class="soc-btn fb"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://twitter.com/tbanewsnetwork" target="_blank" class="soc-btn tw"><i class="fab fa-twitter"></i></a>
-          <a href="https://instagram.com/tbanewsnetwork" target="_blank" class="soc-btn ig"><i class="fab fa-instagram"></i></a>
-          <a href="https://youtube.com/@tbanewsnetwork" target="_blank" class="soc-btn yt"><i class="fab fa-youtube"></i></a>
-          <a href="https://tiktok.com/@tbanewsnetwork" target="_blank" class="soc-btn tt"><i class="fab fa-tiktok"></i></a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Coverage</h4>
-        <a href="#network">World News</a>
-        <a href="#newyork">New York</a>
-        <a href="#video">Video</a>
-        <a href="https://substack.com/@tbanewsnetwork" target="_blank">Substack</a>
-      </div>
-      <div class="footer-col">
-        <h4>Network</h4>
-        <a href="#about">About TBA</a>
-        <a href="#contact">Send a Tip</a>
-        <a href="https://cash.app/$tbanewsnetwork" target="_blank">Donate</a>
-        <a href="https://www.etsy.com/shop/YOURSTORENAME" target="_blank">Merch Store</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p class="footer-copy">© 2026 <strong>TBA News Network</strong> · Independent Journalism · All Rights Reserved</p>
-      <p class="footer-copy" style="color:#444">tbanewsnetwork@gmx.com</p>
-    </div>
-  </div>
-</footer>
-    <script>
-(function(){
-  // TICKER
-  const items=[
-    "Mayor Mandani expands press access at City Hall",
-    "TBA News Network launches independent journalism platform",
-    "NYC housing debate intensifies after policy announcement",
-    "Liberian nurses prepare for strike at Phebe Hospital",
-    "LAPD faces lawsuit over protest injury",
-    "Israeli strikes impact Lebanon communities",
-    "U.S.–Israeli strikes kill Khamenei — Iran in political crisis",
-    "FBI investigates Austin bar shooting as terrorism",
-    "Columbia student released from ICE after Mamdani-Trump meeting",
-    "Honor Rev. Jesse Jackson: South Carolina Pays Tribute to Life"
-  ];
-  const t=document.getElementById('tickerContent');
-  if(t) t.innerText=items.join(' ✦ ');
-
-  // RIBBON CLOSE
-  const ribbon=document.getElementById('ribbon');
-  const ribbonClose=document.getElementById('ribbonClose');
-  const navbar=document.querySelector('.navbar');
-  const tickerBar=document.querySelector('.ticker-bar');
-  const pagePush=document.querySelector('.page-push');
-  if(ribbonClose){
-    ribbonClose.addEventListener('click',()=>{
-      ribbon.classList.add('hidden');
-      navbar.style.top='0';
-      if(tickerBar) tickerBar.style.top='62px';
-      if(pagePush) pagePush.style.height='102px';
-    });
-  }
-
-  // HAMBURGER
-  const hamburger=document.getElementById('hamburger');
-  const navMobile=document.getElementById('navMobile');
-  if(hamburger&&navMobile){
-    hamburger.addEventListener('click',()=>{
-      navMobile.classList.toggle('open');
-      hamburger.innerHTML=navMobile.classList.contains('open')
-        ?'<i class="fas fa-times"></i>'
-        :'<i class="fas fa-bars"></i>';
-    });
-    navMobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
-      navMobile.classList.remove('open');
-      hamburger.innerHTML='<i class="fas fa-bars"></i>';
-    }));
-  }
-
-  // SMOOTH SCROLL + NAV ACTIVE
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.addEventListener('click',function(e){
-      const target=document.querySelector(this.getAttribute('href'));
-      if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'});}
-    });
-  });
-
-  // NAVBAR SCROLL SHADOW + ACTIVE NAV
-  const navLinks=document.querySelectorAll('.nav-links a, .nav-mobile a');
-  window.addEventListener('scroll',()=>{
-    const nb=document.querySelector('.navbar');
-    if(nb) nb.style.boxShadow=window.scrollY>10?'0 4px 24px rgba(0,0,0,.5)':'';
-    const sp=window.scrollY+120;
-    document.querySelectorAll('section[id]').forEach(sec=>{
-      if(sp>=sec.offsetTop&&sp<sec.offsetTop+sec.offsetHeight){
-        navLinks.forEach(l=>{
-          l.classList.remove('active');
-          if(l.getAttribute('href')==='#'+sec.id) l.classList.add('active');
-        });
-      }
-    });
-  });
-
-  // FADE-IN OBSERVER
-  const io=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{if(e.isIntersecting) e.target.classList.add('visible');});
-  },{threshold:0.08});
-  document.querySelectorAll('.fadein').forEach(el=>io.observe(el));
-
-  // POPUPS
-  function showPopup(id,delay,storageKey){
-    const pop=document.getElementById(id);
-    if(!pop||localStorage.getItem(storageKey)) return;
-    setTimeout(()=>pop.classList.add('active'),delay);
-  }
-  showPopup('substackPopup',6000,'subClosed');
-  showPopup('donatePopup',14000,'donClosed');
-  document.getElementById('popupClose')?.addEventListener('click',()=>{
-    document.getElementById('substackPopup').classList.remove('active');
-    localStorage.setItem('subClosed','1');
-  });
-  document.getElementById('donateClose')?.addEventListener('click',()=>{
-    document.getElementById('donatePopup').classList.remove('active');
-    localStorage.setItem('donClosed','1');
-  });
-  window.addEventListener('click',e=>{
-    if(e.target.id==='substackPopup') e.target.classList.remove('active');
-    if(e.target.id==='donatePopup') e.target.classList.remove('active');
-  });
-
-  // ETSY GRID
-   const etsyGrid=document.getElementById('etsyGrid');
-  if(etsyGrid){
-    const products=[
-      {name:'100+ Enterprise AI Consulting Prompts',desc:'Enterprise-Level AI Strategy Toolkit for Business Leaders',price:'View on Etsy',img:'images/consultation.PNG',url:'https://www.etsy.com/listing/4417375114/100-enterprise-ai-consulting-prompts'},
-      {name:'TBA News T-Shirt',desc:'Show your support for independent journalism',price:'$24.99',img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=500',url:'https://www.etsy.com/shop/YOURSTORENAME'},
-      {name:'Press Freedom Hoodie',desc:'Wear the cause — warm and bold',price:'$49.99',img:'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=500',url:'https://www.etsy.com/shop/YOURSTORENAME'},
-      {name:'Truth Seeker Cap',desc:'Cap with TBA News branding',price:'$19.99',img:'https://images.unsplash.com/photo-1588850561391-1e2e7a2a9a3b?q=80&w=500',url:'https://www.etsy.com/shop/YOURSTORENAME'}
-    ];
-    products.forEach(p=>{
-      const div=document.createElement('div');
-      div.className='etsy-card fadein';
-      div.innerHTML=`<a href="${p.url}" target="_blank"><img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x200?text=TBA+Store'"><h3>${p.name}</h3><p>${p.desc}</p><span class="price">${p.price}</span></a>`;
-      etsyGrid.appendChild(div);
-      io.observe(div);
-    });
-  }
-
-  // IMAGE ERROR FALLBACK
-  document.querySelectorAll('img').forEach(img=>{
-    img.addEventListener('error',()=>{
-      if(!img.dataset.fallback){img.dataset.fallback='1';img.src='https://via.placeholder.com/600x400?text=TBA+News';}
-    });
-  });
-
-  // SHARE TRACKING
-  document.addEventListener('click',e=>{
-    const btn=e.target.closest('.sh-btn,.soc-btn');
-    if(!btn) return;
-    const platform=['fb','facebook'].some(c=>btn.classList.contains(c))?'Facebook':
-                   ['tw','twitter'].some(c=>btn.classList.contains(c))?'Twitter':
-                   ['li','linkedin'].some(c=>btn.classList.contains(c))?'LinkedIn':
-                   btn.classList.contains('ig')?'Instagram':
-                   btn.classList.contains('tt')?'TikTok':
-                   btn.classList.contains('yt')?'YouTube':
-                   btn.classList.contains('wa')?'WhatsApp':
-                   btn.classList.contains('tg')?'Telegram':'Other';
-    console.log('Shared on',platform);
-  });
-
-  // ANIMATE HERO STATS COUNTER
-  function animateCounter(el,target){
-    const suffix=el.textContent.replace(/[0-9]/g,'');
-    let cur=0;const inc=target/50;
-    const timer=setInterval(()=>{
-      cur=Math.min(cur+inc,target);
-      el.textContent=Math.round(cur)+suffix;
-      if(cur>=target) clearInterval(timer);
-    },30);
-  }
-  const statsObs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.querySelectorAll('.num').forEach(n=>{
-          const raw=n.textContent;
-          const num=parseInt(raw);
-          if(!isNaN(num)) animateCounter(n,num);
-        });
-        statsObs.unobserve(e.target);
-      }
-    });
-  },{threshold:.5});
-  const heroStats=document.querySelector('.hero-stats');
-  if(heroStats) statsObs.observe(heroStats);
-
-})();
-
+    // Make functions global
+    window.loadModule = loadModule;
+    window.checkQuiz = checkQuiz;
+    window.runSQL = runSQL;
 </script>
 </body>
 </html>
