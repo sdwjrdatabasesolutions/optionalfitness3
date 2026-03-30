@@ -4,6 +4,14 @@
     { "src": "api/*.js", "use": "@vercel/node" }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "/api/$1.js" }
-  ]
+    { "src": "/api/create-order", "dest": "/api/create-order.js" },
+    { "src": "/api/capture-order", "dest": "/api/capture-order.js" },
+    { "src": "/api/query", "dest": "/api/query.js" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ],
+  "env": {
+    "DATABASE_URL": "@database_url",
+    "PAYPAL_CLIENT_ID": "@paypal_client_id",
+    "PAYPAL_CLIENT_SECRET": "@paypal_client_secret"
+  }
 }
