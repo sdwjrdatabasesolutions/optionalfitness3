@@ -1,29 +1,40 @@
+// capture-order.js
+import { initializeApp } from "firebase-admin/app";
+import { getFirestore } from "firebase-admin/firestore";
+
+// Initialize Firebase Admin SDK (server-side)
+if (!initializeApp.apps?.length) {
+    initializeApp({
+        credential: process.env.FIREBASE_ADMIN_CREDENTIAL // Your service account JSON
+    });
+}
+
+const db = getFirestore();
+
 export default async function handler(req, res) {
-    // Only allow POST requests
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    const { orderID } = req.body;
+    const { orderID, userID } = req.body;
     
-    if (!orderID) {
-        return res.status(400).json({ error: 'Order ID is required' });
+    if (!orderID || !userID) {
+        return res.status(400).json({ error: 'Order ID and userID are required' });
     }
 
     try {
         // Here you would capture with PayPal SDK
         // const request = new paypal.orders.OrdersCaptureRequest(orderID);
-        // request.requestBody({});
         // const capture = await paypalClient.execute(request);
-        
         console.log("Captured order:", orderID);
-        
-        // Update database to mark user as paid
-        // await updateUserPaymentStatus(userId, true);
-        
+
+        // Update Firestore user to mark as paid
+        const userRef = db.collection('users').doc(userID);
+        await userRef.set({ is_paid: true }, { merge: true });
+
         res.status(200).json({ 
             status: "captured",
-            message: "Payment successful"
+            message: "Payment successful and user unlocked"
         });
     } catch (error) {
         console.error('Capture order error:', error);
