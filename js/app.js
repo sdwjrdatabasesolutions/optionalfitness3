@@ -1,5 +1,5 @@
 // app.js
-import { getUser, saveUser, updatePaymentStatus } from './auth.js';
+import { getUser, login, logout, updatePaymentStatus, onUserChanged } from './auth.js';
 import { renderPayPalButton } from './payment.js';
 
 const lessons = [
@@ -12,101 +12,26 @@ const lessons = [
 const lessonList = document.getElementById('lessonList');
 const content = document.getElementById('content');
 
-let currentUser = null;
-
-// ----------------------------
-// Firebase login
-// ----------------------------
-async function login() {
-    try {
-        const provider = new firebase.auth.GoogleAuthProvider();
-        const result = await firebase.auth().signInWithPopup(firebase.auth(), provider);
-        const user = {
-            email: result.user.email,
-            is_paid: false,
-            completedModules: [],
-            uid: result.user.uid
-        };
-        saveUser(user);
-        currentUser = user;
-        await syncProgress(); // load progress from backend
-        renderLessons();
-    } catch (err) {
-        console.error('Login failed', err);
-    }
-}
-
-async function logoutUser() {
-    await firebase.auth().signOut();
-    currentUser = null;
-    localStorage.removeItem('user');
-    location.reload();
-}
-
-// ----------------------------
-// Backend API calls
-// ----------------------------
-async function syncProgress() {
-    if (!currentUser) return;
-    try {
-        const res = await fetch('/api/query', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${await firebase.auth().currentUser.getIdToken()}`
-            },
-            body: JSON.stringify({ queryType: 'getUserProgress' })
-        });
-        const data = await res.json();
-        if (data.completed_modules) currentUser.completedModules = data.completed_modules;
-        if (data.is_paid) currentUser.is_paid = data.is_paid;
-        saveUser(currentUser);
-    } catch (err) {
-        console.error('Failed to sync progress', err);
-    }
-}
-
-async function saveProgress() {
-    if (!currentUser) return;
-    try {
-        await fetch('/api/query', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${await firebase.auth().currentUser.getIdToken()}`
-            },
-            body: JSON.stringify({
-                queryType: 'updateProgress',
-                completedModules: currentUser.completedModules,
-                isPaid: currentUser.is_paid
-            })
-        });
-    } catch (err) {
-        console.error('Failed to save progress', err);
-    }
-}
-
-// ----------------------------
-// Lessons rendering
-// ----------------------------
+// ===== Render Lessons =====
 function renderLessons() {
-    const user = currentUser || getUser();
+    const user = getUser();
     lessonList.innerHTML = '';
 
     lessons.forEach(lesson => {
         const li = document.createElement('li');
         li.textContent = lesson.title;
-        li.style.cursor = 'pointer';
-        li.style.padding = '8px';
-        li.style.margin = '4px 0';
-        li.style.backgroundColor = '#f0f0f0';
-        li.style.borderRadius = '4px';
+        li.style.cursor = "pointer";
+        li.style.padding = "8px";
+        li.style.margin = "4px 0";
+        li.style.backgroundColor = "#f0f0f0";
+        li.style.borderRadius = "4px";
 
+        // Lock premium lessons if user hasn't paid
         if (lesson.locked && (!user || !user.is_paid)) {
-            li.style.opacity = '0.6';
+            li.style.opacity = "0.6";
             li.innerHTML += ' 🔒';
         } else {
-            li.style.backgroundColor = '#e0e0e0';
+            li.style.backgroundColor = "#e0e0e0";
         }
 
         li.onclick = () => loadLesson(lesson.id);
@@ -114,8 +39,9 @@ function renderLessons() {
     });
 }
 
+// ===== Load Lesson Content =====
 function loadLesson(id) {
-    const user = currentUser || getUser();
+    const user = getUser();
     const lesson = lessons.find(l => l.id === id);
 
     if (!lesson) {
@@ -123,23 +49,19 @@ function loadLesson(id) {
         return;
     }
 
+    // Locked lesson
     if (lesson.locked && (!user || !user.is_paid)) {
         content.innerHTML = `
             <h2>🔒 Premium Content</h2>
             <p>This lesson requires payment to unlock.</p>
+            <p><strong>${lesson.title}</strong> is available after payment.</p>
             <div id="paypal-button-container"></div>
         `;
-        renderPayPalButton(() => {
-            // Payment callback
-            updatePaymentStatus(true);
-            if (currentUser) currentUser.is_paid = true;
-            saveProgress();
-            renderLessons();
-            loadLesson(id);
-        });
+        renderPayPalButton(() => updatePaymentStatus(true)); // Unlock after payment
         return;
     }
 
+    // Display lesson content
     content.innerHTML = `
         <h2>${lesson.title}</h2>
         <p>${lesson.content}</p>
@@ -149,50 +71,46 @@ function loadLesson(id) {
         </div>
     `;
 
+    // Track progress
     if (user && !user.completedModules.includes(id)) {
         user.completedModules.push(id);
-        saveProgress();
-        renderLessons();
+        saveUser(user);
         checkCertificate(user);
     }
 }
 
-// ----------------------------
-// Navigation
-// ----------------------------
-window.previousLesson = function(currentId) {
-    const prevLesson = lessons.find(l => l.id === currentId - 1);
-    if (prevLesson) loadLesson(prevLesson.id);
-};
+// ===== Previous / Next Navigation =====
+function previousLesson(currentId) {
+    const prev = lessons.find(l => l.id === currentId - 1);
+    if (prev) loadLesson(prev.id);
+}
 
-window.nextLesson = function(currentId) {
-    const nextLesson = lessons.find(l => l.id === currentId + 1);
-    if (nextLesson) loadLesson(nextLesson.id);
-};
+function nextLesson(currentId) {
+    const next = lessons.find(l => l.id === currentId + 1);
+    if (next) loadLesson(next.id);
+}
 
-// ----------------------------
-// Certificate
-// ----------------------------
+// ===== Certificate =====
 function checkCertificate(user) {
     const completedCount = user.completedModules.length;
     const totalLessons = lessons.length;
-    const allUnlocked = lessons.every(l => !l.locked || user.is_paid);
+    const allUnlocked = lessons.every(lesson => !lesson.locked || user.is_paid);
 
     if (completedCount === totalLessons && allUnlocked) {
-        const certificateDiv = document.createElement('div');
-        certificateDiv.innerHTML = `
+        const div = document.createElement('div');
+        div.innerHTML = `
             <div style="margin-top:20px;padding:20px;background:#e8f5e9;border-radius:8px;">
                 <h3>🎓 Congratulations ${user.email}!</h3>
                 <p>You have completed all ${totalLessons} lessons!</p>
                 <button onclick="downloadCertificate()">📜 Download Certificate</button>
             </div>
         `;
-        content.appendChild(certificateDiv);
+        content.appendChild(div);
     }
 }
 
 window.downloadCertificate = function() {
-    const user = currentUser || getUser();
+    const user = getUser();
     if (!user) return;
 
     const certificate = `
@@ -201,6 +119,7 @@ window.downloadCertificate = function() {
         has completed the SQL Learning Course
         Date: ${new Date().toLocaleDateString()}
     `;
+
     const blob = new Blob([certificate], { type: 'text/plain' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
@@ -209,21 +128,21 @@ window.downloadCertificate = function() {
     URL.revokeObjectURL(link.href);
 };
 
-// ----------------------------
-// Event Listeners
-// ----------------------------
-document.getElementById('loginBtn').onclick = login;
-document.getElementById('logoutBtn').onclick = logoutUser;
+// ===== Login / Logout Buttons =====
+document.getElementById('loginBtn').onclick = async () => {
+    await login();
+    renderLessons();
+};
 
-// ----------------------------
-// Init
-// ----------------------------
-firebase.auth().onAuthStateChanged(user => {
-    if (user) {
-        currentUser = getUser() || { email: user.email, uid: user.uid, is_paid: false, completedModules: [] };
-        syncProgress().then(renderLessons);
-    } else {
-        currentUser = null;
-        renderLessons();
-    }
+document.getElementById('logoutBtn').onclick = logout;
+
+// ===== Listen for Firebase Auth Changes =====
+onUserChanged((user) => {
+    renderLessons();
 });
+
+// ===== Listen for Payment Updates =====
+window.addEventListener('paymentUpdated', () => renderLessons());
+
+// ===== Initialize =====
+renderLessons();
