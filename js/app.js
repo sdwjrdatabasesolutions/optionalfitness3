@@ -1,4 +1,5 @@
-import { getUser, login, logout, updatePaymentStatus, onUserChanged } from './auth.js';
+// app.js
+import { getUser, login, logout, saveUser, updatePaymentStatus, onUserChanged } from './auth.js';
 import { renderPayPalButton } from './payment.js';
 
 const lessons = [
@@ -10,30 +11,47 @@ const lessons = [
 
 const lessonList = document.getElementById('lessonList');
 const content = document.getElementById('content');
+const progressFill = document.getElementById('progressFill');
+const progressText = document.getElementById('progressText');
+const loginBtn = document.getElementById('loginBtn');
+const logoutBtn = document.getElementById('logoutBtn');
+
+// Listen to Firebase auth changes
+onUserChanged(user => {
+    if (user) {
+        loginBtn.style.display = 'none';
+        logoutBtn.style.display = 'inline-block';
+    } else {
+        loginBtn.style.display = 'inline-block';
+        logoutBtn.style.display = 'none';
+    }
+    renderLessons();
+});
+
+// Event listeners
+loginBtn.onclick = async () => await login();
+logoutBtn.onclick = async () => await logout();
 
 function renderLessons() {
     const user = getUser();
     lessonList.innerHTML = '';
-
+    
     lessons.forEach(lesson => {
         const li = document.createElement('li');
         li.textContent = lesson.title;
-        li.style.cursor = "pointer";
-        li.style.padding = "8px";
-        li.style.margin = "4px 0";
-        li.style.backgroundColor = "#f0f0f0";
-        li.style.borderRadius = "4px";
 
         if (lesson.locked && (!user || !user.is_paid)) {
-            li.style.opacity = "0.6";
+            li.classList.add('locked');
             li.innerHTML += ' 🔒';
-        } else {
-            li.style.backgroundColor = "#e0e0e0";
+        } else if (user && user.completedModules.includes(lesson.id)) {
+            li.classList.add('completed');
         }
 
         li.onclick = () => loadLesson(lesson.id);
         lessonList.appendChild(li);
     });
+
+    updateProgressBar();
 }
 
 function loadLesson(id) {
@@ -51,7 +69,10 @@ function loadLesson(id) {
             <p>This lesson requires payment to unlock.</p>
             <div id="paypal-button-container"></div>
         `;
-        renderPayPalButton(() => updatePaymentStatus(true));
+        renderPayPalButton(async () => {
+            await updatePaymentStatus(true);
+            loadLesson(id);
+        });
         return;
     }
 
@@ -59,8 +80,8 @@ function loadLesson(id) {
         <h2>${lesson.title}</h2>
         <p>${lesson.content}</p>
         <div class="lesson-navigation">
-            <button onclick="previousLesson(${id})">Previous</button>
-            <button onclick="nextLesson(${id})">Next</button>
+            <button onclick="previousLesson(${id})" class="btn-primary">Previous</button>
+            <button onclick="nextLesson(${id})" class="btn-primary">Next</button>
         </div>
     `;
 
@@ -69,66 +90,67 @@ function loadLesson(id) {
         saveUser(user);
         checkCertificate(user);
     }
+
+    updateProgressBar();
 }
 
 function previousLesson(currentId) {
-    const prev = lessons.find(l => l.id === currentId - 1);
-    if (prev) loadLesson(prev.id);
+    const prevLesson = lessons.find(l => l.id === currentId - 1);
+    if (prevLesson) loadLesson(prevLesson.id);
 }
 
 function nextLesson(currentId) {
-    const next = lessons.find(l => l.id === currentId + 1);
-    if (next) loadLesson(next.id);
+    const nextLesson = lessons.find(l => l.id === currentId + 1);
+    if (nextLesson) loadLesson(nextLesson.id);
 }
 
 function checkCertificate(user) {
-    const completedCount = user.completedModules.length;
-    const totalLessons = lessons.length;
-    const allUnlocked = lessons.every(lesson => !lesson.locked || user.is_paid);
-
-    if (completedCount === totalLessons && allUnlocked) {
-        const div = document.createElement('div');
-        div.innerHTML = `
-            <div style="margin-top:20px;padding:20px;background:#e8f5e9;border-radius:8px;">
+    if (user.completedModules.length === lessons.length && user.is_paid) {
+        const certDiv = document.createElement('div');
+        certDiv.innerHTML = `
+            <div style="margin-top: 20px; padding: 20px; background: #e8f5e9; border-radius: 8px;">
                 <h3>🎓 Congratulations ${user.email}!</h3>
-                <p>You have completed all ${totalLessons} lessons!</p>
+                <p>You completed all lessons!</p>
                 <button onclick="downloadCertificate()">📜 Download Certificate</button>
             </div>
         `;
-        content.appendChild(div);
+        content.appendChild(certDiv);
     }
 }
 
 window.downloadCertificate = function() {
     const user = getUser();
     if (!user) return;
-
+    
     const certificate = `
-CERTIFICATE OF COMPLETION
-This certifies that ${user.email}
-has completed the SQL Learning Course
-Date: ${new Date().toLocaleDateString()}
-`;
+        CERTIFICATE OF COMPLETION
+        This certifies that ${user.email}
+        has completed the SQL Learning Course
+        Date: ${new Date().toLocaleDateString()}
+    `;
     const blob = new Blob([certificate], { type: 'text/plain' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
     link.download = 'certificate.txt';
     link.click();
     URL.revokeObjectURL(link.href);
-};
+}
 
-// Login/Logout buttons
-document.getElementById('loginBtn').onclick = async () => {
-    await login();
-    renderLessons();
-};
-document.getElementById('logoutBtn').onclick = logout;
+function updateProgressBar() {
+    const user = getUser();
+    if (!user) {
+        progressFill.style.width = '0%';
+        progressText.textContent = '0% complete';
+        return;
+    }
 
-// Listen for Firebase auth changes
-onUserChanged(() => renderLessons());
+    const completed = user.completedModules.length;
+    const total = lessons.length;
+    const percent = Math.round((completed / total) * 100);
 
-// Listen for payment updates
-window.addEventListener('paymentUpdated', () => renderLessons());
+    progressFill.style.width = percent + '%';
+    progressText.textContent = percent + '% complete';
+}
 
 // Initialize
 renderLessons();
