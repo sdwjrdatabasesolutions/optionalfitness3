@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SDWSR University — Free Tech Education for Liberia</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">SDWSR</div>
+      <div>
+        <div class="nav-logo-name">SDWSR University</div>
+        <div class="nav-logo-sub">Tech Education for Liberia</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#curriculum">Curriculum</a></li>
+      <li><a href="#tracks">Tracks</a></li>
+    </ul>
+    <a href="#join" class="nav-cta">Join Now</a>
+  </nav>
+
+  <header class="hero" id="join">
+    <div class="hero-badge"><span class="badge-dot"></span> 100% Free for Liberian Students</div>
+    <h1>Build the future of <span>Liberia</span> through code.</h1>
+    <p class="hero-sub">Master HTML, CSS, JavaScript, and Databases. Dedicated to the legacy of Dr. Samuel D. Wilson, Sr.</p>
+    
+    <div class="auth-container">
+      <input type="email" id="studentEmail" placeholder="Enter your student email" required class="input-field">
+      <button id="join-btn" class="btn-primary">Join for Free</button>
+    </div>
+  </header>
+
+  <section class="container" id="curriculum">
+    <div class="stats">
+      <div class="stat-card"><div class="stat-num">0$</div><div class="stat-label">Tuition</div></div>
+      <div class="stat-card"><div class="stat-num">24/7</div><div class="stat-label">Access</div></div>
+      <div class="stat-card"><div class="stat-num">4</div><div class="stat-label">Tracks</div></div>
+    </div>
+
+    <div class="tracks" id="tracks">
+      <!-- HTML Card -->
+      <div class="track-card">
+        <div class="track-icon">🎨</div>
+        <h3>HTML & CSS</h3>
+        <p>Build beautiful, responsive websites. Includes Basic & Advanced guides.</p>
+        <a href="#" download class="btn-outline" style="margin-top: 10px; display: inline-block; padding: 8px 15px;">Download PDF</a>
+      </div>
+
+      <!-- JS Card -->
+      <div class="track-card">
+        <div class="track-icon">⚡</div>
+        <h3>JavaScript</h3>
+        <p>Make your websites interactive. Logic, APIs, and more.</p>
+        <a href="#" download class="btn-outline" style="margin-top: 10px; display: inline-block; padding: 8px 15px;">Download PDF</a>
+      </div>
+
+      <!-- SQL Card -->
+      <div class="track-card">
+        <div class="track-icon">🗄️</div>
+        <h3>Databases & SQL</h3>
+        <p>Manage data using Supabase and SQL. Database architecture basics.</p>
+        <a href="#" download class="btn-outline" style="margin-top: 10px; display: inline-block; padding: 8px 15px;">Download PDF</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1. CORRECTED Supabase Library -->
+  <script src="https://jsdelivr.net"></script>
+  <!-- 2. Your Local Script -->
+  <script src="js/script.js"></script>
+</body>
+</html>
